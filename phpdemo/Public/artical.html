@@ -1,0 +1,37 @@
+
+<!-- <div class="artical">
+        <img src="__PUBLIC__/Image/c1.jpg"/>
+        <p class="lh"><span class="atitle">按压方法</span>用掌根重叠放在另一手背上使手指脱离胸壁，可采用两手指交叉抬起法。
+            抢救者双臂应绷直，双肩在患者胸骨上方正中，垂直向下按压，按压力量应足以使胸骨下沉至少5 cm，压下后即放开，但双手不应离开胸壁，使胸骨自行弹回原位，如此反复操作。
+            注重每次按压后使胸廓回弹恢复原状，尽量避免按压中断。</p>
+        <p class="lh"> 按压方法：用掌根重叠放在另一手背上使手指脱离胸壁，可采用两手指交叉抬起法。</p>
+        <img src="__PUBLIC__/Image/c1.jpg"/>
+    </div>-->
+<script type="text/javascript">
+    var art=[
+            <foreach name="artical" item="vo">
+            {imgsrc:"{$vo.img}",atitle:"{$vo.atitle}",p:"{$vo.p}"},
+            </foreach>
+    ];
+    setartical(art);
+    function setartical(arctical){
+        var content='';
+        for(var i=0;i<arctical.length;i++){
+            if(arctical[i].imgsrc!==""){
+                content+='<img src="__PUBLIC__/Image/'+arctical[i].imgsrc+'"/>';
+            }
+            if(arctical[i].atitle!==""){
+                content+='<p class="lh"><span class="atitle">'+arctical[i].atitle+'</span>'+arctical[i].p+'</p>';
+            }
+            if(arctical[i].p!==""){
+                content+='<p class="lh">'+arctical[i].p+'</p>';
+            }else {
+                content+='';
+            }
+        }
+        var add_act = document.createElement('div');
+        add_act.id="artical";
+        add_act.innerHTML = content;
+        document.body.appendChild(add_act);
+    }
+</script>

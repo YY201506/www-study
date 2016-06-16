@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>wap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <link rel="stylesheet" href="../css&js/swiper.min.css"/>
+    <link rel="stylesheet" href="../css&js/help.css"/>
+
+    <script type="text/javascript">
+        (function (e, a) {
+            function f() {
+                return parseFloat(e.getComputedStyle(a.documentElement, null)["font-size"])
+            }
+
+            function g() {
+                if (d) {
+                    var b = a.documentElement.offsetWidth;
+                    if (d != b) {
+                        var c = a.createElement("style");
+                        c.innerHTML = "@media only screen and (width: " + b + "px) {html{font-size: " + 200 / 750 * b + "px !important;}}";
+                        a.getElementsByTagName("head")[0].appendChild(c);
+                        e.removeEventListener("orientationchange", orientationchange)
+                    }
+                } else d = a.documentElement.offsetWidth, a.documentElement.style.fontSize = 200 / 750 * d + "px", b = f(),
+                        c = 200 / 750 * d, b !== c && (b > c + 1 || b < c - 1) && (a.documentElement.style.fontSize = "200px", a.documentElement.style.fontSize = 200 / f() * c + "px")
+            }
+
+            var d;
+            g();
+            0 > e.navigator.userAgent.indexOf("iPhone") && e.addEventListener("orientationchange", function () {
+                setTimeout(function () {
+                    g()
+                }, 300)
+            })
+        })(window, document);
+    </script>
+</head>
+<body>
+    <div class="head"><img class="logo" src="../image/logo.gif"/>学习 <a href="search.html" style="position: absolute;right: 0.13rem; color: #fff"/>搜索</a></div>
+    <div class="nav clearfix">
+        <a href="#" class="linkactive">学习</a><span>|</span>
+        <a href="#">预防</a><span>|</span>
+        <a href="#">应急</a>
+    </div>
+    <div class="banner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="../image/n1.jpg"></div>
+                <div class="swiper-slide"><img src="../image/n2.jpg"></div>
+                <div class="swiper-slide"><img src="../image/n3.jpg"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <div class="block1">
+        <div class="title">学习急救</div>
+        <a href="#"><img src="../image/icon/logoff.png"/>过敏反应</a>
+        <a href="#"><img src="../image/icon/logoff.png"/>哮喘发作</a>
+        <a href="#"><img src="../image/icon/gu.png"/>骨折</a>
+        <a href="#"><img src="../image/icon/xue.png"/>出血</a>
+        <a href="#"><img src="../image/icon/huo.png"/>烫烧伤</a>
+    </div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="../css&js/swiper-3.3.0.jquery.min.js"></script>
+<script type="text/javascript">
+    $(".nav a").click(function(){
+        $(".nav a").removeClass("linkactive");
+        $(this).addClass("linkactive");
+    });
+</script>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            autoplay: 5000,
+            freeMode : false,
+            loop : false,
+            preloadImages:false,
+            pagination : '.swiper-pagination',
+            touchRatio : 1,
+            paginationType : 'bullets'
+        });
+    </script>
+</body>
+</html>

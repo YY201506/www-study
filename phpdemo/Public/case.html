@@ -1,0 +1,23 @@
+
+<div class="list">
+    <foreach name = "block" item = "vo">
+        <div class="case-room">
+            <a href="__ROOT__/Home/Learn/course/item/{$vo.item}/id/{$vo.learn_id}">
+                <p>{$vo.img_name}</p>
+                <div class="case-detail">{$vo.analysis}</div>
+                <img class="credit" src="__PUBLIC__/Image/credit.png"/>
+            </a>
+        </div>
+
+    </foreach>
+
+</div>
+<script>
+    $(".case-detail").each(function(){
+        var maxwidth=45;
+        if($(this).text().length>maxwidth){
+            $(this).text($(this).text().substring(0,maxwidth));
+            $(this).html($(this).html()+'…');
+        }
+    });
+</script>

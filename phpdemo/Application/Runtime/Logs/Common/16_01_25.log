@@ -1,0 +1,48 @@
+[ 2016-01-25T16:22:55+08:00 ] 192.168.1.61 /phpdemo/index.php/image/logo.gif
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载模块:Image
+
+[ 2016-01-25T16:22:55+08:00 ] 192.168.1.61 /phpdemo/index.php/css&js/help.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载模块:Css&js
+
+[ 2016-01-25T16:25:07+08:00 ] 192.168.1.61 /phpdemo/index.php/css&js/help.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载模块:Css&js
+
+[ 2016-01-25T16:25:07+08:00 ] 192.168.1.61 /phpdemo/index.php/image/logo.gif
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载模块:Image
+
+[ 2016-01-25T16:25:09+08:00 ] 192.168.1.61 /phpdemo/index.php/image/logo.gif
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载模块:Image
+
+[ 2016-01-25T16:25:09+08:00 ] 192.168.1.61 /phpdemo/index.php/css&js/help.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载模块:Css&js
+
+[ 2016-01-25T16:25:10+08:00 ] 192.168.1.61 /phpdemo/index.php/css&js/help.css
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载模块:Css&js
+
+[ 2016-01-25T16:25:10+08:00 ] 192.168.1.61 /phpdemo/index.php/image/logo.gif
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+ERR: 无法加载模块:Image
+

@@ -1,0 +1,15 @@
+
+    <div class="nav clearfix">
+        <a href="__MODULE__/Learn/index/id/1">常识</a><span>|</span>
+        <a href="__MODULE__/Learn/index/id/2">课程</a><span>|</span>
+        <a href="__MODULE__/Learn/index/id/3">案例</a>
+
+    </div>
+<script type="text/javascript">
+    var eQ={$item.item}-1;
+    $(".nav a").eq(eQ).addClass("linkactive");
+    $(".nav a").click(function(){
+        $(".nav a").removeClass("linkactive");
+        $(this).addClass("linkactive");
+    });
+</script>

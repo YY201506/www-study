@@ -1,0 +1,185 @@
+
+html { font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial,"Microsoft YaHei", "微软雅黑", sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-size: 62.5%; }
+body { margin: 0; font-size: 0.16rem;color: #1f2322; background-color: #FFF; height: 100%;  }
+input,select{font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial,"Microsoft YaHei", "微软雅黑";outline: none;}
+a,img{border: 0px; display: inline-block;-webkit-touch-callout: none;}
+li{list-style: none;}
+a,button,input,optgroup,select,textarea {-webkit-tap-highlight-color:rgba(0,0,0,0); text-decoration: none;}
+input::-webkit-input-placeholder{color:#FFF0D7;}
+input:focus::-webkit-input-placeholder{color:#FFF0D7;}
+* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;margin:0;padding:0;border: 0; outline: none;}
+.clearfix:after{content:"";display:block;clear:both;}
+.clearfix{*zoom:1}
+.left{float: left;}
+.right{float: right;}
+
+/*index*/
+.head{
+    background: #CA0000;
+    height: 0.50rem;
+    line-height: 0.54rem;
+    color: #fff;
+    font-size: 0.22rem;
+}
+.logo{
+    width: 0.33rem;
+    height: 0.33rem;
+    margin-top: 0.09rem;
+    margin-left: 0.1rem;
+    margin-right: 0.08rem;
+    vertical-align: top;
+}
+.nav{
+    background: #222222;
+    color: #ffffff;
+}
+.nav span{float: left; color: #3b3b3b;font-size: 0.25rem;line-height: 0.48rem;}
+.nav a{
+    float: left;
+    color: #ffffff;
+    font-size: 0.18rem;
+    width: 32%;
+    line-height: 0.48rem;
+    height: 0.48rem;
+    text-align: center;
+}
+.linkactive{border-bottom: 5px solid #CA0000;}
+/*banner*/
+.banner li img{ width: 3.75rem;height: 2.0rem;}
+.swiper-container {
+    width: 3.75rem;
+    height: 2.0rem;
+}
+.swiper-slide img{width:3.75rem;height: 2.0rem}
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #FBEAEA;
+    opacity: .5;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #CA0000;
+}
+
+.block1{
+    width: 95%;
+    margin: 0 auto;
+}
+.title{
+    font-size: 0.19rem;
+    border-bottom: 2px solid #929699;
+    line-height: 0.45rem;
+    padding-left: 0.08rem;
+    margin-bottom: 0.08rem;
+}
+.block1>a>img{
+    width: 0.28rem;
+    vertical-align: middle;
+    margin-right: 0.05rem;
+}
+.block1 a{
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid #e1e5e4;
+    line-height: 0.45rem;
+    color: #1f2322;
+    font-size: 0.16rem;
+    padding-left: 0.05rem;
+}
+
+/*course*/
+.media{width: 3.75rem;background: #5F5D5D;height: 1.67rem;}
+.media img{width: 3.75rem;height: 1.67rem;}
+.cword{width: 95%; margin: 0 auto;padding-top: 0.1rem;}
+.part{border-bottom: 1px solid #D0D4D3;padding: 0.05rem 0rem; }
+.part:last-child{border-bottom: none;}
+.num{
+    width: 0.4rem;
+    height: 0.6rem;
+    color: #CA0000;
+    font-size: 0.5rem;
+    text-align: center;
+    margin-right: 0.1rem;
+}
+.buzou{width: 3rem;}
+.buzou p:first-child{ font-size: 0.17rem;margin-bottom: 0.08rem}
+.gray{color: #969A99; font-size: 0.16rem;margin-bottom: 0.05rem;}
+.buzou a{display: block;margin-bottom: 0.05rem;background: #CA0000; color: #ffffff;text-align: center;line-height: 0.38rem; font-size: 0.17rem;}
+#course .problem{width: 95%; margin: 0 auto;}
+.pro h4{line-height: 0.4rem;}
+.pro{border-bottom: 1px solid #D0D4D3;padding-left: 0.1rem}
+.pro p{display: none;}
+.head1{
+    background: #CA0000;
+    height: 0.50rem;
+    line-height: 0.54rem;
+    color: #fff;
+    font-size: 0.22rem;
+    text-align: center;
+    overflow: hidden;
+}
+.head1 a{display: block; width: 0.33rem;height: 0.33rem; position: absolute;margin-top: 0.07rem;left: 0.1rem;}
+.goback{
+    width: 0.33rem;
+    height: 0.33rem;
+}
+.search{
+    background: #FFFFFF;
+    width: 2.7rem;
+    height: 0.35rem;
+    line-height: 0.35rem;
+    margin: 0.08rem 0.65rem;
+    border-radius: 0.05rem;
+    padding:0rem 0.05rem;
+}
+.search input{
+    width: 1.9rem;
+    height: 0.3rem;
+    font-size: 0.17rem;
+    margin-right: 0.07rem;
+}
+.search span {
+    color: #000000;
+    font-size: 0.17rem;
+    border-left: 1px solid #ccc;
+    padding-left: 0.1rem;
+}
+.gray_title{
+    font-size: 0.16rem;
+    border-bottom: 1px solid #CAD6D3;
+    color:#CAD6D3;;
+    line-height: 0.35rem;
+    padding-left: 0.08rem;
+    margin-bottom: 0.08rem;
+}
+.block2 a{
+    display: block;
+    width: 100%;
+    line-height: 0.45rem;
+    color: #1f2322;
+    font-size: 0.16rem;
+    padding-left: 0.05rem;
+}
+.block2{
+    width: 95%;
+    margin: 0.1rem auto;
+   /* display: none;*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

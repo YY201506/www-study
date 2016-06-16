@@ -1,0 +1,23 @@
+<include file = 'Public/head.html' />
+<include file = 'Public/nav.html' />
+<if condition="$item.item eq 1">
+    <include file = 'Public/banner.html' />
+    <div class="block1">
+        <div class="title">{$item.item_name}</div>
+
+        <foreach name = "block" item = "vo">
+            <a href="__ROOT__/Home/Learn/course/item/{$vo.item}/id/{$vo.learn_id}"><img src="__PUBLIC__/Image/icon/{$vo.url}"/>{$vo.img_name}</a>
+        </foreach>
+    </div>
+
+    <elseif condition="$item.item eq 2"/>
+        <include file = 'Public/train.html' />
+
+    <elseif condition="$item.item eq 4"/>
+    <include file='Public/test.html'/>
+
+    <else /> <include file = 'Public/case.html' />
+</if>
+
+
+<include file = 'Public/foot.html' />

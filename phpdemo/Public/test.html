@@ -1,0 +1,12 @@
+
+<div class="test">
+    <foreach name = "block" item = "vo">
+        <div class="testroom">
+            <a href="__ROOT__/Home/Learn/course/item/{$vo.item}/id/{$vo.learn_id}">
+                <img src="__PUBLIC__/Image/icon/{$vo.url}" class="pic"/>
+                <div class="divr"><span>{$vo.img_name}</span></div></a>
+        </div>
+
+    </foreach>
+
+</div>

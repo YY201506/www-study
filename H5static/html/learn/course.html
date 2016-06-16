@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>过敏反应</title>
+    <link rel="stylesheet" href="../../css&js/help.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <script type="text/javascript">
+        (function (e, a) {
+            function f() {
+                return parseFloat(e.getComputedStyle(a.documentElement, null)["font-size"])
+            }
+
+            function g() {
+                if (d) {
+                    var b = a.documentElement.offsetWidth;
+                    if (d != b) {
+                        var c = a.createElement("style");
+                        c.innerHTML = "@media only screen and (width: " + b + "px) {html{font-size: " + 200 / 750 * b + "px !important;}}";
+                        a.getElementsByTagName("head")[0].appendChild(c);
+                        e.removeEventListener("orientationchange", orientationchange)
+                    }
+                } else d = a.documentElement.offsetWidth, a.documentElement.style.fontSize = 200 / 750 * d + "px", b = f(),
+                        c = 200 / 750 * d, b !== c && (b > c + 1 || b < c - 1) && (a.documentElement.style.fontSize = "200px", a.documentElement.style.fontSize = 200 / f() * c + "px")
+            }
+
+            var d;
+            g();
+            0 > e.navigator.userAgent.indexOf("iPhone") && e.addEventListener("orientationchange", function () {
+                setTimeout(function () {
+                    g()
+                }, 300)
+            })
+        })(window, document);
+    </script>
+</head>
+
+<body>
+<div class="head1"><a href="#"><img class="goback" src="../../image/icon/houtui.png"/></a> 过敏反应</div>
+<div class="course" id="course">
+    <div class="media" style="background: #5F5D5D;height: 2.1rem;">
+           <video id="video" preload="meta" loop="loop" width="100%" height="" name="media">
+           <source src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg;codecs="theora,vorbis"" media="screen" />
+           <source src="http://media.w3.org/2010/05/sintel/trailer.mp4"  />
+           </video>
+        </div>
+</div>
+    <!--<div class="cword">
+        <div class="part clearfix">
+            <div class="num left">1</div>
+            <div class="buzou left">
+                <p>用周围能找到的任何物品按压伤口，以达到止血或减缓出血的目的。</p>
+                <p class="gray">阻止血液流失。按压伤口，可帮助血液凝固并止血。</p>
+            </div>
+        </div>
+        <div class="part clearfix">
+            <div class="num left">2</div>
+            <div class="buzou left">
+                <p>如果出血严重，尽快拨打120，或请别人帮忙拨打。</p>
+                <a href="tel:120">拨打120</a>
+            </div>
+        </div>
+        <div class="part clearfix">
+            <div class="num left">3</div>
+            <div class="buzou left">
+                <p style="margin-top: 0.1rem">持续按压伤口直到后续救援到达。或请别人帮忙拨打</p>
+            </div>
+        </div>
+        <div class="part clearfix">
+            <div class="num left">4</div>
+            <div class="buzou left">
+                <p style="margin-top: 0.1rem">持续按压伤口直到后续救援到达。</p>
+            </div>
+        </div>
+    </div>-->
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+
+    var myVideo=document.getElementById("video");
+    myVideo.poster = "http://media.w3.org/2010/05/sintel/poster.png";
+    var playstatue = false;
+    function control() {
+        if (playstatue) {
+            myVideo.pause();
+            console.log("停");
+            playstatue = false;
+        } else {
+            myVideo.play();
+            console.log("开");
+            playstatue = true;
+        }
+    }
+    $("#video").on("click",control);
+
+    var arryDetail=[
+        {page:"用周围能找到的任何物品按压伤口，以达到止血或减缓出血的目的。",detail:"阻止血液流失。按压伤口，可帮助血液凝固并止血。",tel:0},
+        {page:"如果出血严重，尽快拨打120，或请别人帮忙拨打。",detail:"",tel:1},
+        {page:"持续按压伤口直到后续救援到达。或请别人帮忙拨打。",detail:"",tel:0},
+        {page:"持续按压伤口直到后续救援到达。",detail:"",tel:0}
+    ];
+    setstep(arryDetail);
+    function setstep(arryDetail){
+        if(arryDetail.length >=1){
+            var content='';
+            var number=1;
+            for(var i=0;i<arryDetail.length;i++){
+                content +='<div class="part clearfix"><div class="num left">'+number+'</div>';
+                if(!arryDetail[i].detail&&!arryDetail[i].tel){
+                    content +='<div class="buzou left"><p style="margin-top: 0.1rem">'+arryDetail[i].page+'</p></div></div>';
+                    console.log(i);
+                    console.log(arryDetail[i].detail);
+                    console.log(arryDetail[i].tel);
+                }else{
+                    content +='<div class="buzou left"><p>'+arryDetail[i].page+'</p>';
+                    if(arryDetail[i].detail){
+                        content+='<p class="gray">'+arryDetail[i].detail+'</p></div></div>';
+                    }else if(arryDetail[i].tel){
+                        content+='<a href="tel:120">拨打120</a></div></div>';
+                    }else{
+                        content+='</div></div>';
+                    }
+                }
+                number++
+            }
+            var add_step = document.createElement('div');
+            add_step.id="crowd";
+            add_step.innerHTML = content;
+            document.body.appendChild(add_step);
+        }else{
+            console.log("没步骤！");
+        }
+    }
+
+
+    var arg1 = [
+        {question:"什么是过敏休克？",answer:"过敏休克是严重的过敏反应，可以导致患者呼吸困难，脉搏微弱，滴血液，精神波动。"},
+        {question:"什么是过敏休克？",answer:"过敏休克是严重的过敏反应，可以导致患者呼吸困难，脉搏微弱，滴血液，精神波动。"},
+        {question:"什么是过敏休克？",answer:"过敏休克是严重的过敏反应，可以导致患者呼吸困难，脉搏微弱，滴血液，精神波动。"},
+        {question:"什么是过敏休克？",answer:"过敏休克是严重的过敏反应，可以导致患者呼吸困难，脉搏微弱，滴血液，精神波动。"},
+        {question:"什么是过敏休克？",answer:"过敏休克是严重的过敏反应，可以导致患者呼吸困难，脉搏微弱，滴血液，精神波动。"}
+      ];
+    addproblem(arg1);
+    function addproblem(obj){
+        if(obj.length >=1){
+            var content='';
+            content +='<div class="title">常见问题</div>';
+            for(var i=0;i<obj.length;i++){
+            content +='<div class="pro"><h4>'+obj[i].question+'</h4><p class="gray">'+obj[i].answer+'</p></div>';}
+
+            var add_problem = document.createElement('div');
+            add_problem.id="problem";
+            add_problem.innerHTML = content;
+            document.body.appendChild(add_problem);
+        }else{
+            console.log("没问题！");
+        }
+
+    }
+    $(".pro").each(function(index){
+        $(this).click(function(){
+            $(".pro").eq(index).find("p").slideToggle(50);
+        });
+    });
+
+
+</script>
+</body>
+</html>

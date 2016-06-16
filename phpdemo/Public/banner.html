@@ -1,0 +1,21 @@
+ <div class="banner">
+         <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="__PUBLIC__/Image/n1.jpg"></div>
+                <div class="swiper-slide"><img src="__PUBLIC__/Image/n2.jpg"></div>
+                <div class="swiper-slide"><img src="__PUBLIC__/Image/n3.jpg"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+</div>
+<script>
+        var mySwiper = new Swiper('.swiper-container', {
+            autoplay: 5000,
+            freeMode : false,
+            loop : false,
+            pagination : '.swiper-pagination',
+            touchRatio : 1,
+            preloadImages:false,
+            paginationType : 'bullets'
+        });
+    </script>
