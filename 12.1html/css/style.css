@@ -1,0 +1,32 @@
+body{
+   font-family: Helvetica, Tahoma, Arial, "Microsoft YaHei", "微软雅黑", SimSun, "宋体", STXihei, "华文细黑", Heiti, "黑体", sans-serif;;
+}
+.jh{
+    background: url(../shop_act/banner.png) no-repeat center;
+    height: 600px;}
+.jh_title1{
+    background: url(../shop_act/pack-title02.png) no-repeat center;
+    height: 292px; }
+.jh_title2{
+    background: url(../shop_act/pack-title04.png) no-repeat center;
+    height: 309px; }
+.new_banner{ height: 500px;}
+.buy_step{ margin: 0 auto; width: 960px; text-align: center; padding-top: 70px;}
+.btn_blue{ width: 346px; height: 47px; background: #46a8f4; color: #ffffff; font-size: 24px; display: block; line-height: 47px; border-radius:3px; margin: 87px auto 56px;}
+.notes{ background: #f4f4f4; text-align: center; padding: 93px 0px;}
+.content_1200{ margin:0 auto; width: 1200px; height: 292px;}
+.jh_btn2{ display: block; height: 56px; width: 224px; border-radius: 3px; background: #f8563f; color: #ffffff; font-size: 24px; line-height: 56px; text-align: center; float:right; margin-top: 210px; }
+.jh_btn1{ display:block; height: 56px; width: 224px; border-radius: 3px; background: #f8563f; color: #ffffff; font-size: 24px; line-height: 56px; text-align: center; float: right;margin-top: 200px;}
+
+.config-slide-wrap { position: relative; overflow: hidden; background: #fff;    text-align: center;padding-bottom: 0px;}
+.base-slide {position: absolute;left: 50%;}
+.base-slide .base-temp {overflow: visible!important;}
+.base-slide .base-temp .temp-wrap {overflow: visible;position: relative;}
+.base-slide .base-temp .temp-wrap ul {width: 8100px;overflow: hidden;position: relative;padding: 0;margin: 0;}
+.base-slide .base-temp .temp-wrap ul li {float: left;overflow: hidden;position: relative;}
+.prev {left: -50%; }
+.pnBtn {position: absolute;z-index: 1;top: 0;width: 100%;}
+.pnBtn .blackBg {display: block;position: absolute;left: 0;top: 0;width: 100%;background: #000;filter: alpha(opacity=50);opacity: .5;}
+.next {left: 50%;}
+.button_pre{ background:url("../shop_act/arrow_left.png") no-repeat center; width:52px; height:80px; position:absolute; z-index:50; top:45%; /*margin-left: 0px; */cursor:pointer}
+.button_next{ background:url("../shop_act/arrow_right.png") no-repeat center; width:52px; height:80px; position:absolute; z-index:50;top:45%;margin-left: -55px; cursor:pointer}

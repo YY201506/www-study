@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <title>弹窗栗子2522</title>
+
+</head>
+
+<body>
+<div class="ui-center">
+    <div class="ui-btn" id="btn1" STYLE="float: left">风格1</div>
+    <div class="ui-btn" id="btn2">风格2</div>
+</div>
+
+<script type="text/javascript">
+var outter = [];  
+function clouseTest () {  
+    var array = ["one", "two", "three", "four"];  
+    for(var i = 0; i < array.length;i++){  
+       var x = {};  
+       x.no = i;  
+       x.text = array[i];  
+    /*   x.invoke = function(){  
+           console.log(i);  
+       } */ 
+       x.invoke = function(no){  
+           return function(){  
+              console.log(no);  
+           }  
+       }(i);
+       outter.push(x);  
+    }  
+}  
+
+//调用这个函数  
+clouseTest();  
+
+console.log(outter[0].invoke());  
+console.log(outter[1].invoke());  
+console.log(outter[2].invoke());  
+console.log(outter[3].invoke());
+
+    var arg1 = {
+        "head": "",//14
+        "content": "开通年费",
+        "type": "1",
+        "cancel":function(){console.log("cancel")},
+        "confirm":function(){}
+    };
+    var arg2 = {
+        "head": "开通",
+        "content": "开通年费",
+        "type": "2",
+        "cancel":function(){console.log("cancel")},
+        "confirm":function(){console.log("confirm")}
+    };
+    document.querySelector("#btn1").onclick=function(){dialog(arg1)};
+    document.querySelector("#btn2").onclick=function(){dialog(arg2)};
+
+
+    function dialog(obj){
+        obj.type = obj.type||1;
+        var content='';
+        content +='<div class="big_bg" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:rgba(0,0,0,.4)"></div><div class="dialog_content" style="background:#fff;width:86%;position:fixed;z-index:10000;border-radius:10px;text-align:center;font-size:18px;left:50%;top:50%;-webkit-transform:translate(-50%,-50%)">';
+        if(obj.head){
+            content +='<div style="line-height:45px;border-bottom:1px solid #C7C2C2">'+obj.head+'</div>';
+        }
+        content +='<div style="width:85%;text-align:left;margin:0 auto;padding:15px 0 15px 0;font-size:16px;line-height:23px">'+obj.content+'</div><div style="border-top: 1px solid #C7C2C2;color: #42C4F3;" class="ui-dialog-ft">';
+        if(obj.type == 1){
+            content +='<div class="cancel" style="width: 100%;line-height:45px;height:45px;">确认</div></div></div>';
+        }else{
+            content +='<div class="cancel" style="width:49.8%;line-height:45px;height:45px;float:left;border-right:1px solid #C7C2C2">取消</div><div class="confirm" style="width:49.8%;line-height:45px;height:45px;float:left">确认</div></div></div>';
+        }
+
+        var newdialog = document.createElement('div');
+        newdialog.id="dialog";
+        newdialog.innerHTML = content;
+        document.body.appendChild(newdialog);
+
+        var dialogbg = document.querySelector("#dialog>.big_bg"),
+        dialogcancel = document.querySelector("#dialog .cancel"),
+        dialogconfirm = document.querySelector("#dialog .confirm");
+
+        dialogbg.addEventListener("click",removedialog,false);
+        dialogcancel.addEventListener("click",removedialog,false);
+        function removedialog(){
+            distory();
+            obj.cancel();
+        }
+
+        if(obj.type==2){
+            dialogconfirm.addEventListener("click",removedialog_confirm,false);
+            function removedialog_confirm(){
+                distory();
+                obj.confirm();
+            }
+        }
+
+        function distory(){
+            if(obj.type==2){
+                dialogconfirm.removeEventListener("click",removedialog_confirm,false);
+            }
+            dialogbg.removeEventListener("click",removedialog,false);
+            dialogcancel.removeEventListener("click",removedialog,false);
+            newdialog.parentNode.removeChild(newdialog);
+        }
+    }
+
+</script>
+
+</body>
+</html>

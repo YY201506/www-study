@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>xxx</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+$(function(){
+// 先取得必要的元素?用 jQuery 包?
+// 再?取得 $block 的高度及?定????
+var $block = $('#abgneBlock'), $slides = $('ul.list', $block),$slide = $('ul.list','#abgneBlock'), _width = $block.width(), $li = $('li', $slides), _animateSpeed = 600, 
+// 加入??器, ?播??及控制??
+timer, _showSpeed = 3000, _stop = false;
+
+// ?生 li ??
+var _str = '';
+for(var i=0, j=$li.length;i<j;i++){
+// 每一? li 都有自己的 className = playerControl_??
+_str += '<li class="playerControl_' + (i+1) + '"></li>';
+}
+
+// ?生 ul ?把 li ??加到其中
+var $playerControl = $('<ul class="playerControl"></ul>').html(_str).appendTo($slides.parent()).css('left', function(){
+// 把 .playerControl 移到置中的位置
+return (_width - $(this).width()) / 2;
+});
+
+// ? li 加上 click 事件
+var $playerControlLi = $playerControl.find('li').click(function(){
+var $this = $(this);
+$this.addClass('current').siblings('.current').removeClass('current');
+
+clearTimeout(timer);
+// 移?位置到相??的??
+$slides.stop().animate({left: _width * $this.index() * -1}, _animateSpeed, function(){
+// ??告移?到正?位置後, 依判??????器
+if(!_stop) timer = setTimeout(move, _showSpeed);
+});
+
+return false;
+}).eq(0).click().end();
+
+// 如果滑鼠移入 $block ?
+$block.hover(function(){
+// ????及??器
+_stop = true;
+clearTimeout(timer);
+}, function(){
+// 如果滑鼠移出 $block ?
+// ????及??器
+_stop = false;
+timer = setTimeout(move, _showSpeed);
+});
+
+// ??器使用
+function move(){
+var _index = $('.current').index();
+$playerControlLi.eq((_index + 1) % $playerControlLi.length).click();
+}
+});
+</script>
+</head>
+<body>
+<style>
+    .header,.footer,.wrap-page{
+        position:absolute;
+        left:0;
+        right:0;
+        background-color: #fff;
+    }
+    .header,.footer{
+        height:44px;
+        background-color: #fff;
+        text-align: center;
+        z-index:900;
+        line-height:44px;
+    }
+    .header{
+        top: 0;
+        border-bottom: 1px solid #f00;
+    }
+    .footer{
+        bottom: 0;
+        border-top: 1px solid #f00;
+    }
+    .wrap-page{
+        top: 0;
+        bottom: 0;
+    }
+
+    .page {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        top: 44px;
+        bottom: 0;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+    }
+
+</style>
+<header class="header"></header>
+<div class="wrap-page">
+    <section class="page">
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+    <section class="page">
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+    </section>
+    <section class="page">
+        我们也知道所有的对象都有原型，对象对应的原型以及父级原型里都会封装了很多API， 当我们不知道该对象有什么API的可以使用的时候，可以通过查看对象的原型链进行查询！ 创建一个函数，通过传参，把相应的对象传递进去，通过该函数进行递归，直到传入的参数的值为null(代表到了顶端的原型Object)就停下。</section>
+
+    </section>
+
+</div>
+<footer class="footer"></footer>
+</body>
+<!--<body bgcolor="#CCCCCC">
+
+<style>
+#abgneBlock {
+                width: 960px;
+                height: 280px;
+                position: relative;margin:0 auto;margin-bottom:5px;
+                overflow: hidden;
+                border: 0px solid #ccc;
+        }
+        #abgneBlock ul.list {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                position: absolute;
+                width: 9999px;
+                height: 100%;
+        }
+        #abgneBlock ul.list li {
+                float: left;
+                width: 960px;
+                height: 100%;
+        }
+        #abgneBlock .list img{
+                width: 100%;margin:0px;
+                height: 100%;
+                border: 0;
+        }
+        #abgneBlock ul.playerControl {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                height: 14px;
+        }
+        #abgneBlock ul.playerControl li {
+                float: left;
+                width: 10px;
+                height: 10px;
+                cursor: pointer;
+                margin: 0px 2px;
+                background: #999 no-repeat -10px 0;
+        }
+        #abgneBlock ul.playerControl li.current { 
+                background:#00F;
+        }        
+</style>
+
+<div id="abgneBlock">
+<ul class="list">
+<li><a target="_blank" href="#"><img src="http://www.baidu.com/img/baidu_sylogo1.gif" /></a></li>
+<li><a target="_blank" href="http://www.hx33.com/html/xuexiaodongtai/20111201/1540.html"><img src="http://www.baidu.com/img/baidu_sylogo1.gif" /></a></li>
+<li><a target="_blank" href="#"><img src="http://www.baidu.com/img/baidu_sylogo1.gif" /></a></li>
+<li><a target="_blank" href="#"><img src="http://www.baidu.com/img/baidu_sylogo1.gif" /></a></li>
+</ul>
+</div>
+
+
+<section>&lt;!&ndash; Checbox Four &ndash;&gt;
+    <h3>Checkbox Four</h3>
+    <div class="checkboxFour">
+        <input id="checkboxFourInput" type="checkbox" name="" value="1" />
+        <label for="checkboxFourInput"></label>
+    </div>
+</section>
+<style>
+    .checkboxFour {
+        width: 40px;
+        height: 40px;
+        background: #ddd;
+        margin: 20px 90px;
+        border-radius: 100%;
+        position: relative;
+        -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+        box-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+    }
+    .checkboxFour input{margin: 10px;}
+    .checkboxFour label {
+        display: block;
+        width: 30px;
+        height: 30px;
+        border-radius: 100px;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        transition: all .5s ease;
+        cursor: pointer;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        z-index: 1;
+        background: #333;
+        -webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+        -moz-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+        box-shadow:inset 0px 1px 3px rgba(0,0,0,0.5);
+    }
+    .checkboxFour input[type=checkbox]:checked + label {
+        background: #26ca28;
+    }
+</style>
+
+
+<section>&lt;!&ndash; Checbox Five &ndash;&gt;
+    <h3>Checkbox Five</h3>
+    <div class="checkboxFive">
+        <input id="checkboxFiveInput" type="checkbox" name="" value="1" />
+        <label for="checkboxFiveInput"></label>
+    </div>
+</section>
+<style>
+    .checkboxFive {
+        width: 25px;
+        margin: 20px 100px;
+        position: relative;
+    }
+    .checkboxFive label {
+        cursor: pointer;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        top: 0;
+        left: 0;
+        background: #eee;
+        border:1px solid #ddd;
+    }
+    .checkboxFive label:after {
+        opacity: 0.2;
+        content: '';
+        position: absolute;
+        width: 9px;
+        height: 5px;
+        background: transparent;
+        top: 6px;
+        left: 7px;
+        border: 3px solid #333;
+        border-top: none;
+        border-right: none;
+
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    .checkboxFive label:hover:after {
+        opacity: 0.5;
+    }
+
+    .checkboxFive input[type=checkbox]:checked + label:after {
+        opacity: 1;
+    }
+
+</style>
+
+</body>-->
+</html>

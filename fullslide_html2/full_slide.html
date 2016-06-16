@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>slide</title>
+</head>
+<style type="text/css">
+    body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,
+    form,fieldset,input,textarea,p,blockquote,th,td {
+        padding: 0;
+        margin: 0;
+    }
+
+    .config-slide-wrap { position: relative; overflow: hidden; background: #fff;    text-align: center;padding-bottom: 29px;}
+    .base-slide {position: absolute;left: 50%;}
+    .base-slide .base-temp {overflow: visible!important;}
+    .base-slide .base-temp .temp-wrap {overflow: visible;position: relative;}
+    .base-slide .base-temp .temp-wrap ul {width: 8100px;overflow: hidden;position: relative;padding: 0;margin: 0;}
+    .base-slide .base-temp .temp-wrap ul li {float: left;overflow: hidden;position: relative;}
+    .prev {left: -50%; }
+    .pnBtn {position: absolute;z-index: 1;top: 0;width: 100%;}
+    .pnBtn .blackBg {display: block;position: absolute;left: 0;top: 0;width: 100%;background: #000;filter: alpha(opacity=50);opacity: .5;}
+    .next {left: 50%;}
+    .button_pre{ background:url("arrow_left.png") no-repeat center; width:52px; height:80px; position:absolute; z-index:50; top:45%; /*margin-left: 0px; */cursor:pointer}
+    .button_next{ background:url("arrow_right.png") no-repeat center; width:52px; height:80px; position:absolute; z-index:50;top:45%;margin-left: -55px; cursor:pointer}
+</style>
+<body>
+    <div class="config-slide-wrap" id="wrap1" >
+    </div>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="slide_banner.js"></script>
+</body>
+</html>

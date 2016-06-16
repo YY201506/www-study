@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <script type="text/javascript">
+        (function(i,b){function h(){return parseFloat(i.getComputedStyle(b.documentElement,null)["font-size"])}function c(){if(j){var a=b.documentElement.offsetWidth;if(j!=a){var d=b.createElement("style");d.innerHTML="@media only screen and (width: "+a+"px) {html{font-size: "+200/750*a+"px !important;}}";b.getElementsByTagName("head")[0].appendChild(d);i.removeEventListener("orientationchange",orientationchange)}}else{j=b.documentElement.offsetWidth,b.documentElement.style.fontSize=200/750*j+"px",a=h(),d=200/750*j,a!==d&&(a>d+1||a<d-1)&&(b.documentElement.style.fontSize="200px",b.documentElement.style.fontSize=200/h()*d+"px")}}var j;c();0>i.navigator.userAgent.indexOf("iPhone")&&i.addEventListener("orientationchange",function(){setTimeout(function(){c()},300)})})(window,document);
+    </script>
+    <style>
+        html,body{height:100%;margin:0;padding:0;font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";}
+        *{padding: 0;margin: 0; outline: 0;}
+        input,button{-webkit-appearance:none;}
+        table{border-collapse:collapse;border-spacing:0;}
+        a{text-decoration: none;}
+        .clearfix:after{content:"";display:block;clear:both;}
+        .clearfix{*zoom:1}
+        .left{float: left;}
+        .right{float: right;}
+        body{background: #f6f6f6;}
+        .container{width: 90%;margin: 0 auto;text-align: center;}
+        .logofont{font-size: 0.14rem;color: #616160;display: block;padding: 0 0 0.2rem;text-align: center;}
+        .logo{width: 0.7rem;margin: 0.2rem auto 0.1rem;display: block;}
+        .page1{background: #fff;border: 1px solid #e6e6e9;font-size: 0.14rem;text-align:left;padding:0.08rem 0.1rem 0.12rem;}
+        .name{color: #525252;line-height: 0.25rem;display: block;}
+        .inputtype,.inputtype2{border-bottom: 1px solid #F3F0F0;}
+        .inputtype span{vertical-align: top;margin-top: 0.07rem;display: inline-block;font-size: 0.24rem;}
+        .inputtype2 input{font-size: 0.18rem;width: 3rem;border: 0;line-height: 0.35rem;}
+        .radiobox{padding: 0.15rem 0.6rem 0;}
+        .regular-radio{display:none}
+        .regular-radio + label{-webkit-appearance:none;border:1px solid #cacece;padding:0.09rem;border-radius:100%;display:inline-block;position:relative}
+        .regular-radio:checked + label:after{content:' ';width:0.19rem;height:0.19rem;border-radius:100%;position:absolute;background:url("images/choice.png") no-repeat center;background-size:0.2rem 0.2rem;left:-1px;top:-1px;}
+        .regular-radio:checked + label{border:1px solid #adb8c0;}
+        .big-radio + label{padding:0.08rem;}
+        .big-radio:checked + label:after{width:0.12rem;height:0.12rem;left:0.02rem;top:0.02rem}
+        .zi{vertical-align: super;padding-left: 0.05rem;}
+        .white{width: 0.65rem;display: inline-block;}
+        .container a{background: #0ac408;color:#fff;font-size: 0.18rem;text-align: center;display: block;line-height:0.425rem;margin-top: 0.15rem;border-radius: 0.02rem;}
+        .n1{padding-top: 0.09rem;}
+        .inputk{overflow: hidden;width: 2.7rem;display: inline-block;line-height: 0.5rem;height: 0.5rem;margin-top: 0.1rem;margin-bottom:0.1rem; }
+        .inputk input{font-size: 0.6rem;width: 2.7rem;border: 0;margin-top: -0.1rem;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="images/logo.png" class="logo"/>
+        <p class="logofont">360装房网</p>
+        <div class="page1">
+            <span class="name">付款金额</span>
+            <div class="inputtype">
+                <span>￥</span>
+                <div class="inputk"><input type="text"/></div>
+            </div>
+            <span class="name n1">输入客户姓名</span>
+            <div class="inputtype2">
+                <input type="text"/>
+            </div>
+            <div class="radiobox">
+                <input type="radio" id="radio-1-1" name="radio-1-set" class="regular-radio" checked=""><label for="radio-1-1"></label><label for="radio-1-1" class="zi">订金</label>
+                <span class="white"></span>
+                <input type="radio" id="radio-1-2" name="radio-1-set" class="regular-radio"><label for="radio-1-2"></label><label for="radio-1-2" class="zi">合同款</label>
+            </div>
+        </div>
+        <a href="#">付款</a>
+    </div>
+</body>
+</html>
