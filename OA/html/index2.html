@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN" style="height:100%">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OA</title>
+    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/reset1.css" rel="stylesheet">
+</head>
+<body style="height:100%">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">360装房OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">我的工作台</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>小闹钟</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span
+                        class="badge ">14</span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>业务手册</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>13226623034</a></li>
+                <li><a href="#">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="conbody">
+    <div class="abbody clearfix">
+        <div class="bar1 bg-black">
+            <div class="bar1con">
+                <div class="iconsx"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span></div>
+                <h5 class="line1"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>业务板块</h5>
+                <ul class="list-unstyled padbottom">
+                    <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 客户管理</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>推广渠道管理</a>
+                    </li>
+                    <li><a href="#"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>工程ERP管理</a>
+                    </li>
+                </ul>
+                <h5 class="line1"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>用户中心</h5>
+                <ul class="list-unstyled padbottom none">
+                    <li><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>管理</a></li>
+
+                </ul>
+                <h5 class="line1"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>内容管理</h5>
+                <ul class="list-unstyled padbottom none">
+                    <li><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>装房通客户管理</a></li>
+
+                </ul>
+                <h5 class="line1"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>加盟管理</h5>
+                <ul class="list-unstyled padbottom none">
+                    <li><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>管理</a></li>
+
+                </ul>
+                <h5 class="line1"><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>商品管理</h5>
+                <ul class="list-unstyled padbottom none">
+                    <li><a href="#"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>管理</a></li>
+
+                </ul>
+                <div class="iconfig"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>权限管理</div>
+            </div>
+        </div>
+
+        <div class="barleft">
+            <div class="bashou">收起</div>
+            <div class="third">
+
+            </div>
+        </div>
+        <div class="barright min-wileft">
+            <iframe src="following.html" class="mainframe" id="mainframe" allowTransparency="true">
+            </iframe>
+        </div>
+
+    </div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+<script>
+    var arry=[
+        {name:"客户管理",son:[{name:"储备客户",url:"reserve.html",num:230}, {name: "待分配客户", url: "distribute.html", num:''},{name:"新增客户",url:'addclient.html',num:'25'}, {
+            name: "跟进中的客户",
+            url: 'follow.html',
+            num: '25'
+        }]},
+        {name: "加盟管理", son: [{name: "新分配中客户", url: "#"}, {name: "跟进中的客户", url: "#"}]}
+    ];
+    thirdmenu(arry);
+
+    function thirdmenu (obj){
+        var html = "";
+        html+='<h4>'+obj[0].name+'</h4><ul class="list-unstyled list2">';
+        for (var i=0;i<obj[0].son.length;i++){
+            html+='<li>'+obj[0].son[i].name+'<span class="badge new-badge">'+ obj[0].son[i].num+'</span></li>';
+        }
+        html+='</ul>';
+        $(".barleft").append(html);
+    }
+
+
+    var hreflist = [ 'reserve.html', 'distribute.html', 'addclient.html', 'following.html']
+    $(".list2 li").each(function (index) {
+        $(this).click(function () {
+            $('#mainframe').attr('src', hreflist[index]);
+        });
+    });
+</script>
+</body>
+</html>

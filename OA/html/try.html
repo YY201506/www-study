@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OA</title>
+    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/reset.css" rel="stylesheet">
+</head>
+<body>
+<div class="callout-info">
+    <blockquote class="marbot10">
+        <span>添加新客户</span>
+
+        <div class="hh submitfile">
+            <input type="file" id="exampleInputFile">
+        </div>
+        <div class="pull-right sm">不想逐个添加？<a><u>下载批量导入模版</u></a></div>
+    </blockquote>
+</div>
+<div class="form">
+    <div class="clearfix">
+        <div class="fixedwidth marbot10 pull-left">
+            <div class="input-group ">
+                                          <span class="input-group-addon">
+                                            姓名
+                                          </span>
+                <input type="text" class="form-control" aria-label="..." id="name" value="林">
+            </div>
+        </div>
+        <div class="fixedwidth marbot10 pull-left marleft10">
+            <div class="input-group ">
+                                          <span class="input-group-addon">
+                                            电话
+                                          </span>
+                <input type="text" class="form-control" aria-label="..." id="" value="13800000000">
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="fixedwidth marbot10 pull-left">
+            <div class="input-group ">
+                                          <span class="input-group-addon">
+                                            预约时间
+                                          </span>
+                <input type="text" value="2015-03-15" id="date1" readonly data-date-format=""
+                       data-link-field="dtp_input2" class="form-control form_datetime"
+                       data-date-format="yyyy-mm-dd">
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="fixedwidth marbot10 pull-left">
+            <div class="input-group ">
+                                          <span class="input-group-addon">
+                                            省份
+                                          </span>
+                <select class="form-control" id="province" value="湖南">
+                    <option value="广东">广东</option>
+                    <option value="湖南">湖南</option>
+                </select>
+            </div>
+        </div>
+        <div class="fixedwidth marbot10 pull-left marleft10">
+            <div class="input-group ">
+                                          <span class="input-group-addon">
+                                            城市
+                                          </span>
+                <select class="form-control " id="city" value="广州">
+                    <option value="广州">广州</option>
+                    <option value="湖南">湖南</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="fixedwidth marbot10 pull-left">
+            <div class="input-group ">
+                                          <span class="input-group-addon">
+                                            来源渠道
+                                          </span>
+                <select class="form-control other" id="from" value="">
+                    <option value="-1">请选择</option>
+                    <option value="1">大众点评</option>
+                    <option value="-2">其他来源</option>
+                </select>
+            </div>
+        </div>
+        <div class="fixedwidth marbot10 pull-left marleft10 optionfill none">
+            <input type="text" class="form-control" id="" placeholder="请填写来源（选填）">
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="fixedwidth1 marbot10 pull-left">
+            <div class="input-group ">
+                                          <span class="input-group-addon">
+                                            详细地址
+                                          </span>
+                <input type="text" class="form-control " aria-label="..." id="" value="13800000000">
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="fixedwidth marbot10 pull-left">
+            <div class="input-group ">
+                                          <span class="input-group-addon">
+                                            面积
+                                          </span>
+                <input type="text" class="form-control" aria-label="">
+                <span class="input-group-addon"> m²</span>
+            </div>
+        </div>
+        <div class="fixedwidth marbot10 pull-left marleft10">
+            <div class="input-group ">
+                                          <span class="input-group-addon">
+                                           房屋类型
+                                          </span>
+                <select class="form-control " id="" value="">
+                    <option value="-1">请选择</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="fixedwidth marbot10 pull-left">
+            <div class="input-group ">
+                                          <span class="input-group-addon">
+                                           硬装意向
+                                          </span>
+                <select class="form-control " id="" value="">
+                    <option value="-1">请选择</option>
+                </select>
+            </div>
+        </div>
+        <div class="fixedwidth marbot10 pull-left marleft10">
+            <div class="input-group ">
+                                          <span class="input-group-addon">
+                                           软装意向
+                                          </span>
+                <select class="form-control " id="" value="">
+                    <option value="-1">请选择</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+        <div class="fixedwidth marbot10 pull-left">
+            <div class="input-group ">
+                                              <span class="input-group-addon">
+                                               分配跟单
+                                              </span>
+                <select class="form-control " id="" value="">
+                    <option value="-1">请选择</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<button type="button" class="btn btn-success">提交</button>
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+
+
+</body>
+</html>

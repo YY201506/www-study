@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OA</title>
+    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/reset1.css" rel="stylesheet">
+</head>
+<style>
+    .fileInput input[type=button]{
+        width:142px;
+        height:34px;
+        background:#E4E3E3;
+        color:rgb(85, 85, 85);
+        overflow:hidden;
+        position:relative;
+        border:1px solid #CCC;
+        border-radius:3px;
+    }
+    .upfile{
+        position:absolute;
+        top:12px;
+        left:80px;
+        opacity:0;
+    }
+    .upFileBtn{ width:102px; height:34px; cursor:pointer; }
+</style>
+<body>
+<div class="pad20">
+    <div class="marbot20">
+        <div class="help-block">推广费用录入</div>
+    </div>
+    <form method="post">
+        <div class="promoteRecord">
+            <div class="rowrecord">
+                <div class="fixedwidth pull-left marright10">
+                    <div class="input-group marbot10">
+                <span class="input-group-addon">
+                  日期
+                </span>
+                        <input type="text" placeholder="请选择" id="date1" data-date-format=""
+                               data-link-field="dtp_input2" name="0[date]" value=""
+                               class="form-control form_datetime" data-date-format="yyyy-mm-dd">
+                    </div>
+                </div>
+                <div class="fixedwidth pull-left marright10 marbot10">
+                    <div class="input-group">
+              <span class="input-group-addon">
+               城市
+              </span>
+                        <input type="text" class="form-control marbot10" aria-label="..." id="city" placeholder="如：广州"
+                               name="0[city]" value="{:I('city')}">
+
+                    </div>
+                </div>
+                <div class="fixedwidth pull-left marright10 marbot10">
+                    <div class="input-group">
+					<span class="input-group-addon">
+						渠道
+					</span>
+                        <select class="form-control" name="0[promo_channel]" id="promo_channel">
+                            <option value="">不限</option>
+                            <volist name="channelList" id="vo">
+                                <option value="{$vo.mark}" {:I(
+                                'get.promo_channel') === "".$vo['mark'] ? 'selected = "selected"' :
+                                ''}>{$vo.name}</option>
+                            </volist>
+                        </select>
+                    </div>
+                </div>
+                <div class="fixedwidth pull-left marright10 marbot10">
+                    <div class="input-group">
+              <span class="input-group-addon">
+               花费
+              </span>
+                        <input type="text" class="form-control marbot10" id="cost" placeholder="请填写"
+                               name="0[cost]" value="">
+                <span class="input-group-addon">
+               元
+                </span>
+                    </div>
+                </div>
+                <p style="clear:both"></p>
+            </div>
+        </div>
+        <div class="addrecord" style="margin-bottom:10px;cursor:pointer"><span class="badge new-badge">+再加一条</span>
+        </div>
+        <input type="submit" class="btn btn-success search-btn" value="提交"/>
+    </form>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../js/global.js"></script>
+<script>
+    var n = 0;
+    $(".addrecord").on("click",function(){
+        n++;
+        var html = $(".promoteRecord").children().last().clone();
+        $(".promoteRecord").append(rehtml(n,html));
+    });
+    function rehtml(index,html){
+        html.find("#date1").attr('name', index+'[date]');
+        html.find("#city").attr('name', index+'[city]');
+        html.find("#promo_channel").attr('name', index+'[promo_channel]');
+        html.find("#cost").attr('name', index+'[cost]');
+        return html;
+    }
+</script>
+
+</body>
+</html>

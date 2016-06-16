@@ -1,0 +1,532 @@
+
+<div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">客户信息编辑</h4>
+            </div>
+            <div class="modal-body clearfix">
+            <div class="pull-left dialogl">
+            <div class="help-block">基本信息</div>
+            <div class="clearfix">
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                            姓名
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." id="name" value="林">
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                            电话
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." id="tel" value="13800138000" readonly>
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                            来源渠道
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." id="from" value="大众点评"
+                               readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                            预约时间
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." readonly value="2016/4/1">
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                              <span class="input-group-addon">
+                               省份
+                              </span>
+                        <select class="form-control input-sm" id="province" value="湖南">
+                            <option value="广东">广东</option>
+                            <option value="湖南">湖南</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                              <span class="input-group-addon">
+                               城市
+                              </span>
+                        <select class="form-control input-sm" id="city" value="深圳市">
+                            <option value="广州市">广州</option>
+                            <option value="深圳市">深圳</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="fixedwidth5 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                            详细地址
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." id="address" value="越秀区中华国际中心111111楼">
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                    <span class="input-group-addon">
+                                     交楼时间
+                                      </span>
+                        <input type="text" value="2015-03-15" readonly data-date-format="" data-link-field="dtp_input2" class="form-control form_datetime input-sm form_date" data-date-format="yyyy-mm-dd">
+                    </div>
+                </div>
+
+            </div>
+            <div class="clearfix">
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                           面积
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." placeholder="请填写" id="area" value="123.3">
+                               <span class="input-group-addon">
+                               m²
+                              </span>
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                           房屋类型
+                                          </span>
+                        <select class="form-control input-sm" id="housetype">
+                            <option value="毛坯">毛坯</option>
+                            <option value="二手">二手</option>
+                            <option value="精装">精装</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                           交楼情况
+                                          </span>
+                        <select class="form-control input-sm" id="states">
+                            <option value="已交楼">已交楼</option>
+                            <option value="未交楼">未交楼</option>
+                            <option value="未买房">未买房</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="martop20">
+                <ul id="myTab" class="nav nav-tabs nav-tabsmall">
+                    <li class="active"><a href="#t1" data-toggle="tab">跟进记录</a></li>
+                    <li><a href="#t2" data-toggle="tab">项目进度</a></li>
+                    <li><a href="#t3" data-toggle="tab">历史状态</a></li>
+                    <li><a href="#t4" data-toggle="tab">装修意向</a></li>
+                    <li><a href="#t5" data-toggle="tab">量房情况</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane in active" id="t1">
+                        <div class="resettext">
+                            <ul class="">
+                                <li class="">
+                                    <h5 class="list-group-item-heading"><span class="badge bg-z">C-量房</span>
+                                        <small class="text-warning">2016/1/4 12:23</small>
+                                    </h5>
+                                    官方反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading"><span class="badge bg-z">B-意向跟进</span>
+                                        <small class="text-warning">2016/1/4 12:23</small>
+                                    </h5>
+                                    官方反反复三个反反复复反反复复日日日日日日日日日日日日日夜夜夜夜夜夜夜夜有复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading"><span class="badge bg-z">A-预约</span>
+                                        <small class="text-warning">2016/1/4 12:23</small>
+                                    </h5>
+                                    官方反反
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading"><span class="badge bg-z">客户信息</span>
+                                        <small class="text-warning">2016/1/4 12:23</small>
+                                    </h5>
+                                    客户信息
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading"><span class="badge bg-z">客户信息</span>
+                                        <small class="text-warning">2016/1/4 12:23</small>
+                                    </h5>
+                                    客户信息
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="t2">
+                        <div class="resettext">
+                            <div class="help-block">跟单设计师</div>
+                            <div class="clearfix">
+                                <div class="fixedwidth4 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                              <span class="input-group-addon">
+                                               设计师
+                                              </span>
+                                        <select class="form-control input-sm">
+                                            <option>杨作瑞</option>
+                                            <option>某某</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="help-block martop20">项目进度</div>
+                            <div class="clearfix">
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                    <span class="input-group-addon">
+                                     量房完成时间
+                                      </span>
+                                        <input type="text" value="请点击选择时间" data-date-format=""
+                                               data-link-field="dtp_input2"
+                                               class="form-control form_datetime form_date input-sm"
+                                               data-date-format="yyyy-mm-dd">
+                                    </div>
+                                </div>
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                    <span class="input-group-addon">
+                                     平面图完成时间
+                                      </span>
+                                        <input type="text" value="请点击选择时间" data-date-format=""
+                                               data-link-field="dtp_input2"
+                                               class="form-control form_datetime form_date input-sm"
+                                               data-date-format="yyyy-mm-dd">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                    <span class="input-group-addon">
+                                     定金图完成时间
+                                      </span>
+                                        <input type="text" value="请点击选择时间" data-date-format=""
+                                               data-link-field="dtp_input2"
+                                               class="form-control form_datetime form_date input-sm"
+                                               data-date-format="yyyy-mm-dd">
+                                    </div>
+                                </div>
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                    <span class="input-group-addon">
+                                     效果图完成时间
+                                      </span>
+                                        <input type="text" value="请点击选择时间" data-date-format=""
+                                               data-link-field="dtp_input2"
+                                               class="form-control form_datetime form_date input-sm"
+                                               data-date-format="yyyy-mm-dd">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                    <span class="input-group-addon">
+                                     签合同完成时间
+                                      </span>
+                                        <input type="text" value="请点击选择时间" data-date-format=""
+                                               data-link-field="dtp_input2"
+                                               class="form-control form_datetime form_date input-sm"
+                                               data-date-format="yyyy-mm-dd">
+                                    </div>
+                                </div>
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                    <span class="input-group-addon">
+                                     施工完成时间
+                                      </span>
+                                        <input type="text" value="请点击选择时间" data-date-format=""
+                                               data-link-field="dtp_input2"
+                                               class="form-control form_datetime form_date input-sm"
+                                               data-date-format="yyyy-mm-dd">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="t3">
+                        <div class="resettext">
+                            <table class="table table-condensed table-striped insettable table-sm">
+                                <tr class="success">
+                                    <td>阶段</td>
+                                    <td>状态</td>
+                                    <td>状态说明</td>
+                                    <td>修改时间</td>
+                                </tr>
+                                <tr>
+                                    <td>A-有效预约</td>
+                                    <td>跟进中</td>
+                                    <td>硬装意向</td>
+                                    <td>2016-3-9 12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>A-有效预约</td>
+                                    <td>跟进中</td>
+                                    <td>硬装意向</td>
+                                    <td>2016-3-9 12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>A-有效预约</td>
+                                    <td>跟进中</td>
+                                    <td>硬装意向</td>
+                                    <td>2016-3-9 12:00</td>
+                                </tr>
+                                <tr>
+                                    <td>A-有效预约</td>
+                                    <td>跟进中</td>
+                                    <td>硬装意向</td>
+                                    <td>2016-3-9 12:00</td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="t4">
+                        <div class="resettext">
+                            <div class="help-block">装修意向</div>
+                            <div class="clearfix">
+                                <div class="fixedwidth4 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                              <span class="input-group-addon">
+                                               硬装
+                                              </span>
+                                        <select class="form-control input-sm">
+                                            <option value="-1">请选择</option>
+                                            <option>毛胚新房</option>
+                                            <option>旧房翻新</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="fixedwidth4 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                              <span class="input-group-addon">
+                                               软装
+                                              </span>
+                                        <select class="form-control input-sm">
+                                            <option value="-1">请选择</option>
+                                            <option>灯饰</option>
+                                            <option>全屋软装</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="help-block martop20">其他意向</div>
+                            <div class="clearfix">
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                              <span class="input-group-addon">
+                                               计划装修时间
+                                              </span>
+                                        <select class="form-control input-sm">
+                                            <option value="-1">请选择</option>
+                                            <option>1个月内</option>
+                                            <option>3个月内</option>
+                                            <option>6个月内</option>
+                                            <option>半年</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                              <span class="input-group-addon">
+                                               装修预算
+                                              </span>
+                                        <select class="form-control input-sm">
+                                            <option value="-1">请选择</option>
+                                            <option>3万以内</option>
+                                            <option>3-5万</option>
+                                            <option>5-10万</option>
+                                            <option>超过10万</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                        装修用途：
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" value="">自用
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" value="">出租
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                              <span class="input-group-addon">
+                                               装修经验
+                                              </span>
+                                        <select class="form-control input-sm">
+                                            <option value="-1">请选择</option>
+                                            <option>无</option>
+                                            <option>1-2次</option>
+                                            <option>2次以上</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                        格局改动：
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" value="">是
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="inlineRadioOptions" value="">否
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="fixedwidth2 pull-left marright10 marbot10">
+                                    <div class="input-group">
+                                        家庭成员：
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" value="">小两口
+                                        </label>
+                                        <label class="checkbox-inline">
+                                            <input type="checkbox" value="">有小孩
+                                        </label>
+                                        <label class="checkbox-inline" style="margin-left:74px;">
+                                            <input type="checkbox" value="">有长辈
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="t5">
+                        <div class="resettext">
+                            <div class="fixedwidth4 pull-left marright10 marbot10">
+                                <div class="input-group">
+                                              <span class="input-group-addon">
+                                               户型
+                                              </span>
+                                    <select class="form-control input-sm">
+                                        <option value="-1">请选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="pull-right dialogr">
+                <div class="help-block">状态编辑</div>
+
+                <div class="fixedwidth marright10 marbot10">
+                    <div class="input-group">
+                                      <span class="input-group-addon">
+                                        当前阶段
+                                      </span>
+                        <select class="form-control input-sm" id="state">
+                            <option value="A-有效预约">A-有效预约</option>
+                            <option value="B-有效预约">B-有效预约</option>
+                            <option value="C-有效预约">C-有效预约</option>
+                            <option value="D-有效预约">D-有效预约</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="fixedwidth marright10 marbot10">
+                    <div class="input-group padtopbot10">
+                        当前状态：
+                        <label class="radio-inline text-success">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="跟进中">跟进中
+                        </label>
+                        <label class="radio-inline text-danger">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="挂单">挂单
+                        </label>
+                        <label class="radio-inline" style="margin-left: 74px;">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="储备">储备
+                        </label>
+                    </div>
+                </div>
+
+                <div class="fixedwidth marright10 marbot10">
+                    <div class="input-group">
+                                      <span class="input-group-addon">
+                                        状态说明
+                                      </span>
+                        <select class="form-control input-sm" id="intend">
+                            <option value="硬装意向">硬装意向</option>
+                            <option value="硬装意向">软装意向</option>
+                            <option value="硬装意向">客户信息</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="help-block martop40">新增跟进记录</div>
+                <div class="fixedwidth marright10 marbot10">
+                    <textarea class="form-control" rows="10"></textarea>
+                </div>
+                <p class="tip">*请认真记录客户状况及需求，以便后续查阅及跟进</p>
+            </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-sm pull-left">发短信通知</button>
+                <button type="button" id="example1" class="btn btn-primary btn-sm" data-loading-text="保存中···" data-complete-text="完成" aria-hidden="true" autocomplete="off" disabled>保存更改</button>
+            </div>
+        </div>
+<script>
+    $('.form_date').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $("input[name='inlineRadioOptions'][value='挂单']").attr("checked","checked");
+
+    var obj1 = document.getElementById("name");
+    immediately(obj1);
+    var obj2 = document.getElementById("intend");
+    immediately(obj2);
+    var obj3 = document.getElementById("state");
+    immediately(obj3);
+
+    function immediately(element){
+        if("\v"=="v") {
+            element.onpropertychange = webChange;
+        }else{
+            element.addEventListener("input",webChange,false);
+        }
+        function webChange(){
+            if(element.value){document.getElementById("example1").disabled=false;};
+        }
+    }
+
+    var btn =  $("#example1");
+    btn.click(function(){
+        btn.button('loading');
+        setTimeout(function(){
+            btn.button("complete");
+            $('.bs-example-modal-lg').modal('hide');
+            $('.bs-example-modal-sm').modal('show');
+            setTimeout(function(){
+                $('.bs-example-modal-sm').modal('hide');
+            },1200);
+        },1200);
+    });
+</script>

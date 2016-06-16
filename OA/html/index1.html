@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OA</title>
+    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/reset.css" rel="stylesheet">
+    <style>
+        .downcaret{
+            transform:rotate(-90deg);
+            -webkit-transform:rotate(-90deg);
+        }
+        .bar1{ font-size:12px;}
+        .bg-black h5{font-size:12px;}
+        .bar1con span{
+            margin-right:20px;
+        }
+
+
+        .bashou{height:50px;line-height:50px;border-bottom-left-radius:10px;border-top-left-radius:10px;}
+        .bashou img{vertical-align:middle;width:100%;}
+        .turn180{
+            transform:rotate(180deg);
+            -webkit-transform:rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+<body cz-shortcut-listen="true">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">360装房OA系统</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">我的工作台</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><span class="glyphicon glyphicon-time" aria-hidden="true"></span>小闹钟</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span><span
+                        class="badge">14</span></a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span>业务手册</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>13226623034</a></li>
+                <li><a href="/index.php/Oa/user/logout">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="conbody">
+    <div class="abbody clearfix">
+        <div class="bar1 bg-black" style="width: 180px;">
+            <div class="bar1con">
+                <div class="iconsx"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span></div>
+                <h5 class="line1" data-toggle="tooltip" data-placement="right" title="业务板块"><span class="caret" aria-hidden="true"></span>业务板块</h5>
+                <ul class="list-unstyled padbottom secondlevel" style="display: block;">
+                    <li class="changbg" data-toggle="tooltip"
+                        data-placement="right" title="客户管理">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true" ></span>客户管理
+                    </li>
+                    <li data-toggle="tooltip" data-placement="right" title="推广渠道管理">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true" ></span>推广渠道管理
+                    </li>
+                    <li data-toggle="tooltip" data-placement="right" title="工程ERP管理">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true" ></span>工程ERP管理
+                    </li>
+                </ul>
+                <h5 class="line1" data-toggle="tooltip" data-placement="right" title="内容模块"><span class="caret"
+                                                                                                  aria-hidden="true"></span>内容模块</h5>
+                <ul class="list-unstyled padbottom secondlevel">
+                    <li data-toggle="tooltip" data-placement="right" title="装房通客户管理">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>装房通客户管理
+                    </li>
+                </ul>
+                <div class="iconfig"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>权限管理</div>
+            </div>
+        </div>
+
+        <div class="barleft" style="width: 180px;">
+
+            <div class="third"><h4>客户管理</h4>
+                <ul class="list-unstyled list2 thirdlevel">
+                    <li aril="/index.php/Oa/Client/assigned.html" class="changebg2">新分配客户 <span class="badge new-badge"
+                                                                                                id="spanid0">7</span>
+                    </li>
+                    <li aril="/index.php/Oa/Client/following.html">跟进中客户 <span class="badge new-badge"></span>
+                    </li>
+                    <li aril="/index.php/Oa/Client/cancel.html">挂单 <span class="badge new-badge"></span>
+                    </li>
+                    <li aril="/index.php/Oa/Client/reserved.html">储备客户 <span class="badge new-badge"></span>
+                    </li>
+                    <li aril="/index.php/Oa/Client/unassigned.html">分配客户 <span class="badge new-badge"
+                                                                               id="spanid4">53</span></li>
+                    <li aril="/index.php/Oa/Client/add.html">添加新用户 <span class="badge new-badge"></span>
+                    </li>
+                    <li aril="/index.php/Oa/Client/search.html">客户查询 <span class="badge new-badge"></span>
+                    </li>
+                    <li aril="/index.php/Oa/Client/old.html">旧单查询 <span class="badge new-badge"></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="bashou"><img src="../css/img/left-right.png"/></div>
+        <div class="barright min-wileft" style="margin-left: 360px;">
+            <iframe src="/index.php/Oa/Client/assigned.html" class="mainframe" id="mainframe" allowtransparency="true">
+            </iframe>
+        </div>
+
+    </div>
+</div>
+
+<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://test.360zfw.com/Public/oa/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://test.360zfw.com/Public/oa/js/bootstrap-datetimepicker.js"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="http://test.360zfw.com/Public/oa/js/bootstrap-datetimepicker.zh-CN.js"
+        charset="UTF-8"></script>
+<script type="text/javascript" src="http://test.360zfw.com/Public/oa/js/global.js?v=45"></script>
+
+<script>
+        $(".iconsx").click(function () {
+        if ($(".barleft").css("width") == "180px") {
+            if ($(".bar1").css("width") == "180px") {
+                $(".bar1").animate({'width': '50px'}, 300);
+                $(".barright").animate({'margin-left': '230px'}, 300);
+                $(".bashou").animate({'left':'210px'},300);
+                $('[data-toggle="tooltip"]').tooltip();
+            } else {
+                $(".bar1").animate({'width': '180px'}, 300);
+                $(".barright").animate({'margin-left': '360px'}, 300);
+                $(".bashou").animate({'left': '340px'}, 300);
+                $('[data-toggle="tooltip"]').tooltip('destroy');
+            }
+        } else {
+            if ($(".bar1").css("width") == "180px") {
+                $(".bar1").animate({'width': '50px'}, 300);
+                $(".barright").animate({'margin-left': '50px'}, 300);
+                $(".bashou").animate({'left': '50px'}, 300);
+                $('[data-toggle="tooltip"]').tooltip();
+            } else {
+                $(".bar1").animate({'width': '180px'}, 300);
+                $(".barright").animate({'margin-left': '180px'}, 300);
+                $(".bashou").animate({'left': '180px'}, 300);
+                $('[data-toggle="tooltip"]').tooltip('destroy');
+            }
+        }
+    });
+
+    $(".bashou").click(function () {
+        if ($(".bar1").css("width") == "180px") {
+            if ($(".barleft").css("width") == "180px") {
+                $(".barleft").animate({'width': '0px'}, 300);
+                $(".barright").animate({'margin-left': '180px'}, 300);
+                $(".bashou").animate({'left': '180px'}, 300).addClass('turn180');
+            } else {
+                $(".barleft").animate({'width': '180px'}, 300);
+                $(".barright").animate({'margin-left': '360px'}, 300);
+                $(".bashou").animate({'left': '340px'}, 300).removeClass('turn180');
+            }
+        } else {
+            if ($(".barleft").css("width") == "180px") {
+                $(".barleft").animate({'width': '0px'}, 300);
+                $(".barright").animate({'margin-left': '50px'}, 300);
+                $(".bashou").animate({'left': '50px'}, 300).addClass('turn180');
+            } else {
+                $(".barleft").animate({'width': '180px'}, 300);
+                $(".barright").animate({'margin-left': '230px'}, 300);
+                $(".bashou").animate({'left': '210px'}, 300).removeClass('turn180');
+            }
+        }
+    });
+
+    $(".line1").click(function () {
+        if($(this).next().css("display") == 'none'){
+            $(this).next().slideDown(300);
+            $(this).find('.caret').removeClass('downcaret');
+        }else {
+            $(this).next().remove(".tooltip")
+            $(this).next().slideUp(300);
+            $(this).find('.caret').addClass('downcaret');
+        }
+    });
+
+    $(".padbottom li").click(function () {
+        $(".padbottom li").removeClass("changbg")
+        $(this).addClass("changbg");
+    });
+
+    $(".secondlevel li").each(function (index) {
+        $(this).click(function () {
+            var key1 = index;
+            console.log("key1" + key1);
+            window.location.hash = key1;
+            //var Grandson = $(this).find('textarea').val();
+            //$(".third").empty().append(Grandson);
+            $(".list2 li").each(function (index) {
+                $(".list2 li").eq(0).click();
+                $(this).on("click", function () {
+                    var key2 = index;
+                    console.log("key2" + key2);
+                    $(".list2 li").removeClass("changebg2")
+                    $(this).addClass("changebg2");
+                    var Url = $(this).attr('aril');
+                    $('#mainframe').attr('src', Url);
+                    window.location.hash = key1 + '/' + key2;
+                });
+            });
+        });
+    });
+    identifylocal();
+    function identifylocal() {
+        if (window.location.hash == "") {
+            window.location.hash = "0/0";
+            $(".secondlevel li").eq(0).click();
+            $(".list2 li").eq(0).click();
+        } else {
+            var arry = window.location.hash.replace('#', '').split('/');
+            $(".secondlevel li").eq(arry[0]).click();
+            $(".list2 li").eq(arry[1]).click();
+        }
+    }
+        var hreflist = ['reserve.html', 'distribute.html', 'addclient.html', 'following.html']
+        $(".list2 li").each(function (index) {
+            $(this).click(function () {
+                $('#mainframe').attr('src', hreflist[index]);
+            });
+        });
+
+
+</script>
+
+
+</body>
+
+</body>
+</html>
