@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>在线测试已做题目和提交答案</title>
+<link rel="stylesheet" type="text/css" href="{:C(__PUBLIC__)}/style/style.css" />
+<script src="{:C(__PUBLIC__)}/js/html5.js" type="text/javascript"></script>
+<script src="{:C(__PUBLIC__)}/js/move.js" type="text/javascript"></script>
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台</h1>
+<div class="wel_login">
+	{:check_session()}
+</div>
+<ul class="nav">
+	{:sub()} 
+</ul>
+</header>
+
+<section  class="clearfix">
+	<header class="sec_top tc">
+	<span class="black"><?php echo $title;$i=1; ?></span>
+        <a href='' onClick="javascript:history.back();return false;" class="fr black">返回列表</a>
+    </header>
+    <div class="content">
+			<form action="#" method="post">
+					<foreach name="list" item="data">
+        	<table cellpadding="0" cellspacing="1" width="100%">
+            	<tbody>
+                	<tr>
+							<td class="qs"><?php echo "题目".$i."、".$data['Title']; $i=$i+1;?></td>
+                    </tr>
+                    <tr>
+							<?php 
+							if(!$data['err']){
+								echo "<td>[你的答案:".$data['answer']."——正确]</td>";
+								}else{
+								echo "<td class='ans red'>[你的答案:".$data['err']."——错误&nbsp&nbsp&nbsp&nbsp&nbsp正确答案为:".$data['answer']."]</td>";
+								}
+							?>
+                    </tr>
+					<tr><td>A. {$data['answerA']}</td></tr>
+					<tr><td>B. {$data['answerB']}</td></tr>
+					<tr><td>C. {$data['answerC']}</td></tr>
+					<tr><td>D. {$data['answerD']}</td></tr>
+                </tbody>
+		</table>
+		<br>
+			</foreach>
+        </form>
+    </div>
+</section>
+<footer class="footer tc"><p>&copy;li_健财</p></footer>
+</body>
+</html>
+
+

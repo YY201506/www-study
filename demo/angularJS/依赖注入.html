@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS 依赖注入</title>
+</head>
+
+<body>
+<div ng-app="mainApp" ng-controller="CalcController">
+    <p>输入一个数字: <input type="number" ng-model="number"/></p>
+    <button ng-click="square()">X<sup>2</sup></button>
+    <p>结果: {{result}}</p>
+</div>
+
+<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+
+<script>
+    var mainApp = angular.module("mainApp", []);
+/*
+    mainApp.config(function ($provide) {
+        $provide.provider('MathService', function () {
+            this.$get = function () {
+                var factory = {};
+
+                factory.multiply = function (a, b) {
+                    return a * b;
+                }
+                return factory;
+            };
+        });
+    });*/
+
+    mainApp.value("defaultInput", 5);
+
+    /*mainApp.factory('MathService', function () {   //定义工厂模式
+        var factory = {};
+
+        factory.multiply = function (a) {
+            return a * a;
+        }
+        return factory;
+    });*/
+    mainApp.provider('Mathprovider',function(){   //provider服务模式
+        this.$get=function(){
+            var provide = {};
+            provide.multiply=function(a){
+                return a*a;
+            }
+            return provide;
+        };
+    });
+
+   /* mainApp.service('Mathservice', function () {   //service模式
+        this.multiply=function(a){
+            return a * a;
+        }
+    });*/
+
+
+    mainApp.controller('CalcController', function ($scope, defaultInput, Mathservice) {
+        $scope.number = defaultInput;
+        $scope.result = Mathservice.multiply($scope.number);
+
+        $scope.square = function () {
+            $scope.result= Mathservice.multiply($scope.number);
+        }
+    });
+
+</script>
+
+</body>
+</html>

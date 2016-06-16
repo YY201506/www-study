@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="{:C(__PUBLIC__)}/css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/html5.js"></script>
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/jquery-1.7.2.min.js"></script>
+<title><?php echo $title ?></title>
+<style type="text/css">
+		.yes{width:2%;}
+		.ans{width:75%;}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+			$("#sent").click(function(){
+						var arr=new Array();//保存所有题目的数组
+					//	var textTitle=$('input[name=Ttitle]').val();
+						var sentUrl="{:U('Admin/Onle/updateText','','')}";
+						var backUrl="{:U('Admin/Onle/index','','')}";
+						var tmp=0;	
+						for(var x=1;x<i;x++){
+							var ansA="answerA";
+							var ansB="answerB";
+							var ansC="answerC";
+							var ansD="answerD";
+							var title="Ti_title";
+							var ans="answer";
+							var numId='Id';
+								ansA=ansA+x;
+								ansB=ansB+x;
+								ansC=ansC+x;
+								ansD=ansD+x;
+								title=title+x;
+								ans=ans+x;
+								numId=numId+x;
+								arr[x-1]=new Array();//每道题的信息保存到一个数组
+								arr[x-1][0]=$('textarea[name='+title+']').val();
+								arr[x-1][1]=$('input[name='+ans+']').val();
+								arr[x-1][2]=$('input[name='+ansA+']').val();
+								arr[x-1][3]=$('input[name='+ansB+']').val();
+								arr[x-1][4]=$('input[name='+ansC+']').val();
+								arr[x-1][5]=$('input[name='+ansD+']').val();
+								arr[x-1][6]=$('input[name='+numId+']').val();
+
+								if(arr[x-1][1] == 'A' || arr[x-1][1] == 'B' || arr[x-1][1] == 'C' || arr[x-1][1] == 'D'){
+										tmp=1;
+								}else{
+										tmp=0;
+								}
+						}
+						if(!tmp){
+										alert("正确答案只能填写:'A/B/C/D'中任一个,请重试");
+										return;
+						}
+
+						$.post(sentUrl,{data:arr},function(data){
+								if(data.status){
+										alert('更新成功.');
+										location.reload();
+									}else{
+										alert('没有变动，如需请重试');
+									}
+								},'json');
+					})
+			})
+</script>
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台后台管理</h1>
+<div class="wel_login">
+{:check_session()}
+</div>
+<ul class="nav">
+{:A_sub()}
+</ul>
+</header>
+<section  class="clearfix">
+	
+<div class="bread"><a href="{:u('Admin/Onle/index','','')}">>>习题列表</a>>><?php echo $title ?></div>
+    <form  method="post">
+        <div class="content"><?php $i=1; ?>
+			<foreach name="content" item="text">
+            <table cellpadding="0" cellspacing="1" width="100%">
+					<tbody>
+						<tr>
+								<td class="qs"><?php  $y=answer($text['answer']); echo "题目.".$i."——正确答案:<input name='answer".$i."' class='yes' type='text' value='".$y."'/><span>(任一大写A/B/C/D)</span>";?><br>
+									<textarea name="Ti_title<?php echo $i; ?>" style="width:700px;">{$text['Title']}</textarea>
+                        	</td>
+                    	</tr>
+						<tr><td>A.<input type="text" class="ans" name="answerA<?php echo $i; ?>" value="{$text['answerA']}"  /></td></tr>
+						<tr><td>B.<input type="text" class="ans" name="answerB<?php echo $i; ?>" value="{$text['answerB']}"  /></td></tr>
+						<tr><td>C.<input type="text" class="ans" name="answerC<?php echo $i; ?>" value="{$text['answerC']}"  /></td></tr>
+						<tr><td>D.<input type="text" class="ans" name="answerD<?php echo $i; ?>" value="{$text['answerD']}"  /></td></tr>
+						<input type="hidden" name='Id<?php echo $i;$i=$i+1; ?>' value="{$text['Id']}">
+				</tbody>
+			</table>
+			<br>
+			</foreach>
+			<?php echo "<script type='text/javascript'> var i=".$i." </script>" ?>
+            <table cellpadding="0" cellspacing="1" width="100%">
+            	<tbody>
+                	<tr>
+                    	<td align="center"><input id="sent" type="button" value="保存/修改" class="search_btn_on baoxiu" /></td>
+                     </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+</section>
+<footer class="footer tc"><p>&copy;li_健财</p></footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" ng-app="TimeFormat">
+<head>
+    <meta charset="UTF-8">
+    <title>time-format</title>
+</head>
+<body>
+<div ng-controller="MyCtrl" id="main">
+    Date format: <input ng-model="format" type="text"/>
+    <hr/>
+    <!--下面使用属性x-current-time，是为了试试上面说的合法命名~~current:time、current-time、current_time、data-current-time -_-!!! -->
+    Current time is : <span x-current-time="format" id="myFormat"></span><br/>
+    <button ng-click="remove()">remove the span</button>
+</div>
+<script src="angular.min.js"></script>
+<script type="text/javascript">
+    angular.module("TimeFormat", [])
+
+            .directive("currentTime", function (dateFilter) {
+                return function (scope, element, attr) {
+                    var intervalId;
+                    function updateTime() {
+                        element.text(dateFilter(new Date(), scope.format));
+                    }
+
+                    scope.$watch(attr.currentTime, function (value) {
+                        scope.format = value;
+                        updateTime();
+                    })
+                    element.bind("$destroy", function () {
+                        clearInterval(intervalId);
+                    });
+
+                    intervalId = setInterval(updateTime, 1000);
+                };
+            }).controller("MyCtrl", function ($scope, $rootScope) {
+        $scope.format = "M/d/yy h:mm:ss a";
+        $scope.remove = function () {
+            var oFormat = document.getElementById("myFormat");
+            if (oFormat) {
+                angular.element(oFormat).remove();
+            }
+        };
+    });
+    var myModule = angular.module(...
+    )
+    ;
+
+
+    myModule.directive('directiveName', function factory(injectables) {
+        var directiveDefinitionObject = {
+            name:"scope1",   //当前scope的名称
+            priority: 0,     //执行优先级
+            template: '<div></div>',  //模版
+            templateUrl: 'directive.html',  //异步加载结束再执行compile/link
+            replace: false,   //replace 为true，则将模版内容替换当前的HTML元素
+            require:"myctrl1",     //请求另一个controller
+            transclude: false,  //true是直接把内容编译后搬到指定位置
+            restrict: 'A',
+            scope: false,   //创建新的scope
+            compile: function compile(tElement, tAttrs, transclude) {  //DOM模版转化
+                return {
+                    pre: function preLink(scope, iElement, iAttrs, controller) { ...
+                    },
+                    post: function postLink(scope, iElement, iAttrs, controller) { ...
+                    }
+               }
+            },
+            link: function postLink(scope, iElement, iAttrs) {   //注册DOM事件监听  scope, iElement元素实例, iAttrs属性实例
+                console.log("myattr:"+ iAttrs);
+            },
+            controller:('myctrl',function($scope,$element,$attrs){
+
+            })
+        };
+        return directiveDefinitionObject;
+
+    });
+</script>
+</body>
+</html>

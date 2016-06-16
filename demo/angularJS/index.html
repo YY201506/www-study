@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+
+<!--<div ng-app="myapp" ng-controller="myctrl">
+    名字：<input ng-model="name">
+</div>
+
+<script>
+    var app = angular.module('myapp',[]);
+    app.controller('myctrl',function($scope){
+        $scope.name = "Jone";
+    });
+</script>-->
+<!--<div ng-app="myapp" ng-controller="myctrl">
+    名字：<input ng-model="name">
+    <h1>输入值：{{name}}</h1>
+</div>
+<script>
+    var app = angular.module('myapp',[]);
+    app.controller('myctrl',function($scope){
+        $scope.name = "Jone";
+    });
+</script>-->
+<!--<form ng-app="" name="myform" ng-init="mytext = 'text@run.com'">
+    email:
+    <input type="email" name="myaddress" ng-model="mytext" required>
+    <h1>状态：</h1>
+    {{myform.myaddress.$valid}}
+    {{myform.myaddress.$dirty}}
+    {{myform.myaddress.$touched}}
+</form>-->
+
+<!--<div ng-app="myApp" ng-controller="personctrl">
+    名：<input type="text" ng-model="firstname"><br/>
+    姓：<input type="text" ng-model="lastname"><br/>
+    姓名：{{fullname}}
+</div>-->
+<!--<div ng-app="myApp" ng-controller="personCtrl">
+
+    名: <input type="text" ng-model="firstname"><br>
+    姓: <input type="text" ng-model="lastname|uppercase"><br>
+    <br>
+    姓名: {{fullname()}}
+
+</div>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('personCtrl',function($scope){
+        $scope.firstname = "John";
+        $scope.lastname = "Doe";
+        $scope.fullname = function(){
+            return $scope.firstname+" "+$scope.lastname;
+        }
+    });
+</script>-->
+<!--<div ng-app="myApp" ng-controller="namesCtrl">
+    <input type="text" ng-model="test">
+    <ul>
+        <li ng-repeat="x in names | filter:test | orderBy:'name'">
+            {{ x.name + ', ' + x.country }}
+        </li>
+    </ul>
+</div>
+<script>
+    angular.module('myApp', []).controller('namesCtrl', function ($scope) {
+        $scope.names = [
+            {name: 'Jani', country: 'Norway'},
+            {name: 'Hege', country: 'Sweden'},
+            {name: 'Kai', country: 'Denmark'}
+        ];
+    });
+</script>-->
+<!--<div ng-app="myApp">
+    在过滤器中使用服务:
+    <h1>{{255 | myFormat}}</h1>
+</div>
+<script>
+    var app=angular.module("myApp",[]);
+    app.service('hexify',function(){
+        this.myfunc=function(x){
+            return x.toString(16);
+        }
+    });
+    app.filter('myFormat' ,['hexify',function(hexify){ //过滤器 myFormat中使用服务hexify:
+        return function (x){
+            return hexify.myfunc(x);
+        }
+    }]);
+</script>-->
+<!--<div ng-app="myApp" ng-controller="custom">
+    <ul>
+        <li ng-repeat="x in name">
+            {{x.Name+" "+x.Country}}
+        </li>
+    </ul>
+</div>
+<script>
+    var app=angular.module('myApp',[]);
+    app.controller('custom',function($scope,$http){
+        $http.get('json.php').success(function (response) {
+            $scope.name=response.records;
+        });
+    });
+</script>-->
+<!--<div ng-app="myapp" ng-controller="myctrl">
+    &lt;!&ndash;<select ng-model="selectedName" ng-options="x for x in name"></select>&ndash;&gt;
+    <select>
+        <option ng-repeat="x in name">{{x}}</option>
+    </select>
+</div>
+<script>
+    var app=angular.module('myapp',[]);
+    app.controller('myctrl', function ($scope) {
+        $scope.name=['google','runben','baoobao'];
+    });
+
+    $(this).on("click", function () {
+        var key2 = index;
+        console.log("key2是" + key2);
+        $(".list2 li").removeClass("changebg2");
+        $(this).addClass("changebg2");
+        var Url = $(this).attr('aril');
+        $('#mainframe').attr('src', Url);
+        window.location.hash = key1 + '/' + key2;
+    });
+</script>-->
+
+<div ng-app="myapp" ng-controller="myctrl" >
+
+    <!--<form name="myForm">
+        <label>Value1:
+            <input type="checkbox" ng-model="checkboxModel.value1">
+        </label><br/>
+        <label>Value2:
+            <input type="checkbox" ng-model="checkboxModel.value2"
+                   ng-true-value="'no'" ng-false-value="'YES'">
+        </label><br/>
+        <tt>value1 = {{checkboxModel.value1}}</tt><br/>
+        <tt>value2 = {{checkboxModel.value2}}</tt><br/>
+    </form>-->
+
+    <!--<p>选择：</p>
+    <select ng-model="selectsite">
+        <option ng-repeat="x in sites" value="{{x.url}}">{{x.site}}</option>
+    </select>
+    <h3>你选择是：{{selectsite}}</h3>-->
+    <!--<select ng-model="selectsite" ng-options="x.site for x in sites"></select>
+    <h3>你的选择是：{{selectsite.site}}</h3>
+    <h3>url是：{{selectsite.url}}</h3>-->
+    <!--<p>select is:</p>
+    &lt;!&ndash;<select ng-model="selectsite" ng-options="x for (x,y) in sites"></select>
+    <h2>your selection is:{{selectsite}}</h2>&ndash;&gt;
+    <select ng-model="selectcar" ng-options="y.brand for (x,y) in cars"></select>
+    <h2>your selection is:{{selectcar.brand}}</h2>
+    <h2>your selection is:{{selectcar.model}}</h2>
+    <h2>your selection is:{{selectcar.color}}</h2>-->
+    <!--<ul ng-repeat="dayArr in days">
+        <ul ng-repeat="day in dayArr">
+            <li ng-bind="'day:' + days[$parent.$index][$index] + ' flag:' + flags[$parent.$index][$index]"></li>
+        </ul>
+    </ul>-->
+    <!--<ul>
+        <li ng-repeat="x in cars track by $index">{{$index}}{{x}}
+            <ul>
+                <li ng-repeat="x1 in x " >
+                    <label>{{x1.carr}}+value:
+                        <input type="checkbox" ng-model="x1.carr"
+                               ng-true-value="255" ng-false-value="">
+                    </label>
+                    &lt;!&ndash;<ul>
+                        <li ng-repeat="x2 in x1.car" >值2={{x2}}
+                        </li>
+                    </ul>&ndash;&gt;
+                </li>
+            </ul>
+        </li>
+    </ul>-->
+    <!--<div style="width:900px;" ng-repeat="x in arry">
+        <div><span ng-bind='x.name'></span></div>
+        <div>
+            <div ng-repeat="x2 in x.son" ng-show="x2.son">
+                <div class="input-group">
+                    <span ng-bind='x2.name'></span>
+                    <label  ng-model="x3.cid" ng-repeat="x3 in x2.son">
+                        <input type="checkbox" name="auth_list[]"
+                               ng-value="x3.cid"><span ng-bind='x3.name'></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <ul>
+        <li ng-repeat="x in shuzu">{{x}} value:{{x[0][0]}}
+            <ul>
+                <li ng-repeat="z in x">{{z}}{{$index}}
+                    <ul>
+                        <li ng-repeat="y in z">{{y}}</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<script>
+    var app=angular.module('myapp',[]);
+    app.controller('myctrl',function($scope) {
+
+        /*$scope.sites={
+           site01:"gooogle1",
+           site02:"gooogle2",
+           site03:"gooogle3"
+
+       };*/
+        /* $scope.days = [[30, 31, 1, 2, 3, 4, 5, 6], [7, 8, 9, 10, 11, 12, 13]];
+        $scope.flags = [[1, 1, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0]];*/
+         $scope.cars=[
+            [
+            {car:[11,2,5],carr:255},
+            {car: [11, 2,05], carr: 256},
+            { carr: 255}
+            ],
+            [{car: [11, 2, 5], carr: 257}
+            ]
+        ];
+        $scope.shuzu = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]];
+        $scope.checkboxModel = {
+            value1: true,
+            value2: 'YES'
+        };
+
+
+        /*$scope.sites = [
+            {site: "45", url: "4554"},
+            {site: "4555", url: "40554"},
+            {site: "45145", url: "4000554"}
+        ];*/
+    });
+
+</script>
+</body>
+</html>

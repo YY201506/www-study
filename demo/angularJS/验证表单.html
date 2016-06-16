@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+   <!-- <script src="angular.min.js"></script>-->
+</head>
+<body>
+    <div ng-app="myapp">
+        <form name="myform" action="">
+            <div>
+                <label>name:</label><input name="name" id="name" type="text" required placeholder="请输入名字" onkeyup="isname()"><span class="tip" id="tip" style="display:none">请填写中文字符</span>
+                <br/>
+                <label>phone:</label><input name="phone" id="phone" required ng-minlength="11" ng-maxlength="11" type="text" type="tel" onkeyup="if(this.value==this.value2)return;if(this.value.search(/^\d*(?:\.\d{0,2})?$/)==-1)this.value=(this.value2)?this.value2:'';else this.value2=this.value;" />
+                <br/>
+                <label>email:</label><input name="email" id="email" type="email" onblur="isEmail()">
+                <br/>
+                <label>address:</label><input name="address" id="address">
+                <br/>
+                <label>url:</label><input name="url" id="url" type="url">
+                <br/>
+                <label>num:</label><input name="num" id="num" type="text" t_value="9" o_value="9" onkeypress="keypress(this)" onkeyup="keyUp(this)" onblur="onBlur(this);">
+                <br/>
+                <lable>number:</lable>
+                <input type=text t_value="" o_value=""
+                       onkeypress="keyPress(this)" onkeyup="keyUp(this)" onblur="onBlur(this)">
+                <br/>
+                <input onKeyPress="if((event.keyCode<48 || event.keyCode>57) && event.keyCode!=46 || /\.\d\d$/.test(value))event.returnValue=false">
+
+            </div>
+        </form>
+        <br/>
+        <input type="submit" value="submit" >
+    </div>
+
+<script>
+    /*var app = angular.module('myapp', []);*/
+    /*app.controller('myctrl', function ($scope) {
+        $scope.name='';
+    });*/
+    /*app.directive('ensureUnique',['$http',function($http){
+        return{
+            require:'ngModel',
+            link:function($scope,ele,attrs,c){
+
+            }
+        }
+    }]);*/
+</script>
+
+<script>
+
+    /*JS*/
+    function isname(){
+        if(document.getElementById('name').value == ''){
+            document.getElementById("tip").style.display = "none";
+        }else {
+            var namepat = new RegExp('[A-z]');
+            var result = namepat.test(document.getElementById('name').value);
+            if (result) {
+                document.getElementById("tip").style.display = "block";
+            } else {
+                document.getElementById("tip").style.display = "none";
+            }
+        }
+    }
+    function keyPress(ob) {
+        if (!ob.value.match(/^[\+\-]?\d*?\.?\d*?$/)) ob.value = ob.t_value; else ob.t_value = ob.value;
+        if (ob.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/)) ob.o_value = ob.value;
+    }
+    function keyUp(ob) {
+        if (!ob.value.match(/^[\+\-]?\d*?\.?\d*?$/)) ob.value = ob.t_value; else ob.t_value = ob.value;
+        if (ob.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/)) ob.o_value = ob.value;
+    }
+    function onBlur(ob) {
+        if (!ob.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?|\.\d*?)?$/))ob.value = ob.o_value; else {
+            if (ob.value.match(/^\.\d+$/))ob.value = 0 + ob.value;
+            if (ob.value.match(/^\.$/))ob.value = 0;
+            ob.o_value = ob.value
+        }
+        ;
+    }
+    /*function keypress(obj){
+        if(!obj.value.match(/^[\+\-]?\d*\.?\d*?$/)){obj.value = obj.t_value;} //非贪婪模式
+        else{obj.t_value = obj.value;}
+        if(obj.value.match(/^ (?:[\+\-]?\d+(?:\.\d+)?)? $/)){obj.o_value = obj.value;} //非捕获组（:?x）
+    }
+    function keyUp(obj) {
+        if (!obj.value.match(/^[\+\-]?\d*\.?\d*$/)) {
+            obj.value = obj.t_value;
+        }
+        else {
+            obj.t_value = obj.value;
+        }
+        if (obj.value.match(/^ (?:[\+\-]?\d+(?:\.\d+)?)? $/)) {
+            obj.o_value = obj.value;
+        }
+    }
+    function onBlur(obj) {
+        if(!obj.value.match(/^(?:[\+\-]?\d+(?:\.\d)?|\.\d*)?$/)){obj.value = obj.o_value}
+        else {
+            if (obj.value.match(/^\.\d+$/)) {
+                obj.value = obj.o_value;
+            }
+            if(obj.value.match(/^\.$/)){
+                obj.value = 0
+            }
+            obj.o_value = obj.value;
+        }
+    }*/
+    function isEmail() {
+        var email = document.getElementById('email').value, redflag;
+        if (email.search(/^([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|_|.]?)*[a-zA-Z0-9]+\.(?:com|cn)$/) != -1) {
+            redflag = 0;
+            return true;
+        }
+        else {
+            alert("邮箱格式错误");
+            redflag = 1;
+            return false;
+        }
+    }
+
+</script>
+</body>
+</html>

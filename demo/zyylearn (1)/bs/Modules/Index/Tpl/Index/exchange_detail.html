@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>交流互动的话题详情</title>
+<link rel="stylesheet" type="text/css" href="{:C(__PUBLIC__)}/style/style.css" />
+<script src="{:C(__PUBLIC__)}/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/xheditor/xheditor-1.1.14-zh-cn.min.js"></script>
+<script src="{:C(__PUBLIC__)}/js/html5.js" type="text/javascript"></script>
+<script src="{:C(__PUBLIC__)}/js/move.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*点击我发起的话题时，判断是否登录*/
+var Mysession="{:session('login')}";
+$(document).ready(function(){
+    $("#my").click(function(){
+       if(Mysession==''){
+           
+        alert("你要先登录才能查看你发起的话题喔！");
+       }else{
+	   location.href="{:U('Index/Exchange/index')}?name=my";
+       }
+    });
+
+
+    $("#to_talk").click(function(){
+       if(Mysession==''){
+				$("#all").attr('class','');
+				$("#my").attr('class','');
+				$("#to_talk").attr('class','active');
+		$(".content").text('');
+		$(".content").append("温馨提示:你要登录才能^[说话]^喔.");
+       }else{
+        location.href="{:U('Index/Exchange/to_talk')}";
+       }
+    });
+
+    $("#sent").click(function(){
+            var sentUrl="{:U('Index/Exchange/say','','')}";
+            var r_UserName="{:session('login')}";
+            var r_Content=$('textarea[name=content]').val();
+			var r_First="{$main[0]['NumId']}";
+
+			if(r_Content==''){
+			alert('不能说空话');
+			return;
+			}
+        if(Mysession==''){
+            alert("你要先登录才能说话喔！");
+        }else{
+
+            $.post(sentUrl,{UserName:r_UserName,Content:r_Content,First:r_First},
+                function(data){
+                    if(!data['status']){
+                       //alert("回复成功!");
+                       location.reload();
+                    }else{
+                        alert("回复出错，请重试!");
+                    }
+                });
+        }
+    })
+});
+</script>
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台</h1>
+<div class="wel_login">
+	{:check_session()}
+</div>
+<ul class="nav">
+	{:sub()} 
+</ul>
+</header>
+
+<section  class="clearfix">
+<header class="sec_top tc">
+		<a id="all"  <?php if($_GET['list']=='all'){echo "class='active'";} ?> href="{:U('Index/Exchange/index','','')}?list=all">全部话题</a>
+    	<a  {:t_sub()}  href="#">我发起的话题</a>
+        <a id="to_talk" href="#">我要发起讨论</a>
+    </header>
+    <div class="content">
+    <ul>
+    	<li class="clearfix mb25">
+        	<a class="pic tc" href="#"><img src="{:C(__PUBLIC__)}/images/picture.jpg" alt="{$main[0]['UserName']}" /><span>楼主:&nbsp{$main[0]['UserName']}</span></a>
+            <div class="topic_brief toppic_rep_w">
+            	<div class="to_bri_con">
+                	<div>
+                    	<time>{$main[0]['Time']}</time>
+                    </div>
+                    <p>{$main[0]['Content']}</p>
+                    
+                </div>
+            <s class="left left_write"></s>
+            <s class="right"></s>
+            </div>
+        </li>
+<foreach name="replay" item="data">
+<?php
+if($data['UserName']==$main[0]['UserName']){
+?>
+        <li class="clearfix mb25">
+            <a class="pic tc" href="#"><img src="{:C(__PUBLIC__)}/images/picture.jpg" alt="{$data['UserName']}" /><span>{$data['UserName']}&nbsp[住户楼主]</span></a>
+            <div class="topic_brief toppic_rep_w">
+                <div class="to_bri_con">
+                    <div>
+                        <time>{$data['Time']}</time>
+                    </div>
+                    <p>{$data['Content']}</p>                    
+                </div>
+            <s class="left left_write"></s>
+            <s class="right"></s>
+            </div>
+        </li>
+
+<?php
+}else{
+?>
+        <li class="clearfix mb25">
+            <a class="pic fr tc" href="#"><img src="{:C(__PUBLIC__)}/images/picture.jpg" alt="{$data['UserName']}" /><span>{$data['UserName']}&nbsp[住户]</span></a>
+            <div class="topic_brief toppic_rep_w fr toppic_rep_btbb">
+                <div class="to_bri_con">
+                    <div>
+                        <time>{$data['Time']}</time>
+                    </div>
+                    <p>{$data['Content']}</p>                    
+                </div>
+
+            <s class="left re_left"></s>
+            <s class="right re_right"></s>
+            </div>
+        </li>
+<?php } ?>
+</foreach>
+    </ul>
+    <div class="edit">
+    <form class="" action="#" method="post">
+    <textarea name="content" class="xheditor {tools:'simple',skin:'default',width:'100%',height:'110px',hoverExecDelay:-1,upImgUrl:'manage/xheditor/upload.php',upImgExt:'jpg,jpeg,gif,png',upLinkUrl:'manage/xheditor/upload.php',upLinkExt:'zip,rar,txt,doc,docx,xls,xlsx,ppt,pptx,pdf',upFlashUrl:'manage/xheditor/upload.php',upFlashExt:'swf',upMediaUrl:'manage/xheditor/upload.php',upMediaExt:'avi,flv,wmv,mp4,rmvb'}">
+    </textarea>
+    <div class="tc"><input id="sent" class="btn-primary" type="button" value="发送" /></div>
+    </form>
+    </div>
+    </div>
+</section>
+<footer class="footer tc"><p>&copy;li_健财</p></footer>
+</body>
+</html>

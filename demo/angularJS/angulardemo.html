@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <script src="angular.min.js"></script>
+</head>
+<body>
+    <!--<div ng-app="" ng-init="myswite=true">
+        <button ng-disabled="myswite">check</button>
+        <input type="checkbox" ng-model="myswite">按钮
+        <p>{{myswite}}</p>
+    </div>-->
+    <!--<div ng-app="myapp" ng-controller="myctrl">
+        &lt;!&ndash;<button ng-click="count=count+1">chcek me</button>
+        <p>{{count}}</p>&ndash;&gt;
+        <button ng-click="toggle()">show/hide</button>
+        <P ng-hide="myvar">
+            名:<input type="text" ng-model="firstname">  <br/>
+            姓：<input type="text" ng-model="lastname"> <br/>
+            全名：{{firstname+" "+lastname}}
+        </P>
+    </div>-->
+<!--<script>
+    var app = angular.module('myapp',[]);
+    app.controller('myctrl', function ($scope) {
+        /*$scope.count=0;*/
+        $scope.firstname='john',
+        $scope.lastname='DOE',
+        $scope.myvar=false,
+        $scope.toggle=function(){
+            $scope.myvar =!$scope.myvar;//切换myvar变量的值true false
+        }
+    });
+</script>-->
+<!--input validate-->
+<!--<form ng-app="myapp" ng-controller="validatectrl" name="myform" novalidate>
+    用户名：
+    <input type="text" name="user" ng-model="user" required>
+    <span style="color:#ff0003" ng-show="myform.user.$dirty && myform.user.$invalid">
+        <span ng-show="myform.user.$error.required">用户名必须填</span>
+    </span>
+    <br/>
+    邮箱：
+    <input type="email" name="email" ng-model="email" required>
+     <span style="color:#ff0003" ng-show="myform.email.$dirty && myform.email.$invalid">
+        <span ng-show="myform.email.$error.required">邮箱必须填</span>
+        <span ng-show="myform.email.$error.email">非法字符</span>
+    </span>
+    <p>
+        <input type="submit" ng-disabled="myform.user.$dirty && myform.user.$invalid||myform.email.$dirty && myform.email.$invalid">
+    </p>
+
+</form>-->
+
+<!--<script>
+    var app=angular.module("myapp",[]);
+    app.controller("validatectrl",function($scope){
+        $scope.user="jjijh";
+        $scope.email="107@sw.com";
+    });
+</script>-->
+
+<div ng-app="myapp" ng-controller="playController">
+    <button ng-click="play()" ng-show="!playing">play</button>
+    <button ng-click="stop()" ng-show="playing">stop!!!</button>
+    Playing audio:<b>{{playing}}</b>
+</div>
+<script>
+    var app=angular.module("myapp",[]);
+    app.controller('playController',['$scope',function($scope){
+        $scope.playing = false;
+        $scope.audio = document.createElement('audio');
+        $scope.audio.src = 'ost.mp3';
+        $scope.play = function(){
+          $scope.audio.play();
+          $scope.playing = true;
+        };
+        $scope.stop = function(){
+            $scope.audio.pause();
+            $scope.playing = false;
+        };
+        $scope.audio.addEventListener('ended',function(){
+            $scope.$apply(function(){
+                $scope.stop();
+            });
+        });
+    }]);
+</script>
+</body>
+</html>

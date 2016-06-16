@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>slidepage</title>
+    <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"
+          name="viewport" id="viewport"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+</head>
+<body onmousewheel="return false;">
+<!--<h1 class="keTitle">jQuery触摸手机全屏上下滑动滚屏特效</h1>-->
+<!--效果html开始-->
+<div class="container" id="container">
+    <div class="page page0 cur">
+        <h1>0号</h1>
+    </div>
+    <div class="page page1">
+        <h1>1号</h1>
+    </div>
+    <div class="page page2">
+        <h1>2号</h1>
+    </div>
+    <div class="page page3">
+        <h1>3号</h1>
+    </div>
+    <div class="page page4">
+        <h1>4号</h1>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+                var nowpage = 0;
+                var pagenum = $(".page").size() - 1;
+                var startY, endpos_Y;
+                var container = document.getElementById("container");
+                container.addEventListener('touchstart', touchstart);
+                container.addEventListener('touchmove', touchmove);
+                container.addEventListener('touchend', touchend);
+
+                function touchstart(event) {
+                    event.preventDefault();
+                    if (event.targetTouches.length == 1) {
+                        var touch = event.targetTouches[0];
+                        startY = touch.pageY;
+                    }
+                }
+                function touchmove(event) {
+                    event.preventDefault();
+                    if (event.targetTouches.length == 1) {
+                        var touch = event.targetTouches[0];
+                        endpos_Y = startY - touch.pageY;
+                        console.log("begin:" + startY + "- end:" + touch.pageY + "=" + endpos_Y);
+                    }
+                }
+
+                function touchend(event) {
+                    event.preventDefault();
+                    if (endpos_Y < 0) {
+                        --nowpage;
+                        if (nowpage >= 0) {
+                            $("#container").animate({top: nowpage * -100 + "%"}, 300);
+                        } else return ++nowpage;
+                    } else if (endpos_Y > 0) {
+                        ++nowpage;
+                        if (nowpage <= pagenum) {
+                            $("#container").animate({top: nowpage * -100 + "%"}, 300);
+                        } else return --nowpage;
+                    }
+
+                }
+            }
+    );
+
+</script>
+</body>
+</html>

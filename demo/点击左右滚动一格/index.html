@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{padding:0;margin:0;}
+        #slider1{margin:20px auto 0; width:1000px;position:relative;border:1px solid #ccc;}
+        #slider2{margin:20px auto 0; width:1000px;position:relative;border:1px solid #ccc;}
+        .left{position:absolute;left:10px; top:50%; transform:translate(0, -50%); -webkit-transform:translate(0, -50%);cursor:pointer;}
+        .right{position:absolute;right:10px; top:50%;transform:translate(0, -50%);-webkit-transform:translate(0, -50%); cursor:pointer;}
+        .img_container ul li{list-style:none; float:left;}
+        .img_container{ margin:0 75px; padding:10px; overflow:hidden; position:relative; height:160px; }
+
+        .slidewidth ul{position:absolute;left: 0px;}
+        .box{text-align:center;/*width:130px;*/height:auto;font-size:12px;/*margin: 0 18px;*/}
+        .slidewidth{width:850px;overflow-x:hidden;}
+    </style>
+</head>
+<body>
+
+<!--<div id="slider1">
+</div>
+<div id="slider2">
+
+</div>-->
+<span></span>
+<script src="jquery.min1-10.js"></script>
+<script>
+    $(document).mousemove(function (e) {
+        $("span").text(e.pageX + ", " + e.pageY);
+    });
+
+    var slide1={"box":[
+        {"src": "p2.jpg","p1": "某某某","p2":"某某某"},
+        {"src": "p2.jpg", "p1": "某某某1", "p2": "某某某"},
+        {"src": "p3.jpg", "p1": "某某某", "p2": "某某某5"},
+        {"src": "p4.jpg", "p1": "某某某3", "p2": "某某某"},
+        {"src": "p4.jpg", "p1": "某某某", "p2": "某某某"},
+        {"src": "p4.jpg", "p1": "某某某", "p2": "某某某"},
+        {"src": "p4.jpg", "p1": "某某某", "p2": "某某某7"},
+        {"src": "p4.jpg", "p1": "某某某", "p2": "某某某8"}
+    ],"boxnum":5,"boxwidth":"130",id:"#slider1"};
+    var slide2 = {
+        "box": [
+            {"src": "p2.jpg", "p1": "某某某", "p2": "某某某"},
+            {"src": "p2.jpg", "p1": "某某某1", "p2": "某某某"},
+            {"src": "p3.jpg", "p1": "某某某", "p2": "某某某5"},
+            {"src": "p4.jpg", "p1": "某某某3", "p2": "某某某"},
+            {"src": "p4.jpg", "p1": "某某某", "p2": "某某某"},
+            {"src": "p4.jpg", "p1": "某某某", "p2": "某某某"},
+            {"src": "p4.jpg", "p1": "某某某", "p2": "某某某7"},
+            {"src": "p4.jpg", "p1": "某某某", "p2": "某某某8"}
+        ], "boxnum": 4, "boxwidth": "130", id: "#slider2"};
+
+    slidebox(slide1);
+    slidebox(slide2);
+
+    function slidebox(obj) {
+        var html = "";
+        html +='<div class="left"><img src="images/arrow_left.png"></div><div class="right"><img src="images/arrow_right.png"></div><div class="img_container"><div class="slidewidth"><ul>';
+        for (var i = 0; i < obj.box.length; i++) {
+            html += ' <li><div class="box"><img src="images/' + obj.box[i].src + '"><p>' + obj.box[i].p1 + '</p><p>' + obj.box[i].p2 + '</p></div></li>';
+        }
+        html += '</ul></div></div>';
+        $(obj.id).append(html);
+
+        $(obj.id + " .box").width(obj.boxwidth);
+        var boxmargin = Math.ceil(($(".slidewidth").width() / obj.boxnum - obj.boxwidth) / 2);
+        $(obj.id + " .box").css({"margin-left": boxmargin, "margin-right": boxmargin});
+
+        var libox = $(obj.id + " .slidewidth ul li").width();
+        var slidewidth = Math.ceil(libox * obj.box.length);
+        $(obj.id + " .slidewidth ul").width(slidewidth);
+
+        var num = obj.box.length - obj.boxnum;
+        var clicknum = 0;
+        if (clicknum == 0) {
+            $(obj.id + " .left").hide();
+        }
+        if ($(obj.id + " .slidewidth ul li").size() <= obj.boxnum) {
+            $(obj.id + " .right").hide();
+        }
+        $(obj.id + " .right").click(function () {
+            if ($(obj.id + " .slidewidth ul").is(':animated')) {
+
+            } else {
+                ++clicknum;
+                $(obj.id + " .slidewidth ul").animate({left: -libox * clicknum + "px"}, {
+                    queue: false,
+                    speed: 1000,
+                    done: function () {
+                        if (clicknum == num) {
+                            $(obj.id + " .right").hide();
+                            $(obj.id + " .left").show();
+                        } else {
+                            $(obj.id + " .left").show();
+                        }
+
+                    }
+                });
+            }
+
+        });
+        $(obj.id + " .left").click(function () {
+            if ($(obj.id + " .slidewidth ul").is(':animated')) {
+
+            } else {
+                --clicknum;
+                $(obj.id + " .slidewidth ul").animate({left: -libox * clicknum + "px"}, {
+                    queue: false,
+                    speed: 1000,
+                    done: function () {
+                        if (clicknum == 0) {
+                            $(obj.id + " .left").hide();
+                            $(obj.id + " .right").show();
+                        } else {
+                            $(obj.id + " .right").show();
+                        }
+
+                    }
+                });
+            }
+        });
+    }
+</script>
+
+</body>
+</html>

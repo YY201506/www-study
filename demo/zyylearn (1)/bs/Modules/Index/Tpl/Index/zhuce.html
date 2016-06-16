@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>欢迎注册</title>
+<link rel="stylesheet" type="text/css" href="{:C(__PUBLIC__)}/style/style.css" />
+<script src="{:C(__PUBLIC__)}/js/html5.js" type="text/javascript"></script>
+<script src="{:C(__PUBLIC__)}/js/move.js" type="text/javascript"></script>
+<script src="{:C(__PUBLIC__)}/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" >
+	var suburl="{:U('Index/Index/submit','','')}";
+	var backurl="<?php echo $_SERVER['HTTP_REFERER'] ?>";
+	$(document).ready(function(){
+				$("#submit").click(function(){ 
+					var username=$('input[name= username]');
+					var passwd_f=$('input[name=passwd_f]');
+					var passwd_s=$('input[name=passwd_s]');
+
+					if(username.val() == '' || passwd_f.val() == '' || passwd_s.val() == '' ){
+					alert('请输入完整信息');
+					return;
+					}else if (passwd_f.val() != passwd_s.val()){
+					alert('两次输入的密码不一致，请重试!');
+					return;
+					}
+					$.post(suburl,{username:username.val(),passwd:passwd_f.val()},
+						function(data){
+						if(data.status){
+							location.href=backurl;
+						}else{
+							alert('注册失败，请重试！');
+						}
+						},'json');
+
+
+					});
+				});
+</script>
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台</h1>
+</header>
+
+<section class="clearfix">
+        <header class="sec_top tc zhuce">
+		欢迎注册
+		<a href='' onClick="javascript:history.back();return false;" class="fr black" style="font-size:20px">返回</a>
+        </header>
+        <div class="w550">
+        	<form action="#" method="post">
+                <ul>
+                    <li>称呼：<span class="ml50"><input type="text" class="tetpass" name="username" /></span></li>
+                    <li>密码：<span class="ml50"><input type="password" class="tetpass" name="passwd_f" /></span></li>
+                    <li>确认密码：<span class="ml2"><input type="password" class="tetpass" name="passwd_s" /></span></li>
+                    <li>
+                    	<input id="submit" type="button" value="提交" class="zhuce_submit" />
+                    </li>
+                </ul>
+             </form>
+        </div>
+       
+</section>
+<footer class="footer tc"><p class="c0">&copy;li_健财</p></footer>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="{:C(__PUBLIC__)}/css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/html5.js"></script>
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/tab.js"></script>
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/jquery-1.7.2.min.js"></script>
+
+<title>用户管理</title>
+<script type="text/javascript">
+		function alter(d_id,type){
+			//	alert(type);
+			//	return;
+				var alterUrl="{:U('Admin/User/alter','','')}";
+				var s_p_id="s_p_"+d_id;
+				var s_u_id="s_u_"+d_id;
+				
+				var t_p_id="t_p_"+d_id;
+				var t_u_id="t_u_"+d_id;
+
+				var a_p_id="a_p_"+d_id;
+				var a_u_id="a_u_"+d_id;
+
+				var s_new_passwd=$("#"+s_p_id).val();
+				var s_new_username=$("#"+s_u_id).val();
+
+				var t_new_passwd=$("#"+t_p_id).val();
+				var t_new_username=$("#"+t_u_id).val();
+
+				var a_new_passwd=$("#"+a_p_id).val();
+				var a_new_username=$("#"+a_u_id).val();
+
+			//		alert(a_new_passwd);
+			//	alert(a_new_username);
+			//	return;
+				if(type == 'student'){
+					new_username=s_new_username;
+					new_passwd=s_new_passwd;
+				}else if(type == 'teacher'){
+					new_username=t_new_username;
+					new_passwd=t_new_passwd;
+				}else{
+					new_username=a_new_username;
+					new_passwd=a_new_passwd;
+				}
+
+			//	alert(new_passwd);
+			//	alert(new_username);
+			//	return;
+				$.post(alterUrl,{d_id:d_id,type:type,new_username:new_username,new_passwd:new_passwd},
+						function(data){
+							if(data.status){
+								alert("修改成功");
+								location.reload();
+							}else{
+								alert("木有改变哦，请输入后重试");
+								location.reload();
+							}
+						},'json');
+		}
+
+function del(d_id,type){
+		var delUrl="{:U('Admin/User/del','','')}";
+		if(!confirm("确认删除用户?")){return;}
+		$.post(delUrl,{d_id:d_id,type:type},function(data){
+				if(data.status){
+					alert("删除成功");
+					location.reload();
+				}else{
+					alert('删除失败');
+				}
+				},'json');
+		//	var p_id="p_"+d_id;
+		//	var u_id="u_"+d_id;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+	function getStyle(obj, name)
+{
+	if(obj.currentStyle)
+	{
+		return obj.currentStyle[name];
+	}
+	else
+	{
+		return getComputedStyle(obj, false)[name];
+	}
+}
+window.onload=function(){
+	var oPerson=document.getElementById('person');
+	var aLa=oPerson.getElementsByTagName('a');
+	var oDiv=document.getElementById('odiv');
+	var aLi=oDiv.getElementsByTagName('li');
+	for(var i=0;i<aLa.length;i++){
+		aLa[i].index=i;
+		aLa[i].onclick=function(){
+			for(var i=0;i<aLa.length;i++){
+				aLa[i].className='';
+				aLi[i].style.display='none';
+				}
+			this.className='active';
+			aLi[this.index].style.display='block';
+			}
+		}
+}
+
+$(document).ready(function(){
+		var num=0;
+		var tmp=1;		
+		var addUrl="{:U('Admin/User/add','','')}";
+		$("#add").click(function(){
+				num = num +1;
+				var str="<tr><td><input id='tname"+tmp+"' name='n_name' type='text' value=''/></td><td><input id='tpass"+tmp+"' name='n_paswd' type='text'/></td><td><input class='wri' type='button' value='提交' /></td></tr>";
+				if(num > 1){
+					$('input[name=n_name]').focus();
+				    return false;
+				}
+				else{ 
+				    $("#tea").append(str);
+				}
+				$(".wri").click(function(){
+						num=0;
+				    var tName=$("#tname"+tmp).val();
+					var tPass=$("#tpass"+tmp).val();
+					tmp=tmp + 1;
+					$.post(addUrl,{UserName:tName,UserPasswd:tPass},function(data){
+							if(data.status){
+								location.reload();
+								}else{
+									alert('添加失败，请重试');
+								}
+							});
+				});
+				
+				});
+		});
+
+</script>
+
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台后台管理</h1>
+<div class="wel_login">
+{:check_session()}
+</div>
+<ul class="nav">
+{:A_sub()}
+</ul>
+</header>
+<section  class="clearfix">
+	<header id="person" class="sec_top tc">
+		<a href="#" class="active">学生</a>
+        <a href="#">老师</a>
+        <a href="#">管理员</a>
+    </header>
+ <ul id="odiv">
+ <!--学生用户管理-->
+ 	<li>
+    <form id="student_" action="#" method="post">
+        <div class="content">
+            <table id="RadioButtonList1" border="0">
+            <tbody>
+				<foreach name="studentlist" item="student">
+				<tr>
+              	  	<td>
+							<input id="s_u_{$student['UserId']}" type="text" name='UserName' value="{$student['UserName']}" />
+				  	</td>								
+               		<td>
+					      	<input id="s_p_{$student['UserId']}" type="text" name='UserPasswd' value="{$student['UserPasswd']}" />
+                	</td>
+                	<td>
+							<input  onclick="alter({$student['UserId']},'student')" type="button" value="修改" />
+                	</td>
+                	<td>
+							<input  onclick="del({$student['UserId']},'student')" type="button" value="删除" />
+                	</td>
+            	</tr>
+				</foreach>
+            </tbody>
+            </table>
+        </div>
+     </form>
+     </li>
+     <!--老师用户管理-->
+     <li style="display:none;">
+    <form id="teacher_" action="#" method="post">
+        <div class="content">
+            <table id="RadioButtonList1" border="0">
+            <tbody id="tea">
+				<foreach name="teacherlist" item="teacher">
+				<tr>
+              	  	<td>
+						  	<input id="t_u_{$teacher['UserId']}" type="text" value="{$teacher['UserName']}" />
+				  	</td>								
+               		<td>
+					      	<input id="t_p_{$teacher['UserId']}" type="text" value="{$teacher['UserPasswd']}" />
+                	</td>
+                	<td>
+                			<input onclick="alter({$teacher['UserId']},'teacher')" type="button" value="修改" />
+                	</td>
+                	<td>
+                			<input onclick="del({$teacher['UserId']},'teacher')" type="button" value="删除" />
+                	</td>
+            	</tr>
+				</foreach>
+            </tbody>
+			</table>
+        </div>
+			<input id="add" type='button' value="增加用户" style="margin-left:20px"/>
+     </form>
+     </li>
+     <!--管理员用户管理-->
+     <li style="display:none;">
+    <form id="admin_" action="#" method="post">
+        <div class="content">
+            <table id="RadioButtonList1" border="0">
+            <tbody>
+				<foreach name="adminlist" item="admin">
+				<tr>
+              	  	<td>
+						  	<input id="a_u_{$admin['UserId']}" type="text" value="{$admin['UserName']}" />
+				  	</td>								
+               		<td>
+					      	<input id="a_p_{$admin['UserId']}" type="text" value="{$admin['UserPasswd']}" />
+                	</td>
+                	<td>
+                			<input onclick="alter({$admin['UserId']},'admin')" type="button" value="修改" />
+                	</td>
+                	<td>
+                			<input onclick="del({$admin['UserId']},'admin')" type="button" value="删除" />
+                	</td>
+            	</tr>
+				</foreach>
+            </tbody>
+            </table>
+        </div>
+     </form>
+     </li>
+   </ul>
+</section>
+<footer class="footer tc"><p>&copy;li_健财</p></footer>
+</body>
+</html>

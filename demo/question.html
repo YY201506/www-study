@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="counterday">
+</div>
+
+<div id="btn">
+    <button type="button" id="btn1" onclick="toafter(this)">button1</button>
+    <button type="button" id="btn2">button2</button>
+</div>
+
+<P id="p1">隐藏项</P>
+</body>
+
+<script>
+    //1.判断字符串是否是这样组成的，第一个必须是字母，后面可以是字母、数字、下划线，总长度为5-20
+    var c = /^[A-z]{1}[\w]{4,19}/;
+    console.log(c.test('d2262h1'));
+
+    //2.截取abcdefg中的efg
+    var a = 'abcdefg';
+    console.log(a.substr(4));
+    document.write(a.substr(4));
+
+    /*3.不同浏览器的兼容*/
+    //不同的浏览器的标签默认内外边距不同  *{margin:0;padding:0;}
+    //css3的动画代码失效 在前面加内核前缀
+
+    //4.倒计时
+    function counter(newyear) {
+        var date = new Date();
+        var date2 = new Date(newyear, 0, 1, 24, 60, 60);
+        /*转换成秒*/
+        var time = (date2 - date) / 1000;
+        var day = Math.floor(time / (24 * 60 * 60));//往下取整
+        var hour = Math.floor(time % (24 * 60 * 60) / (60 * 60));
+        var minute = Math.floor(time % (24 * 60 * 60) % (60 * 60) / 60);
+        var second = Math.floor(time % (24 * 60 * 60) % (60 * 60) % 60);
+        var str = newyear + "年还剩" + day + "天" + hour + "时" + minute + "分" + second + "秒";
+        document.getElementById('counterday').innerHTML=str;
+    }
+    var newyear = '2018';
+    window.setInterval("counter(newyear)", 1000);
+
+    /*5.单击button1 使得button1到button2的后面*/
+    function toafter(btn1){
+        var b = btn1;
+        btn1.remove();
+        document.getElementById('btn').appendChild(b);
+    }
+
+    //6.javascript有哪几种数据类型
+    /*数字、布尔、对象、数组、字符串、空对象、未定义*/
+
+    //7.css的标签在JS调用是怎么拼写，如border-left-color
+    /* 去掉连字符，第一个词首字母小写，之后的词的首字母就大写 borderLeftColor*/
+
+    //8.编写一个方法去掉数组中的相同元素
+    var arry = [0,5,8,5,0,5,5,6,7];
+    panduan2(arry);
+    /*写一个新数组，遍历传入值，判断新数组如果没有就写入indexOf*/
+    function panduan(arry){
+        var n=[];
+        for(var i=0;i<arry.length;i++){
+            if(n.indexOf(arry[i]) ==-1) n.push(arry[i]);
+        }
+        console.log(n);
+        return n;
+    }
+    /*下标不同去除法 indexOf来判断原数组，如果值的下标序号不同则不写，相同则写入，因为是第一次相同*/
+    function panduan2(arry){
+        var a = [arry[0]];
+        for (var i=1;i<arry.length;i++){
+            if(arry.indexOf(arry[i])==i){
+                a.push(arry[i]);
+            }
+        }
+        console.log(a);
+    }
+    /*相邻相同去除法，先用sort()排序，先写入第一个值在新数组,然后遍历旧数组的值是否等于最新插入新数组的值*/
+    function panduan3(arry){}
+
+    //9.3个使用this的典型应用
+    /*元素事件 、 构造函数 、 JS中指当前对象*/
+
+    //10.如何显示或隐藏一个DOM
+    document.getElementById("p1").style.display = "none";/*block*/
+    document.getElementById("p1").style.visibility = 'hidden';/*visible*/
+
+    //11.检测一个变量是不是string型，写出函数实现
+    var n="dfdfkj";
+    console.log(typeof n == 'string');
+    var nn=new String("hefaj");
+    console.log(nn.constructor == 'string');
+
+    //12.避免多人开发命名函数重名的问题
+    /*开发前规避好，不同人开发加不同的前缀；或者用一个类对象装起来*/
+
+    //13.js面向对象中类与类的继承是如何实现的
+    /*javascript面向对象中的继承实现一般都使用到了构造函数和Prototype原型链*/
+    function Animal(name) {
+        this.name = name;
+    }
+    Animal.prototype.getName = function () {
+        alert(this.name)
+    }
+    function Dog() {};
+    Dog.prototype = new Animal("Buddy");
+    Dog.prototype.constructor = Dog;
+    var dog = new Dog();
+
+    //14.FF下面实现outerHTML
+    /*不写*/
+
+    //15.编写一个方法 求一个字符串的字节长度
+   /* 一个英文字符占用一个字节，一个中文字符占用两个字节,chatcodeat()返回给定位置字符的Unicode码点*/
+    function GetBytes(str) {
+        var len = str.length;
+        var bytes = len;
+        for (var i = 0; i < len; i++) {
+            if (str.charCodeAt(i) > 255) bytes++;
+        }
+        return bytes;
+    }
+    alert(GetBytes("你好,as"));
+
+    //16.JavaScript中如何对一个对象进行深度clone
+    /*不会*/
+
+    //17.ajax是什么? ajax的交互模型? 同步和异步的区别? 如何解决跨域问题?
+    /*
+     Ajax是多种技术组合起来的一种浏览器和服务器交互技术，基本思想是允许一个互联网浏览器向一个远程页面/服务做异步的http调用，并且用收到的数据来更新一个当前web页面而不必刷新整个页面。该技术能够改进客户端的体验。包含的技术：
+     XHTML：对应W3C的XHTML规范，目前是XHTML1.0。
+     CSS：对应W3C的CSS规范，目前是CSS2.0
+     DOM：这里的DOM主要是指HTML DOM，XML DOM包括在下面的XML中
+     JavaScript：对应于ECMA的ECMAScript规范
+     XML：对应W3C的XML DOM、XSLT、XPath等等规范
+     XMLHttpRequest：对应WhatWG的Web Applications1.0规范（http://whatwg.org/specs/web-apps/current-work/）
+     AJAX交互模型
+     同步：脚本会停留并等待服务器发送回复然后再继续
+     异步：脚本允许页面继续其进程并处理可能的回复
+     跨域问题简单的理解就是因为JS同源策略的限制，a.com域名下的JS无法操作b.com或c.a.com下的对象，具体场景如下：
+     PS：（1）如果是端口或者协议造成的跨域问题前端是无能为力的
+     (2) 在跨域问题上，域仅仅通过URL的首部来识别而不会尝试判断相同的IP地址对应的域或者两个域是否对应一个IP
+     前端对于跨域的解决办法：
+     (1) document.domain+iframe
+     (2) 动态创建script标签
+     */
+
+    //18.什么是闭包
+    /*内部函数被定义它的函数的外部区域调用的时候就产生了闭包。*/
+    (function A() {
+        var index = 0;
+        var ul = document.getElementById("test");
+        var obj = {};
+        for (var i = 0, l = ul.childNodes.length; i < l; i++) {
+            if (ul.childNodes[i].nodeName.toLowerCase() == "li") {
+                var li = ul.childNodes[i];
+                li.onclick = function () {
+                    index++;
+                    alert(index);
+                }
+            }
+        }
+    })();
+
+    //19.请给出异步加载js方案，不少于两种
+    /*
+     默认情况javascript是同步加载的，也就是javascript的加载时阻塞的，后面的元素要等待javascript加载完毕后才能进行再加载，对于一些意义不是很大的javascript，如果放在页头会导致加载很慢的话，是会严重影响用户体验的。
+
+     异步加载方式：
+
+     (1) defer，只支持IE
+
+     (2) async：
+
+     (3) 创建script，插入到DOM中，加载完毕后callBack，见代码：
+
+     function loadScript(url, callback){
+     var script = document.createElement("script")
+     script.type = "text/javascript";
+     if (script.readyState){ //IE
+     script.onreadystatechange = function(){
+     if (script.readyState == "loaded" ||
+     script.readyState == "complete"){
+     script.onreadystatechange = null;
+     callback();
+     }
+     };
+     } else { //Others: Firefox, Safari, Chrome, and Opera
+     script.onload = function(){
+     callback();
+     };
+     }
+     script.src = url;
+     document.body.appendChild(script);
+     }
+     */
+
+    //20.请设计一套方案，用于确保页面中JS加载完全。
+    var n = document.createElement("script");
+    n.type = "text/javascript";
+    //以上省略部分代码
+    //ie支持script的readystatechange属性(IE support the readystatechange event for script and css nodes)
+    if (ua.ie) {
+        n.onreadystatechange = function () {
+            var rs = this.readyState;
+            if ('loaded' === rs || 'complete' === rs) {
+                n.onreadystatechange = null;
+                f(id, url); //回调函数
+            }
+        };
+    //省略部分代码
+        n.addEventListener('load', function () {
+            f(id, url);
+        });
+        } else {
+            n.onload = function () {
+                f(id, url);
+            };
+        }
+
+
+</script>
+</html>

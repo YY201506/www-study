@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>自助答疑的答案详情</title>
+<link rel="stylesheet" type="text/css" href="{:C(__PUBLIC__)}/style/style.css" />
+<script src="{:C(__PUBLIC__)}/js/html5.js" type="text/javascript"></script>
+<script src="{:C(__PUBLIC__)}/js/move.js" type="text/javascript"></script>
+<script src="{:C(__PUBLIC__)}/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+		$(document).ready(function(){
+				$("#sent").click(function(){
+						var keyword=$('input[name=keyword]');
+						var sentUrl="{:U('Index/Self_help/search','','')}";
+						var show=$("#show");
+						if(keyword.val() == ''){
+							alert('请输入要搜索的关键字，我们将从标题或问题详情中为你寻找你的需要.');
+							keyword.focus();
+							//location.reload();
+						}else{
+						show.text("");
+						$.post(sentUrl,{keyword:keyword.val()},function(obj){
+   							console.log(obj.status);
+   							console.log(obj);
+							if(obj.status==1){
+							var detailUrl="{:U('Index/Self_help/detail','','')}";
+							var i=1;
+     						for(var item in obj){
+          						if(item=='status'){
+             						 continue;
+									 }else{
+									 var str="<li>["+i+"]&nbsp<a href='"+detailUrl+"?Qid="+obj[item].Qid+"' alt='点击看详情答案' class='green'>" + obj[item].Qtitle + "</a></li>";
+									 show.append(str);
+									 var i=i+1;
+          						}
+     						}
+    						}else{
+        						alert('木有找到你要的东东哦，你可以尝试向导师直接提问');
+								}
+						},'json')
+
+						}
+						})
+				})
+</script>
+
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台</h1>
+<div class="wel_login">
+	{:check_session()}
+</div>
+<ul class="nav">
+	{:sub()} 
+</ul>
+</header>
+
+<section  class="clearfix">
+	<header class="sec_top tc bgc999">
+    	<form action="#" method="">
+        	请在框中输入你的问题的关键信息
+            <input type="text" name="keyword" class="search" />
+            <input id="sent" type="button" name="" class="search_btn" value="搜索" />
+        </form>
+    </header>
+    <div class="bread">
+    	<a class="back black" href="{:U('Index/Teach/index','','')}">找不到？点击我向导师提问吧</a>
+    </div>
+    <div class="content">
+			<ul id="show" class="self_detail">
+					<foreach name="list" item="data">
+					<li>问题标题:&nbsp{$data['title']}</li>
+					<li>问题详情:&nbsp{$data['question']}</li>
+					<hr/>
+				<foreach name="data['answer']" item="answer">
+			<li class="clearfix mb25">
+			<a class="pic tc bgcccc" href="#"><img src="{:C(__PUBLIC__)}/images/picture.jpg" alt="{$answer['Ateacher']}" /><span>{$answer['Ateacher']}</span></a>
+            <div class="topic_brief  toppic_rep_w">
+            	<div class="to_bri_con">
+				<p>{$answer['Acontent']}</p>
+                </div>
+            <s class="left left_write"></s>
+            <s class="right"></s>
+            </div>
+			</li>
+			</foreach>
+			</foreach>
+        </ul>
+    </div>
+</section>
+<footer class="footer tc"><p>&copy;li_健财</p></footer>
+</body>
+</html>

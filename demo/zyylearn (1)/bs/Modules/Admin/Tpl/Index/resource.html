@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="{:C(__PUBLIC__)}/css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/html5.js"></script>
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/jquery-1.7.2.min.js"></script>
+<title>课程资源管理</title>
+<script type="text/javascript">
+
+function del(id) {
+		var url="{:U('Admin/Course/delete','','')}";
+		if(confirm( "确定要删除?" )){
+				$.post(url,{d_id:id},
+						function(data){
+						if(data.status){
+							location.reload();
+							}else{
+								alert("删除失败，请重试!");
+							location.reload();
+							}
+							},'json');
+				document.URL=location.href;
+  		}
+}
+</script>
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台后台管理</h1>
+<div class="wel_login">
+{:check_session()}
+</div>
+<ul class="nav">
+	{:A_sub()}
+</ul>
+</header>
+<section  class="clearfix">
+<header class="sec_top tc">
+<a  href="{:U('Admin/Course/index','type=book','')}" {:book_sub()} >图文资源</a>
+<a  href="{:U('Admin/Course/index','type=video','')}" {:video_sub()}>影音资源</a>
+<a  href="{:U('Admin/Course/Index','type=literature','')}"{:literature_sub()}>参考文献</a> 
+    </header>
+	<form id="upload" action="{:U('Admin/Course/upload','','')}" method="post" enctype="multipart/form-data">
+        <div class="content">
+			<ul>
+				<?php $i=1; ?>
+				<foreach name="list" item="data">
+				<li id="xx"><?php echo $i; $i=$i+1; ?>-&nbsp&nbsp{$data['courseTitle']}&nbsp&nbsp&nbsp&nbsp<input type="button" onclick="del({$data['NumId']})" value="删除" /></li>
+				</foreach>
+                <li><a href="javascript:upLoad();" id="uploadImg" class="upload">上传资源</a></li>
+                <li id="upload_Meg" style="display:none;">
+                <img src="{:C(__PUBLIC__)}/images/close_btn.png" id="close" onClick="closeUp();">
+                	<input type="text" name="title" />[可选]输入要显示的名称<br/>
+                    <select name="type">
+						<option value="book">图书资源</option>
+						<option value="video">影音资源</option>
+						<option value="literature">文献资源</option>
+                    </select><br/>
+					<!--					<span>文件名不能包含中文</span><br/>-->
+					<input type="file" name="file" /><br/>
+                    <input type="submit" value="上传" />
+                </li>
+            </ul>
+        </div>
+    </form>
+   <script>
+            function upLoad(){
+                var upLoad=document.getElementById('upload_Meg');
+                upLoad.style.display='list-item';   
+            };
+            function closeUp(){
+                var upLoad=document.getElementById('upload_Meg');
+                upLoad.style.display='none';
+            };
+    </script>
+</section>
+<footer class="footer tc"><p>&copy;li_健财</p></footer>
+</body>
+</html>

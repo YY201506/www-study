@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>交流互动之我要发起讨论</title>
+<link rel="stylesheet" type="text/css" href="{:C(__PUBLIC__)}/style/reset.css" />
+<link rel="stylesheet" type="text/css" href="{:C(__PUBLIC__)}/style/style.css" />
+<script src="{:C(__PUBLIC__)}/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/xheditor/xheditor-1.1.14-zh-cn.min.js"></script>
+<script src="{:C(__PUBLIC__)}/js/html5.js" type="text/javascript"></script>
+<script src="{:C(__PUBLIC__)}/js/move.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var subUrl="{:U('Index/Exchange/write_t','','')}";
+    var UserName="{:session('login')}";
+    $(document).ready(function(){
+        $("#sent").click(function(){
+            var text =$('textarea[name=content]').val();
+            if(text==''){
+                alert('请输入你要说的东西！');
+            }else{
+                $.post(subUrl,{Content:text,UserName:UserName},
+                    function(data){
+                        if(!data['status']){
+						alert("发布失败，请重试！");                                          
+						return;
+                        }else{
+                            // alert("发布成功");
+                            location.href="{:U('Index/Exchange/index','','')}";
+                        }
+                    },'json');
+            }
+        });
+    });
+</script>
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台</h1>
+<div class="wel_login">
+	{:check_session()}
+</div>
+<ul class="nav">
+	{:sub()} 
+</ul>
+</header>
+
+<section  class="clearfix bgcf5">
+<header class="sec_top tc">
+		<a  <?php if($_GET['list']=='all'){echo "class='active'";} ?> href="{:U('Index/Exchange/index','','')}?list=all">全部话题</a>
+		<a {:t_sub()} href="{:U('Index/Exchange/index')}?name=my">我发起的话题</a>
+        <a href="{:U('Index/Exchange/to_talk')}" class="active">我要发起讨论</a>
+    </header>
+	<!--    <div class="bread">>>交流互动>>我要发起讨论</div>-->
+    <div class="content">
+    	<div class="edit">
+            <form class="" action="" method="post">
+            <textarea name="content" class="xheditor {tools:'simple',skin:'default',width:'100%',height:'110px',hoverExecDelay:-1,upImgUrl:'manage/xheditor/upload.php',upImgExt:'jpg,jpeg,gif,png',upLinkUrl:'manage/xheditor/upload.php',upLinkExt:'zip,rar,txt,doc,docx,xls,xlsx,ppt,pptx,pdf',upFlashUrl:'manage/xheditor/upload.php',upFlashExt:'swf',upMediaUrl:'manage/xheditor/upload.php',upMediaExt:'avi,flv,wmv,mp4,rmvb'}">
+            </textarea>
+            <div class="tc"><input id="sent" class="btn-primary" type="button" value="提交" /></div>
+            </form>
+    	</div>
+    </div>
+</section>
+<footer class="footer tc"><p>&copy;li_健财</p></footer>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="{:C(__PUBLIC__)}/css/css.css" rel="stylesheet" type"text/css" />
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/html5.js"></script>
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	function del(d_id){
+			var delUrl="{:U('Admin/Exch/del','','')}";
+			//alert(d_id);return;
+			if(!confirm("确认删除?将会把该话题及其所有回复删除.")){
+				return;
+			}
+			$.post(delUrl,{d_id:d_id},function(data){
+					if(data.status){
+					alert('删除成功');
+					location.reload();
+					}else{
+					alert('删除失败');
+					}
+					})
+	}
+</script>
+<title>互动话题管理</title>
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台后台管理</h1>
+<div class="wel_login">
+{:check_session()}
+</div>
+<ul class="nav">
+{:A_sub()}
+</ul>
+</header>
+<section  class="clearfix">
+    <div class="bread"></div>
+    <form action="#" method="post">
+        <div class="content">
+				<ul><?php $i=1 ?>
+						<foreach name="list" item="data">
+						<li>
+							<span style="color:#333333"><?php echo "[&nbsp".$i."&nbsp]"; $i=$i+1; ?>&nbsp{$data['Time']}</span><br/>
+							<span>{$data['Content']}</span><input onclick="del({$data['NumId']})" type="button" value="删除" />
+							<hr/>
+							<br/>
+						</li>
+						</foreach>
+            </ul>
+        </div>
+    </form>
+</section>
+<footer class="footer tc"><p>&copy;li_健财</p></footer>
+</body>
+</html>

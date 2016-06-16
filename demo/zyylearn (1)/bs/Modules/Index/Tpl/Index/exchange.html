@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>交流互动</title>
+<!--<link rel="stylesheet" type="text/css" href="{:C(__PUBLIC__)}/style/reset.css" />-->
+<link rel="stylesheet" type="text/css" href="{:C(__PUBLIC__)}/style/style.css" />
+<script src="{:C(__PUBLIC__)}/js/html5.js" type="text/javascript"></script>
+<script src="{:C(__PUBLIC__)}/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="{:C(__PUBLIC__)}/js/move.js" type="text/javascript"></script>    
+<script type="text/javascript">
+/*点击我发起的话题时，判断是否登录*/
+var Mysession="{:session('login')}";
+$(document).ready(function(){
+		$("#my").click(function(){
+				if(Mysession==''){
+				$("#all").attr('class','');
+				$("#to_talk").attr('class','');
+				$("#my").attr('class','active');
+				$(".content").text('');
+				$(".content").append("温馨提示:你要登录才能^[查看]^喔.");
+		}else{
+			location.href="{:U('Index/Exchange/index')}?name=my";
+       }
+    });
+
+
+    $("#to_talk").click(function(){
+       if(Mysession==''){
+				$("#all").attr('class','');
+				$("#my").attr('class','');
+				$("#to_talk").attr('class','active');
+		$(".content").text('');
+		$(".content").append("温馨提示:你要登录才能^[说话]^喔.");
+       }else{
+        location.href="{:U('Index/Exchange/to_talk')}";
+       }
+    });
+});
+</script>
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=31255854" charset="UTF-8"></script>
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台</h1>
+<div class="wel_login">
+		<!--
+<a href="{:C(__PUBLIC__)}/{:C(__PUBLIC__)}/admin/html/login.html">登录</a>
+<a href="zhuce.html">注册</a>
+
+<span>张坚华同学，欢迎您！</span>
+<a href="#">[退出登录]</a>
+-->
+	{:check_session()}
+</div>
+<ul class="nav">
+	{:sub()} 
+</ul>
+</header>
+
+<section  class="clearfix bgcf5">
+	<header class="sec_top tc">
+		<a id='all'  <?php if($_GET['list']=='all'){echo "class='active'";} ?> href="{:U('Index/Exchange/index','','')}?list=all">全部话题</a>
+		<a  <?php if($_GET['name']=='my'){echo "class='active'";}else{echo "class=''";} ?> id="my" href="#">我发起的话题</a>
+        <a id="to_talk" class="" href="#">我要发起讨论</a>
+    </header>
+	<!--<div class="bread">>>交流互动>>话题列表</div>-->
+    <div class="content">
+		<ul>
+			<foreach name="interaction" item="data">
+    	<li class="clearfix mb25">
+		<a class="pic tc" href="#"><img src="{:C(__PUBLIC__)}/images/picture.jpg" alt="{$data['UserName']}" /><span>{$data['UserName']}</span></a>
+            <div class="topic_brief">
+             	<div class="to_bri_con">
+					<p><a href="{:U('Index/Exchange/T_detail','','')}?id={$data['NumId']}">{$data['Content']}[详情]</a></p>
+                    <div class="info">
+						<span>发表于：<time>{$data['Time']}</time></span>
+                    </div>
+                </div>
+            <s class="left"></s>
+            <s class="right"></s>
+            </div>
+        </li>
+			</foreach>
+    </ul>
+    </div>
+</section>
+<footer class="footer tc"><p>&copy;li_健财</p></footer>
+        <script type="text/javascript" src="http://tajs.qq.com/stats?sId=31255854" charset="UTF-8"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>课程资源</title>
+<!--<link rel="stylesheet" type="text/css" href="{:C(__PUBLIC__)}/style/reset.css" />-->
+<link rel="stylesheet" type="text/css" href="{:C(__PUBLIC__)}/style/style.css" />
+<script src="{:C(__PUBLIC__)}/js/html5.js" type="text/javascript"></script>
+<script src="{:C(__PUBLIC__)}/js/move.js" type="text/javascript"></script>
+        <script type="text/javascript" src="http://tajs.qq.com/stats?sId=31255854" charset="UTF-8"></script>
+<!--<script src="{:C(__PUBLIC__)}/js/jquery-1.7.2.min.js" type="text/javascript"></script>-->
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台</h1>
+<div class="wel_login">
+	{:check_session()}
+</div>
+<ul class="nav">
+	{:sub()}
+</ul>
+</header>
+<section  class="clearfix bgcf5">
+<header class="sec_top tc">
+<a  href="{:U('Index/Cource/index','type=book','')}" {:book_sub()} >图文资源</a>
+<a  href="{:U('Index/Cource/index','type=video','')}" {:video_sub()}>影音资源</a>
+<a  href="{:U('Index/Cource/Index','type=literature','')}"{:literature_sub()}>参考文献</a>
+    </header>
+    
+    <div class="content">
+		<ul id="new" class="down_list">
+			<foreach name="list" item="data">
+        	<li>
+			<a id="down" href="__APP__/Index/Cource/download?id={$data['NumId']}">[点击下载]</a>
+				<span  class="green">{$data['courseTitle']}</span>
+				<span class="gray">{$data['Time']}</span>
+            </li>
+			</foreach>
+        </ul>
+    </div>
+	</section>
+	<!--
+	<form id="upload" method='post' action="{:U('Index/Cource/upload','','')}" enctype="multipart/form-data">
+		<input name="file" type="file" />
+		<select name="type" >
+			<option value="book">书</option>
+			<option value="video">影音</option>
+			<option value="literature">文献</option>
+		</select>
+		<input type="submit" value="提交" >
+	</form>
+	-->
+
+<footer class="footer tc"><p>&copy;li_健财</p></footer>
+        <script type="text/javascript" src="http://tajs.qq.com/stats?sId=31255854" charset="UTF-8"></script>
+</body>
+</html>

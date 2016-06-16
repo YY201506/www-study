@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<body >
+ <div ng-app="myapp">
+    <div ng-controller="inputController">
+        <input type="text" ng-model="person.name" placeholder="enter your name">
+
+        <h4>{{person.name}}</h4>
+        <h3>{{clock}}</h3>
+    </div>
+    <div ng-controller="demoController">
+        <h5>The simple adding and subtract machine</h5>
+        <button ng-click="add(1)">+</button>
+        <button ng-click="subtract(1)">-</button>
+        <h4>Count:{{count}}</h4>
+    </div>
+
+     <br/>
+     <div ng-controller="ServiceController">
+         <label for="username">type in a github</label>
+         <input type="text" ng-model="username" placeholder="enter username">
+         <pre ng-show="username">{{events}}</pre>
+     </div>
+ </div>
+
+<script>
+    var app = angular.module('myapp',[]);
+    app.controller('inputController',function($scope){
+        $scope.person = {name:"amy"};
+        var updateClock = function () {
+            $scope.clock = new Date();
+        }
+        var timer = setInterval(function(){
+            $scope.$apply(updateClock);
+        },1000);
+        updateClock();
+    });
+    app.controller('demoController', function ($scope) {
+        $scope.count = 0;
+        $scope.add = function(amount){
+            $scope.count += amount;
+        };
+        $scope.subtract = function(amount){
+            $scope.count -= amount;
+        };
+    });
+    app.controller('ServiceController',['$scope','$timeout','githubService',  //建一个controller，并注入Githubservice作为运行时依赖，把service的名字作为参数传递给controller函数
+        function($scope, $timeout,githubService){
+            var timeout;
+        $scope.$watch("username",function(newUsername){
+            if(newUsername){
+                if(timeout) $timeout.cancel(timeout);
+                timeout = $timeout(function(){
+                    githubService.events(newUsername).success(function (data, status) {
+                                $scope.events = data.data;
+                            });
+                },350);
+            }
+        });
+    }]);
+
+    app.factory(
+            'githubService',['$http', function ($http) {
+                var githubusername;
+                var doRequest = function(path){
+                    return $http({
+                        method:'JSONP',
+                        url:'https://api.github.com/users/'+ githubusername+'/'+path+'?callback=JSON_CALLBACK'
+                    });
+                }
+                return {
+                    events: function () {
+                        return doRequest('events');
+                    },
+                    setUsername:function(newusername){
+                        githubusername = newusername;
+                    }
+                };
+            }]
+    );   //工厂模式
+
+
+
+
+
+
+</script>
+</body>
+</html>

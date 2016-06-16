@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="{:C(__PUBLIC__)}/css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/html5.js"></script>
+<script type="text/javascript" src="{:C(__PUBLIC__)}/js/jquery-1.7.2.min.js"></script>
+<title>新建测试题</title>
+<script type="text/javascript">
+		$(document).ready(function(){
+				$("#btn3").click(function(){
+						var arr=new Array();//保存所有题目的数组
+						var textTitle=$('input[name=Ttitle]').val();
+						var sentUrl="{:U('Admin/Onle/writeText','','')}";
+						var backUrl="{:U('Admin/Onle/index','','')}";
+						
+						var tmp='';
+						for(var x=1;x<i;x++){
+							var ansA="answerA";
+							var ansB="answerB";
+							var ansC="answerC";
+							var ansD="answerD";
+							var title="Ti_title";
+							var ans="answer";
+								ansA=ansA+x;
+								ansB=ansB+x;
+								ansC=ansC+x;
+								ansD=ansD+x;
+								title=title+x;
+								ans=ans+x;
+								arr[x-1]=new Array();//每道题的信息保存到一个数组
+								arr[x-1][0]=$('input[name='+title+']').val();
+								arr[x-1][1]=$('input[name='+ans+']:checked').val();
+								arr[x-1][2]=$('input[name='+ansA+']').val();
+								arr[x-1][3]=$('input[name='+ansB+']').val();
+								arr[x-1][4]=$('input[name='+ansC+']').val();
+								arr[x-1][5]=$('input[name='+ansD+']').val();
+								if(!arr[x-1][0] || !arr[x-1][1] || !arr[x-1][2] || !arr[x-1][3] || !arr[x-1][4] || !arr[x-1][5] || !textTitle){
+									alert("请填写完整再提交");
+									return;	
+								}
+						}
+						$.post(sentUrl,{data:arr,T_title:textTitle},function(data){
+								if(data){
+										alert('提交成功.');
+										location.href=backUrl;
+									}else{
+										alert('提交失败，请重试');
+									}
+								},'json');
+							});
+						});
+</script>
+</head>
+
+<body>
+<header>
+<h1>中医药在线学习平台后台管理</h1>
+<div class="wel_login">
+{:check_session()}
+</div>
+<ul class="nav">
+{:A_sub()}
+</ul>
+</header>
+<section  class="clearfix">
+	
+<div class="bread"><a href="{:U('Admin/Onle/index','','')}">>>习题列表</a>>>新建测试题目</div>
+    <form>
+        <div class="content">
+			<li>测试题名称：<input type="text" style="width:50%" name="Ttitle" /></li><br>
+			<div id="content">
+            <ul id="ul1">
+                <li>题目1：<input name="Ti_title1" type="text" style="width:80%" /></li>
+				<li>正确答案:<input type="radio" name="answer1" value='A'/>A&nbsp&nbsp<input type="radio" name="answer1" value='B'/>B&nbsp&nbsp<input type="radio" name="answer1" value='C'/>C&nbsp&nbsp<input type="radio" name="answer1" value='D'/>D<br>
+				A. <input type="text" style='width:50%' name="answerA1" value=""  /><br>
+				B. <input type="text" name="answerB1" style='width:50%' value=""  /><br> 
+				C. <input type="text" name="answerC1" style="width:50%" value=""  /><br> 
+				D. <input type="text" name="answerD1" style="width:50%" value=""  /><br> 
+                </li>
+			</ul>
+			</div>
+                    <input type="button" id="btn2" value="增加一题" />
+					<input type="button" id="btn3" value="提交" />
+        </div>
+    </form>
+	<script type="text/javascript">
+		var i=2;
+		$("#btn2").click(function(){
+				var li5="<hr><ul id='ul"+i+"'><li>题目"+i+"：<input name='Ti_title"+i+"' type='text' style='width:80%'></li>";
+				var li5=li5+"<li>正确答案:<input type='radio' name='answer"+i+"' value='A'/>A&nbsp<input type='radio' name='answer"+i+"' value='B'/>B&nbsp<input type='radio' name='answer"+i+"' value='C'/>C&nbsp<input type='radio' name='answer"+i+"' value='D'/>D&nbsp<br>A. <input type='text' style='width:50%' name='answerA"+i+"' value=''/><br>B. <input type='text' style='width:50%' name='answerB"+i+"' value=''><br>C. <input type='text' style='width:50%' name='answerC"+i+"' value=''><br>D. <input type='text' style='width:50%' name='answerD"+i+"' value=''></li></ul>";
+			$("#content").append(li5);
+			i=i+1;
+			})
+    </script>
+</section>
+<footer class="footer tc"><p>&copy;li_健财</p></footer>
+</body>
+</html>

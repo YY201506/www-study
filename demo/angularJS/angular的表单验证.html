@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app="">
+<div class="col-md-6">
+    <form role="form" class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="name">1.必填项</label>
+            </div>
+            <div class="col-md-8">
+                <input class="form-control" id="name" type="text" required ng-model='user.name'/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="minlength">2.最小长度=5</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" id="minlength" ng-minlength="5" ng-model="user.minlength" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="minlength">3.最大长度=20</label>
+                　　　　　　　　　　
+            </div>
+            <div class="col-md-8">
+                <input type="text" ng-model="user.maxlength" ng-maxlength="20" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="minlength">4. 模式匹配</label>
+            </div>
+            <div class="col-md-8">
+                <input type="text" id="minlength" ng-model="user.pattern" ng-pattern="/^[a-zA-Z]*\d$/"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="email">5. 电子邮件</label>
+                　　　　　　　　　　
+            </div>
+            <div class="col-md-8">
+                <input type="email" id="email" name="email" ng-model="user.email" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="age">6. 数字</label>
+                　　　　　　　　　　
+            </div>
+            <div class="col-md-8">
+                <input type="number" id="age" name="age" ng-model="user.age" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="url"> 7. URL</label>
+                　　　　　　　　　　
+            </div>
+            <div class="col-md-8">
+                <input type="url" id="url" name="homepage" ng-model="user.url" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group text-center">
+            <input class="btn btn-primary btn-lg" type="submit" value="提交"/>
+        </div>
+    </form>
+</div>
+<div class="col-md-12">
+    1.必填项:{{user.name}}<br>
+    2.最小长度=5:{{user.minlength}}<br>
+    3.最大长度=20:{{user.maxlength}}<br>
+    4.模式匹配:{{user.pattern}}<br>
+    5.电子邮件:{{user.email}}<br>
+    6.数字:{{user.age}}<br>
+    7.URL:{{user.url}}<br>
+</div>
+
+<form name="signup_form" novalidate ng-submit="signupForm()">
+    <fieldset>
+        <legend>signup</legend>
+        <div class="row">
+            <label>your name</label>
+            <input type="text" placeholder="Name" ng-model="signup.name" ng-minlength="3" ng-maxlength="20" required />
+            <div class="error" ng-show="signup_form.name.$dirty && signup_form.name.$invalid">
+                <small class="error" ng-show="signup_form.name.$error.required">your name is requried</small>
+                <small class="error" ng-show="signup_form.name.$error.minlength">名字少于3个字</small>
+                <small class="error" ng-show="signup_form.name.$error.maxlength">名字多余20个字</small>
+            </div>
+        </div>
+
+        <button type="submit" class="button radius">submit</button>
+    </fieldset>
+</form>
+<script>
+    var app = angular.module('validationExample', []);
+
+    app.directive('ensureUnique', ['$http', function ($http) { //自定义指令
+        return {
+            require: 'ngModel',
+            link: function (scope, ele, attrs, c) {
+                scope.$watch(attrs.ngModel, function () {
+                    $http({
+                        method: 'POST',
+                        url: '/api/check/' + attrs.ensureUnique,
+                        data: {'field': attrs.ensureUnique}
+                    }).success(function (data, status, headers, cfg) {
+                        c.$setValidity('unique', data.isUnique);
+                    }).error(function (data, status, headers, cfg) {
+                        c.$setValidity('unique', false);
+                    });
+                });
+            }
+        }
+    }]);
+    app.controller('signupCtrl',['$scope',function($scope){
+        $scope.submitted = false;
+        $scope.signupForm = function(){
+            if($scope.signup_form.$valid){
+
+            }else{
+                $scope.signup_form.submitted = true;
+            }
+        }
+    }]);
+</script>
+</body>
+</html>
