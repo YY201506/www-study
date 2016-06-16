@@ -1,0 +1,90 @@
+<include file = 'Public/head2.html' />
+
+<if condition="$course.video eq 1">
+    <include file = 'Public/video.html' />
+
+    <elseif condition="$course.item eq 3" />
+        <include file = 'Public/page.html' />
+    <elseif condition="$course.item eq 4"/>
+        <include file='Public/test.html'/>
+    <else />
+        <include file = 'Public/artical.html' />
+</if>
+
+<script type="text/javascript">
+    var arryDetail=[
+            <foreach name="q" item="vo">
+            {page:"{$vo.page}",detail:"{$vo.detail}",tel:{$vo.tel}},
+    </foreach>
+    ];
+
+    setstep(arryDetail);
+    function setstep(arryDetail){
+        if(arryDetail.length >=1){
+            var content='';
+            var number=1;
+            for(var i=0;i<arryDetail.length;i++){
+                content +='<div class="part clearfix"><div class="num left">'+number+'</div>';
+                if(!arryDetail[i].detail&&!arryDetail[i].tel){
+                    content +='<div class="buzou left"><p style="margin-top: 0.1rem">'+arryDetail[i].page+'</p></div></div>';
+                    console.log(i);
+                    console.log(arryDetail[i].detail);
+                    console.log(arryDetail[i].tel);
+                }else{
+                    content +='<div class="buzou left"><p>'+arryDetail[i].page+'</p>';
+                    if(arryDetail[i].detail){
+                        content+='<p class="gray">'+arryDetail[i].detail+'</p></div></div>';
+                    }else if(arryDetail[i].tel){
+                        content+='<a href="tel:120">拨打120</a></div></div>';
+                    }else{
+                        content+='</div></div>';
+                    }
+                }
+                number++
+            }
+            var add_step = document.createElement('div');
+            add_step.id="crowd";
+            add_step.innerHTML = content;
+            document.body.appendChild(add_step);
+        }else{
+            console.log("没步骤！");
+        }
+    }
+
+
+    var arg1 = [
+            <foreach name="q" item="vo">
+            {question:"{$vo.question}",answer:"{$vo.answer}"},
+    </foreach>
+    ];
+
+    addproblem(arg1);
+    function addproblem(obj){
+        if(obj.length>=1){
+            if(obj[0].question!==""){
+                var content='';
+                content +='<div class="title">常见问题</div>';
+                for(var i=0;i<obj.length;i++){
+                    content +='<div class="pro"><h4>'+obj[i].question+'</h4><p class="gray">'+obj[i].answer+'</p></div>';}
+
+                var add_problem = document.createElement('div');
+                add_problem.id="problem";
+                add_problem.innerHTML = content;
+                document.body.appendChild(add_problem);
+            }else{
+                console.log("没问题！");
+            }
+        }else{
+            console.log("没问题！");
+        }
+
+
+    }
+
+    $(".pro").each(function(index){
+        $(this).click(function(){
+            $(".pro").eq(index).find("p").slideToggle(50);
+        });
+    });
+</script>
+<include file = 'Public/foot.html' />

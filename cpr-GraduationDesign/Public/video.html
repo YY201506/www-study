@@ -1,0 +1,28 @@
+
+<div class="course" id="course">
+    <div class="media" style="background: #15191F;height: 2.1rem;">
+           <video id="video" preload="meta" loop="loop" width="100%" height="100%" name="media">
+           <source src="{$course.media}" type="video/ogg;codecs="theora,vorbis"" media="screen" />
+           <source src="{$course.media}"  />
+           </video>
+        </div>
+</div>
+
+
+<script type="text/javascript">
+var myVideo=document.getElementById("video");
+    myVideo.poster = "{$course.poster}";
+    var playstatue = false;
+    function control() {
+        if (playstatue) {
+            myVideo.pause();
+            console.log("停");
+            playstatue = false;
+        } else {
+            myVideo.play();
+            console.log("开");
+            playstatue = true;
+        }
+    }
+    $("#video").on("click",control);
+</script>

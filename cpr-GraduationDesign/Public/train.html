@@ -1,0 +1,26 @@
+
+<div class="train">
+    <foreach name = "block" item = "vo">
+        <div class="room">
+            <a href="__ROOT__/Home/Learn/course/item/{$vo.item}/id/{$vo.learn_id}">
+                <img src="__PUBLIC__/Image/{$vo.url}" class="pic"/>
+                <div class="divr"><span>{$vo.img_name}</span><span class="time">{$vo.creattime}</span></div></a>
+        </div>
+
+    </foreach>
+
+</div>
+
+<!--
+// 假设 "video" 就是这个视频元素
+var i = setInterval(function() {
+	if(video.readyState > 0) {
+		var minutes = parseInt(video.duration / 60, 10);
+		var seconds = video.duration % 60;
+
+		// (Put the minutes and seconds in the display)
+
+		clearInterval(i);
+	}
+}, 200);
+-->
