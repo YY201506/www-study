@@ -34,7 +34,9 @@
     </style>-->
 </head>
 <body>
-<button type="button" value="">click</button>
+<button type="button" value="" onclick='Dialog(dialog1)'>click</button>
+<div style="height:1800px;"></div>
+<button type="button" value="" onclick='Dialog(dialog1)'>click</button>
 
 <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
@@ -42,112 +44,109 @@
 <script src="../js/bootstrap.min.js"></script>
 
 <script>
- var dialog1={
-     "isajax":0,
-     "url":"editor.html",
-     "content":"内容请认真记录客户状况及需求，以便后续查阅及跟进请认真记录客户状况及需求，以便后续查阅及跟进<button onclick='Dialog(dialog2)'>按钮1</button>",
-     "complete":function(){},
-     "destroy":function(){}
- };
- var dialog2 = {
-     "isajax": 0,
-     "url": "editor.html",
-     "content": "内容请<button onclick='Dialog(dialog3)'>按钮2</button>",
-     "complete": function () {
-     },
-     "destroy": function () {
-     }
- };
- var dialog3 = {
-     "isajax": 0,
-     "content": "<button onclick='Dialog(dialog1)'>按钮3</button>"
- };
- $("button").click(function(){
-     Dialog(dialog1);
- });
-
- function Dialog(dialog) {
-     function count() {
-         var n = 0;
-         return function () {
-             n = n + 1;
-             i=n;
-             console.log(i);
-         }
-     }
-
-     var i;
-     var a =count();
-     i =a();
-
-     addstyle(i);
-
-     if (dialog.isajax) {
-         var html = ' <div id="dialog' + i + '" data-dnum=' + i + ' class="dialog"><div id="modeldialog"' + i + '><div class="modal-dialog modal-lg mfixedwidth"><div class= "modal-content mcfixedwidth" ></div></div></div></div>';
-         $("body").append(html);
-         $.get(dialog.url, function (data) {
-             $("#dialog").append('<div class="bidbg"></div>');
-             $("#modeldialog" + i + " .modal-content").append(data);
-             $("#modeldialog" + i).show();
-             dialog.complete && dialog.complete();
-         });
-     } else {
-         var html = '<div id="dialog' + i + '" data-dnum=' + i + ' class="dialog"><div class="bidbg"></div><div id="modeldialog' + i + '"><div class="modal-dialog modal-sm"> <div class="modal-content clearfix alert">' + dialog.content + '</div></div></div></div>';
-         $("body").append(html);
-         $("#modeldialog" + i).show();
-         dialog.complete && dialog.complete();
-     }
-
-     var isTrigger = false;
-     $("body").on("click", "#dialog" + i + " .bidbg , #modeldialog" + i + " .close", function () {
-         $("#modeldialog" + i).addClass("finishdialog");
-         $("#dialog" + i + " .bidbg").addClass("finish");
-         $("#modeldialog" + i).one($.fx.animationEnd, function () {
-             console.log("end");
-             isTrigger = true;
-             $("#dialog" + i + ", #Dialogcss" + i).remove();
-             if (dialog.destroy) {
-                 dialog.destroy();
-             }
-         });
-
-         setTimeout(function () {
-             if (isTrigger) return;
-             $("#dialog" + i + ", #Dialogcss" + i).remove();
-             if (dialog.destroy) {
-                 dialog.destroy();
-             }
-         }, 500);//if animationEnd函数失效，运行settimeout函数
-     });
-     $("body").on("click", "#edit-submit", function () {
-         $("#modeldialog").addClass("finishdialog");
-         $("#dialog .bidbg").addClass("finish");
-         $("#modeldialog").one($.fx.animationEnd, function () {
-             isTrigger = true;
-             $("#dialog , #Dialogcss").remove();
-             if (dialog.destroy) {
-                 dialog.destroy();
-             }
-         });
-         setTimeout(function () {
-             if (isTrigger) return;
-             $("#dialog , #Dialogcss").remove();
-             if (dialog.destroy) {
-                 dialog.destroy();
-             }
-         }, 500);
-     });
-     function addstyle(i) {
-         var zindex1 = 1041 + parseInt(i * 5);
-         var zindex2 = 1040 + parseInt(i * 5);
-         var style = '<style id="Dialogcss' + i + '">#modeldialog' + i + '{position:absolute;top:2%;left:50%;transform:translate(-50%, 0%);-webkit-transform:translate(-50%, 0%);z-index:' + zindex1 + ';display:none;animation:slidedown .3s ease-out;-moz-animation:slidedown .3s ease-out;-webkit-animation:slidedown .3s ease-out;-o-animation:slidedown .3s ease-out}#dialog' + i + ' .bidbg{background:#000;position:fixed;top:0;right:0;bottom:0;left:0;outline:0;z-index:' + zindex2 + ';opacity:.5;filter:alpha(opacity=50);animation:fadein .15s linear;-moz-animation:fadein .15s linear;-webkit-animation:fadein .15s linear;-o-animation:fadein .15s linear}@keyframes fadein{0%{opacity:0;filter:alpha(opacity=0)}100%{opacity:.5;filter:alpha(opacity=50)}}@keyframes slidedown{0%{top:-1%;}50%{top:1%;}100%{top:2%}}#dialog' + i + ' .bidbg.finish{animation:fadeout .5s ease-out;opacity: 0;filter: alpha(opacity = 0);}@keyframes fadeout{0%{opacity:.5;filter:alpha(opacity=50)}100%{opacity:0;filter:alpha(opacity=0)}}#modeldialog' + i + '.finishdialog{animation:slideup .3s linear;transform:translate(-50%, 0%);-webkit-transform:translate(-50%, 0%);opacity:0;top:-1%;}@keyframes slideup{0%{top:2%;opacity:1}50%{top:0%;opacity:0.8}100%{top:-1%;opacity:0}}</style>';
-         $("body").append(style)
-     }
+    var dialog1 = {
+        "isajax": 0,
+        "url": "editor.html",
+        "content": "内容大煞风景打飞容大煞风景打飞容大煞风景煞风景打飞容大煞风景打煞风景打飞容大煞风景打煞风景打飞容大煞风景打煞风景打飞容大煞风景打煞风景打飞容大煞风景打煞风景打飞容大煞风景打打飞容大容大煞风景打飞容大煞风景打飞容大容大煞风景打飞容大煞风景打飞容大机看看<button onclick='Dialog(dialog2)'>按钮</button>",
+        "complete": function () {
+        },
+        "destroy": function () {
+        }
+    };
+    var dialog2 = {
+        "isajax": 0,
+        "content": "内容大煞风景打飞煞风景打飞容大煞风景打煞风景打飞容大煞风景打煞风景打飞容大煞风景打容大煞风景打飞容大煞风景打飞容大煞风景打飞容大煞风景打飞<button onclick='Dialog(dialog3)'>按钮</button>"
+    }
+    var dialog3 = {
+        "isajax": 0,
+        "content": "内容大煞风景打飞煞景打容大煞风景打飞容大煞风容大煞风景打飞容大煞风景打飞<button id='edit-submit'>按钮</button>"
+    }
 
 
- }
 
+    function Dialog(dialog) {
+        addstyle();
+        if (dialog.isajax) {
+            var html = ' <div class="dialog"><div class="modeldialog"><div class="modal-dialog modal-lg mfixedwidth"><div class= "modal-content mcfixedwidth" ></div></div></div></div>';
+            $("body").append('<div id="dialog">'+html+'</div>');
+            $.get(dialog.url, function (data) {
+                $(".dialog").append('<div class="bidbg"></div>');
+                $(".modeldialog .modal-content").append(data);
+                $(".modeldialog").show();
+                dialog.complete && dialog.complete();
+            });
+        } else {
+            var html = '<div class="dialog"><div class="bidbg"></div><div class="modeldialog"><div class="modal-dialog modal-sm"> <div class="modal-content clearfix alert">' + dialog.content + '</div></div></div></div>';
+            if($("#dialog").size() ==0){
+                $("body").append('<div id="dialog">' + html + '</div>');
+            }else{
+                $("#dialog").append(html);
+            }
+            $(".modeldialog").show();
+            dialog.complete && dialog.complete();
+        }
 
+        var isTrigger = false;
+        $("body").on("click", "#dialog .dialog .bidbg , .modeldialog .close", function (event) {
+            $(event.target).parents(".dialog").find(".modeldialog").addClass("finishdialog")
+            $(event.target).parents(".dialog").find(".bidbg").addClass("finish");
+            $(".modeldialog").one($.fx.animationEnd, function () {
+                console.log("end");
+                isTrigger = true;
+                $(event.target).parents(".dialog").remove();
+                if($(".dialog").size() ==0){
+                    $("#Dialogcss,#dialog").remove();
+                }
+                if (dialog.destroy) {
+                    dialog.destroy();
+                }
+            });
+
+            setTimeout(function () {
+                if (isTrigger) return;
+                $(event.target).parents(".dialog").remove();
+                if ($(".dialog").size() == 0) {
+                    $("#Dialogcss,#dialog").remove();
+                }
+                if (dialog.destroy) {
+                    dialog.destroy();
+                }
+            }, 500);//if animationEnd函数失效，运行settimeout函数
+        });
+
+        $("body").on("click", "#edit-submit", function (event) {
+            $(event.target).parents(".dialog").find(".modeldialog").addClass("finishdialog")
+            $(event.target).parents(".dialog").find(".bidbg").addClass("finish");
+            $(".modeldialog").one($.fx.animationEnd, function () {
+                isTrigger = true;
+                $(event.target).parents(".dialog").remove();
+                if ($(".dialog").size() == 0) {
+                    $("#Dialogcss,#dialog").remove();
+                }
+                if (dialog.destroy) {
+                    dialog.destroy();
+                }
+            });
+            setTimeout(function () {
+                if (isTrigger) return;
+                $(event.target).parents(".dialog").remove();
+                if ($(".dialog").size() == 0) {
+                    $("#Dialogcss,#dialog").remove();
+                }
+                if (dialog.destroy) {
+                    dialog.destroy();
+                }
+            }, 500);
+        });
+
+        function addstyle() {
+            if($("#Dialogcss").size() == 0){
+                var style = '<style id="Dialogcss">#dialog{position:fixed;top:0;right:0;bottom:0;left:0;outline:0;}.dialog{height:100%;width:100%;position:absolute;z-index:1050;}.modeldialog{position:absolute;top:2%;left:50%;transform:translate(-50%, 0%);-webkit-transform:translate(-50%, 0%);z-index:1040;display:none;animation:slidedown .3s ease-out;-moz-animation:slidedown .3s ease-out;-webkit-animation:slidedown .3s ease-out;-o-animation:slidedown .3s ease-out}#dialog .bidbg{background:#000;height:100%;width:100%;z-index:1040;opacity:.5;filter:alpha(opacity=50);animation:fadein .15s linear;-moz-animation:fadein .15s linear;-webkit-animation:fadein .15s linear;-o-animation:fadein .15s linear}@keyframes fadein{0%{opacity:0;filter:alpha(opacity=0)}100%{opacity:.5;filter:alpha(opacity=50)}}@keyframes slidedown{0%{top:-1%;}50%{top:1%;}100%{top:2%}}#dialog .bidbg.finish{animation:fadeout .5s ease-out;opacity: 0;filter: alpha(opacity = 0);}@keyframes fadeout{0%{opacity:.5;filter:alpha(opacity=50)}100%{opacity:0;filter:alpha(opacity=0)}}.modeldialog.finishdialog{animation:slideup .3s linear;transform:translate(-50%, 0%);-webkit-transform:translate(-50%, 0%);opacity:0;top:-1%;}@keyframes slideup{0%{top:2%;opacity:1}50%{top:0%;opacity:0.8}100%{top:-1%;opacity:0}}</style>';
+                $("body").append(style)
+            }else return;
+        }
+    }
 </script>
+
 </body>
 </html>
