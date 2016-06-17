@@ -45,54 +45,80 @@
  var dialog1={
      "isajax":0,
      "url":"editor.html",
-     "content":"内容",
+     "content":"内容请认真记录客户状况及需求，以便后续查阅及跟进请认真记录客户状况及需求，以便后续查阅及跟进<button onclick='Dialog(dialog2)'>按钮1</button>",
      "complete":function(){},
      "destroy":function(){}
+ };
+ var dialog2 = {
+     "isajax": 0,
+     "url": "editor.html",
+     "content": "内容请<button onclick='Dialog(dialog3)'>按钮2</button>",
+     "complete": function () {
+     },
+     "destroy": function () {
+     }
+ };
+ var dialog3 = {
+     "isajax": 0,
+     "content": "<button onclick='Dialog(dialog1)'>按钮3</button>"
  };
  $("button").click(function(){
      Dialog(dialog1);
  });
 
  function Dialog(dialog) {
-     addstyle();
+     function count() {
+         var n = 0;
+         return function () {
+             n = n + 1;
+             i=n;
+             console.log(i);
+         }
+     }
+
+     var i;
+     var a =count();
+     i =a();
+
+     addstyle(i);
+
      if (dialog.isajax) {
-         var html = ' <div id="dialog"><div id="modeldialog"><div class="modal-dialog modal-lg mfixedwidth"><div class= "modal-content mcfixedwidth" ></div></div></div></div>';
+         var html = ' <div id="dialog' + i + '" data-dnum=' + i + ' class="dialog"><div id="modeldialog"' + i + '><div class="modal-dialog modal-lg mfixedwidth"><div class= "modal-content mcfixedwidth" ></div></div></div></div>';
          $("body").append(html);
          $.get(dialog.url, function (data) {
              $("#dialog").append('<div class="bidbg"></div>');
-             $("#modeldialog .modal-content").append(data);
-             $("#modeldialog").show();
+             $("#modeldialog" + i + " .modal-content").append(data);
+             $("#modeldialog" + i).show();
              dialog.complete && dialog.complete();
          });
      } else {
-         var html = '<div id="dialog"><div class="bidbg"></div><div id="modeldialog"><div class="modal-dialog modal-sm"> <div class="modal-content clearfix alert">' + dialog.content + '</div></div></div></div>';
+         var html = '<div id="dialog' + i + '" data-dnum=' + i + ' class="dialog"><div class="bidbg"></div><div id="modeldialog' + i + '"><div class="modal-dialog modal-sm"> <div class="modal-content clearfix alert">' + dialog.content + '</div></div></div></div>';
          $("body").append(html);
-         $("#modeldialog").show();
+         $("#modeldialog" + i).show();
          dialog.complete && dialog.complete();
      }
 
      var isTrigger = false;
-     $("body").on("click", "#dialog .bidbg , #modeldialog .close", function () {
-         $("#modeldialog").addClass("finishdialog");
-         $("#dialog .bidbg").addClass("finish");
-         $("#modeldialog").one($.fx.animationEnd,function(){
+     $("body").on("click", "#dialog" + i + " .bidbg , #modeldialog" + i + " .close", function () {
+         $("#modeldialog" + i).addClass("finishdialog");
+         $("#dialog" + i + " .bidbg").addClass("finish");
+         $("#modeldialog" + i).one($.fx.animationEnd, function () {
              console.log("end");
              isTrigger = true;
-             $("#dialog , #Dialogcss").remove();
+             $("#dialog" + i + ", #Dialogcss" + i).remove();
              if (dialog.destroy) {
                  dialog.destroy();
              }
          });
 
          setTimeout(function () {
-             if(isTrigger) return;
-             $("#dialog , #Dialogcss").remove();
+             if (isTrigger) return;
+             $("#dialog" + i + ", #Dialogcss" + i).remove();
              if (dialog.destroy) {
                  dialog.destroy();
              }
          }, 500);//if animationEnd函数失效，运行settimeout函数
      });
-
      $("body").on("click", "#edit-submit", function () {
          $("#modeldialog").addClass("finishdialog");
          $("#dialog .bidbg").addClass("finish");
@@ -111,11 +137,14 @@
              }
          }, 500);
      });
-
-     function addstyle() {
-         var style = '<style id="Dialogcss">#modeldialog{position:absolute;top:2%;left:50%;transform:translate(-50%, 0%);-webkit-transform:translate(-50%, 0%);z-index:1050;display:none;animation:slidedown .3s ease-out;-moz-animation:slidedown .3s ease-out;-webkit-animation:slidedown .3s ease-out;-o-animation:slidedown .3s ease-out}#dialog .bidbg{background:#000;position:fixed;top:0;right:0;bottom:0;left:0;outline:0;z-index:1040;opacity:.5;filter:alpha(opacity=50);animation:fadein .15s linear;-moz-animation:fadein .15s linear;-webkit-animation:fadein .15s linear;-o-animation:fadein .15s linear}@keyframes fadein{0%{opacity:0;filter:alpha(opacity=0)}100%{opacity:.5;filter:alpha(opacity=50)}}@keyframes slidedown{0%{top:-1%;}50%{top:1%;}100%{top:2%}}#dialog .bidbg.finish{animation:fadeout .5s ease-out;opacity: 0;filter: alpha(opacity = 0);}@keyframes fadeout{0%{opacity:.5;filter:alpha(opacity=50)}100%{opacity:0;filter:alpha(opacity=0)}}#modeldialog.finishdialog{animation:slideup .3s linear;transform:translate(-50%, 0%);-webkit-transform:translate(-50%, 0%);opacity:0;top:-1%;}@keyframes slideup{0%{top:2%;opacity:1}50%{top:0%;opacity:0.8}100%{top:-1%;opacity:0}}</style>';
+     function addstyle(i) {
+         var zindex1 = 1041 + parseInt(i * 5);
+         var zindex2 = 1040 + parseInt(i * 5);
+         var style = '<style id="Dialogcss' + i + '">#modeldialog' + i + '{position:absolute;top:2%;left:50%;transform:translate(-50%, 0%);-webkit-transform:translate(-50%, 0%);z-index:' + zindex1 + ';display:none;animation:slidedown .3s ease-out;-moz-animation:slidedown .3s ease-out;-webkit-animation:slidedown .3s ease-out;-o-animation:slidedown .3s ease-out}#dialog' + i + ' .bidbg{background:#000;position:fixed;top:0;right:0;bottom:0;left:0;outline:0;z-index:' + zindex2 + ';opacity:.5;filter:alpha(opacity=50);animation:fadein .15s linear;-moz-animation:fadein .15s linear;-webkit-animation:fadein .15s linear;-o-animation:fadein .15s linear}@keyframes fadein{0%{opacity:0;filter:alpha(opacity=0)}100%{opacity:.5;filter:alpha(opacity=50)}}@keyframes slidedown{0%{top:-1%;}50%{top:1%;}100%{top:2%}}#dialog' + i + ' .bidbg.finish{animation:fadeout .5s ease-out;opacity: 0;filter: alpha(opacity = 0);}@keyframes fadeout{0%{opacity:.5;filter:alpha(opacity=50)}100%{opacity:0;filter:alpha(opacity=0)}}#modeldialog' + i + '.finishdialog{animation:slideup .3s linear;transform:translate(-50%, 0%);-webkit-transform:translate(-50%, 0%);opacity:0;top:-1%;}@keyframes slideup{0%{top:2%;opacity:1}50%{top:0%;opacity:0.8}100%{top:-1%;opacity:0}}</style>';
          $("body").append(style)
      }
+
+
  }
 
 
