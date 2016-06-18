@@ -60,11 +60,13 @@
                         --nowpage;
                         if (nowpage >= 0) {
                             $("#container").animate({top: nowpage * -100 + "%"}, 300);
+                            $(".page" + nowpage).find("h1").delay(300).animate({'padding-top': '50px'}, 1000);
                         } else return ++nowpage;
                     } else if (endpos_Y > 0) {
                         ++nowpage;
                         if (nowpage <= pagenum) {
                             $("#container").animate({top: nowpage * -100 + "%"}, 300);
+                            $(".page" + nowpage).find("h1").delay(300).animate({'padding-top': '50px'}, 1000);
                         } else return --nowpage;
                     }
 
