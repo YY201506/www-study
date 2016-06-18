@@ -139,8 +139,8 @@
                     }, 500);
                 });
                 function addstyle(i) {
-                    var zindex1 = 1041 + parseInt(i * 5);
-                    var zindex2 = 1040 + parseInt(i * 5);
+                    var zindex1 = 1041 + parseInt(i * 2);
+                    var zindex2 = 1040 + parseInt(i * 2);
                     var style = '<style id="Dialogcss' + i + '">#dialog' + i + '{position:fixed;top:0;right:0;bottom:0;left:0;outline:0;}#modeldialog' + i + '{position:absolute;top:2%;left:50%;transform:translate(-50%, 0%);-webkit-transform:translate(-50%, 0%);z-index:' + zindex1 + ';display:none;animation:slidedown .3s ease-out;-moz-animation:slidedown .3s ease-out;-webkit-animation:slidedown .3s ease-out;-o-animation:slidedown .3s ease-out}#dialog' + i + ' .bidbg{background:#000;height:100%;z-index:' + zindex2 + ';opacity:.5;filter:alpha(opacity=50);animation:fadein .15s linear;-moz-animation:fadein .15s linear;-webkit-animation:fadein .15s linear;-o-animation:fadein .15s linear}@keyframes fadein{0%{opacity:0;filter:alpha(opacity=0)}100%{opacity:.5;filter:alpha(opacity=50)}}@keyframes slidedown{0%{top:-1%;}50%{top:1%;}100%{top:2%}}#dialog' + i + ' .bidbg.finish{animation:fadeout .5s ease-out;opacity: 0;filter: alpha(opacity = 0);}@keyframes fadeout{0%{opacity:.5;filter:alpha(opacity=50)}100%{opacity:0;filter:alpha(opacity=0)}}#modeldialog' + i + '.finishdialog{animation:slideup .3s linear;transform:translate(-50%, 0%);-webkit-transform:translate(-50%, 0%);opacity:0;top:-1%;}@keyframes slideup{0%{top:2%;opacity:1}50%{top:0%;opacity:0.8}100%{top:-1%;opacity:0}}</style>';
                     $("body").append(style)
                 }
