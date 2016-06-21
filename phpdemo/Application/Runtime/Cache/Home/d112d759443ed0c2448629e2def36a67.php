@@ -6,7 +6,7 @@
         <?php if($course["item"] == 3): ?>案例中心
             <?php else: echo ($course["img_name"]); endif; ?>
     </title>
-    <link rel="stylesheet" href="/phpdemo/Public/CSS_js/help.css"/>
+    <link rel="stylesheet" href="/www-study/phpdemo/Public/CSS_js/help.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
@@ -43,7 +43,7 @@
 </head>
 <body>
 
-<div class="head1"><a href="#" onclick="window.history.back(); return false;"><img class="goback" src="/phpdemo/Public/Image/icon/houtui.png"/></a>
+<div class="head1"><a href="#" onclick="window.history.back(); return false;"><img class="goback" src="/www-study/phpdemo/Public/Image/icon/houtui.png"/></a>
     <?php if($course["item"] == 3): ?>案例中心
         <?php else: echo ($course["img_name"]); endif; ?>
 </div>
@@ -92,8 +92,8 @@ var myVideo=document.getElementById("video");
         
 <div class="test">
     <?php if(is_array($block)): foreach($block as $key=>$vo): ?><div class="testroom">
-            <a href="/phpdemo/Home/Learn/course/item/<?php echo ($vo["item"]); ?>/id/<?php echo ($vo["learn_id"]); ?>">
-                <img src="/phpdemo/Public/Image/icon/<?php echo ($vo["url"]); ?>" class="pic"/>
+            <a href="/www-study/phpdemo/Home/Learn/course/item/<?php echo ($vo["item"]); ?>/id/<?php echo ($vo["learn_id"]); ?>">
+                <img src="/www-study/phpdemo/Public/Image/icon/<?php echo ($vo["url"]); ?>" class="pic"/>
                 <div class="divr"><span><?php echo ($vo["img_name"]); ?></span></div></a>
         </div><?php endforeach; endif; ?>
 
@@ -102,12 +102,12 @@ var myVideo=document.getElementById("video");
     <?php else: ?>
         
 <!-- <div class="artical">
-        <img src="/phpdemo/Public/Image/c1.jpg"/>
+        <img src="/www-study/phpdemo/Public/Image/c1.jpg"/>
         <p class="lh"><span class="atitle">按压方法</span>用掌根重叠放在另一手背上使手指脱离胸壁，可采用两手指交叉抬起法。
             抢救者双臂应绷直，双肩在患者胸骨上方正中，垂直向下按压，按压力量应足以使胸骨下沉至少5 cm，压下后即放开，但双手不应离开胸壁，使胸骨自行弹回原位，如此反复操作。
             注重每次按压后使胸廓回弹恢复原状，尽量避免按压中断。</p>
         <p class="lh"> 按压方法：用掌根重叠放在另一手背上使手指脱离胸壁，可采用两手指交叉抬起法。</p>
-        <img src="/phpdemo/Public/Image/c1.jpg"/>
+        <img src="/www-study/phpdemo/Public/Image/c1.jpg"/>
     </div>-->
 <script type="text/javascript">
     var art=[
@@ -118,7 +118,7 @@ var myVideo=document.getElementById("video");
         var content='';
         for(var i=0;i<arctical.length;i++){
             if(arctical[i].imgsrc!==""){
-                content+='<img src="/phpdemo/Public/Image/'+arctical[i].imgsrc+'"/>';
+                content+='<img src="/www-study/phpdemo/Public/Image/'+arctical[i].imgsrc+'"/>';
             }
             if(arctical[i].atitle!==""){
                 content+='<p class="lh"><span class="atitle">'+arctical[i].atitle+'</span>'+arctical[i].p+'</p>';

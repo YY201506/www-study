@@ -35,20 +35,20 @@
             })
         })(window, document);
     </script>
-    <link rel="stylesheet" href="/phpdemo/Public/CSS_js/swiper.min.css"/>
-    <link rel="stylesheet" href="/phpdemo/Public/CSS_js/help.css"/>
+    <link rel="stylesheet" href="/www-study/phpdemo/Public/CSS_js/swiper.min.css"/>
+    <link rel="stylesheet" href="/www-study/phpdemo/Public/CSS_js/help.css"/>
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="/phpdemo/Public/CSS_js/swiper-3.3.0.jquery.min.js"></script>
+    <script type="text/javascript" src="/www-study/phpdemo/Public/CSS_js/swiper-3.3.0.jquery.min.js"></script>
 </head>
 <body>
 
-    <div class="head"><img class="logo" src="/phpdemo/Public/Image/logo.gif"/><?php echo ($item["name"]); ?> <a href="/phpdemo/Home/Search" style="position: absolute;right: 0.13rem;height:0.5rem;"/><img style="width: 0.3rem;padding-top: 0.09rem;" src="/phpdemo/Public/Image/icon/iconfont-iconfontsousuo.png"/></a></div>
+    <div class="head"><img class="logo" src="/www-study/phpdemo/Public/Image/logo.gif"/><?php echo ($item["name"]); ?> <a href="/www-study/phpdemo/Home/Search" style="position: absolute;right: 0.13rem;height:0.5rem;"/><img style="width: 0.3rem;padding-top: 0.09rem;" src="/www-study/phpdemo/Public/Image/icon/iconfont-iconfontsousuo.png"/></a></div>
  
 
     <div class="nav clearfix">
-        <a href="/phpdemo/index.php/Home/Learn/index/id/1">常识</a><span>|</span>
-        <a href="/phpdemo/index.php/Home/Learn/index/id/2">课程</a><span>|</span>
-        <a href="/phpdemo/index.php/Home/Learn/index/id/3">案例</a>
+        <a href="/www-study/phpdemo/index.php/Home/Learn/index/id/1">常识</a><span>|</span>
+        <a href="/www-study/phpdemo/index.php/Home/Learn/index/id/2">课程</a><span>|</span>
+        <a href="/www-study/phpdemo/index.php/Home/Learn/index/id/3">案例</a>
 
     </div>
 <script type="text/javascript">
@@ -62,9 +62,9 @@
 <?php if($item["item"] == 1): ?><div class="banner">
          <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="/phpdemo/Public/Image/n1.jpg"></div>
-                <div class="swiper-slide"><img src="/phpdemo/Public/Image/n2.jpg"></div>
-                <div class="swiper-slide"><img src="/phpdemo/Public/Image/n3.jpg"></div>
+                <div class="swiper-slide"><img src="/www-study/phpdemo/Public/Image/n1.jpg"></div>
+                <div class="swiper-slide"><img src="/www-study/phpdemo/Public/Image/n2.jpg"></div>
+                <div class="swiper-slide"><img src="/www-study/phpdemo/Public/Image/n3.jpg"></div>
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -83,15 +83,15 @@
     <div class="block1">
         <div class="title"><?php echo ($item["item_name"]); ?></div>
 
-        <?php if(is_array($block)): foreach($block as $key=>$vo): ?><a href="/phpdemo/Home/Learn/course/item/<?php echo ($vo["item"]); ?>/id/<?php echo ($vo["learn_id"]); ?>"><img src="/phpdemo/Public/Image/icon/<?php echo ($vo["url"]); ?>"/><?php echo ($vo["img_name"]); ?></a><?php endforeach; endif; ?>
+        <?php if(is_array($block)): foreach($block as $key=>$vo): ?><a href="/www-study/phpdemo/Home/Learn/course/item/<?php echo ($vo["item"]); ?>/id/<?php echo ($vo["learn_id"]); ?>"><img src="/www-study/phpdemo/Public/Image/icon/<?php echo ($vo["url"]); ?>"/><?php echo ($vo["img_name"]); ?></a><?php endforeach; endif; ?>
     </div>
 
     <?php elseif($item["item"] == 2): ?>
         
 <div class="train">
     <?php if(is_array($block)): foreach($block as $key=>$vo): ?><div class="room">
-            <a href="/phpdemo/Home/Learn/course/item/<?php echo ($vo["item"]); ?>/id/<?php echo ($vo["learn_id"]); ?>">
-                <img src="/phpdemo/Public/Image/<?php echo ($vo["url"]); ?>" class="pic"/>
+            <a href="/www-study/phpdemo/Home/Learn/course/item/<?php echo ($vo["item"]); ?>/id/<?php echo ($vo["learn_id"]); ?>">
+                <img src="/www-study/phpdemo/Public/Image/<?php echo ($vo["url"]); ?>" class="pic"/>
                 <div class="divr"><span><?php echo ($vo["img_name"]); ?></span><span class="time"><?php echo ($vo["creattime"]); ?></span></div></a>
         </div><?php endforeach; endif; ?>
 
@@ -115,8 +115,8 @@ var i = setInterval(function() {
     
 <div class="test">
     <?php if(is_array($block)): foreach($block as $key=>$vo): ?><div class="testroom">
-            <a href="/phpdemo/Home/Learn/course/item/<?php echo ($vo["item"]); ?>/id/<?php echo ($vo["learn_id"]); ?>">
-                <img src="/phpdemo/Public/Image/icon/<?php echo ($vo["url"]); ?>" class="pic"/>
+            <a href="/www-study/phpdemo/Home/Learn/course/item/<?php echo ($vo["item"]); ?>/id/<?php echo ($vo["learn_id"]); ?>">
+                <img src="/www-study/phpdemo/Public/Image/icon/<?php echo ($vo["url"]); ?>" class="pic"/>
                 <div class="divr"><span><?php echo ($vo["img_name"]); ?></span></div></a>
         </div><?php endforeach; endif; ?>
 
@@ -126,10 +126,10 @@ var i = setInterval(function() {
     <?php else: ?> 
 <div class="list">
     <?php if(is_array($block)): foreach($block as $key=>$vo): ?><div class="case-room">
-            <a href="/phpdemo/Home/Learn/course/item/<?php echo ($vo["item"]); ?>/id/<?php echo ($vo["learn_id"]); ?>">
+            <a href="/www-study/phpdemo/Home/Learn/course/item/<?php echo ($vo["item"]); ?>/id/<?php echo ($vo["learn_id"]); ?>">
                 <p><?php echo ($vo["img_name"]); ?></p>
                 <div class="case-detail"><?php echo ($vo["analysis"]); ?></div>
-                <img class="credit" src="/phpdemo/Public/Image/credit.png"/>
+                <img class="credit" src="/www-study/phpdemo/Public/Image/credit.png"/>
             </a>
         </div><?php endforeach; endif; ?>
 

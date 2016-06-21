@@ -7,7 +7,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <meta name="format-detection" content="telephone=no, email=no"/>
-    <link rel="stylesheet" href="/phpdemo/Public/CSS_js/help.css"/>
+    <link rel="stylesheet" href="/www-study/phpdemo/Public/CSS_js/help.css"/>
 
     <script type="text/javascript">
         (function (e, a) {
@@ -39,7 +39,7 @@
     </script>
 </head>
 <body>
-<div class="head1"><a href="#"  onclick="window.history.back(); return false;"><img class="goback"  src="/phpdemo/Public/Image/icon/houtui.png"/></a>
+<div class="head1"><a href="#"  onclick="window.history.back(); return false;"><img class="goback"  src="/www-study/phpdemo/Public/Image/icon/houtui.png"/></a>
     <div class="search"><input type="text" size=14 id="course" value=""><span id="search_btn">搜索</span></div>
 </div>
 <div class="block2">
@@ -48,9 +48,11 @@
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <script type="text/javascript">
+
         $(".block2").hide();
         var $search=$('#course');
         $search.focus();
+
         function result(obj){
             var res='';
             res+='<div class="gray_title">相关课程</div>';
@@ -63,6 +65,7 @@
             }
             $(".block2").append(res);
         }
+
         $("#search_btn").click(function(){   
             if($("#course").val()=="")
             {
@@ -71,7 +74,8 @@
                 $search.focus();
                 //return false;
             }else{
-                $.post("/phpdemo/Home/Search/checksearch",
+
+                $.post("/www-study/phpdemo/Home/Search/checksearch",
                       {
                         course:$("#course").val()
                       },
@@ -83,16 +87,19 @@
                         res+='<div class="gray_title">相关课程</div>';
                         if(data.length>=1){
                             for(var i=0;i<data.length;i++){
-                                res+='<a href="/phpdemo/Home/Learn/course/item/'+data[i].item+'/id/'+data[i].learn_id+'">'+data[i].img_name+'</a>';
+                                res+='<a href="/www-study/phpdemo/Home/Learn/course/item/'+data[i].item+'/id/'+data[i].learn_id+'">'+data[i].img_name+'</a>';
                             }
                         }else{
                             res+='无';
                         }
                         $(".block2").append(res);
                         $(".block2").show();
+
                    },'json');
+
         }
     });
+
 </script>
 </body>
 </html>
