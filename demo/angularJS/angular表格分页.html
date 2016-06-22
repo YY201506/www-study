@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>angular</title>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+</head>
+<body>
+<style>
+    #divMain{
+        width:500px;
+        margin:0 auto;
+        margin-top:100px;
+    }
+    nav{
+        position:relative;
+        width:100%;
+        height:50px;
+    }
+    .pagination{
+        right:0px;
+        position:absolute;
+        top:-30px;
+    }
+    nav li{
+        cursor:pointer;
+    }
+</style>
+<!--<div id="divMain" ng-app="myApp" ng-controller="myCtrl">
+    <table class="table table-bordered">
+        <tr>
+            <th>index</th>
+            <th ng-repeat="(x,y) in items[0]">{{ x }}</th>
+        </tr>
+        <tr ng-repeat="x in items">
+            <td>{{ $index + 1 }}</td>
+            <td ng-bind="x.Name"></td>
+            <td ng-bind="x.City"></td>
+            <td ng-bind="x.Country"></td>
+        </tr>
+    </table>
+    <nav>
+        <ul class="pagination">
+            <li>
+                <a ng-click="Previous()">
+                    <span>上一页</span>
+                </a>
+            </li>
+            <li ng-repeat="page in pageList" ng-class="{active: isActivePage(page)}">
+                <a ng-click="selectPage(page)">{{ page }}</a>
+            </li>
+            <li>
+                <a ng-click="Next()">
+                    <span>下一页</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<script type="text/javascript">
+    var app = angular.module("myApp", []);
+    app.controller("myCtrl", function ($scope, $http) {
+        $http.get("server.json").then(function (response) {
+            //数据源
+            $scope.data = response.data.records;
+            //分页总数
+            $scope.pageSize = 5;
+            $scope.pages = Math.ceil($scope.data.length / $scope.pageSize); //分页数
+            $scope.newPages = $scope.pages > 5 ? 5 : $scope.pages;
+            $scope.pageList = [];
+            $scope.selPage = 1;
+            //设置表格数据源(分页)
+            $scope.setData = function () {
+                $scope.items = $scope.data.slice(($scope.pageSize * ($scope.selPage - 1)), ($scope.selPage * $scope.pageSize));//通过当前页数筛选出表格当前显示数据
+            }
+            $scope.items = $scope.data.slice(0, $scope.pageSize);
+            //分页要repeat的数组
+            for (var i = 0; i < $scope.newPages; i++) {
+                $scope.pageList.push(i + 1);
+            }
+            //打印当前选中页索引
+            $scope.selectPage = function (page) {
+                //不能小于1大于最大
+                if (page < 1 || page > $scope.pages) return;
+                //最多显示分页数5
+                if (page > 2) {
+                    //因为只显示5个页数，大于2页开始分页转换
+                    var newpageList = [];
+                    for (var i = (page - 3); i < ((page + 2) > $scope.pages ? $scope.pages : (page + 2)); i++) {
+                        newpageList.push(i + 1);
+                    }
+                    $scope.pageList = newpageList;
+                }
+                $scope.selPage = page;
+                $scope.setData();
+                $scope.isActivePage(page);
+                console.log("选择的页：" + page);
+            };
+            //设置当前选中页样式
+            $scope.isActivePage = function (page) {
+                return $scope.selPage == page;
+            };
+            //上一页
+            $scope.Previous = function () {
+                $scope.selectPage($scope.selPage - 1);
+            }
+            //下一页
+            $scope.Next = function () {
+                $scope.selectPage($scope.selPage + 1);
+            };
+        });
+    })
+</script>-->
+<div ng-app="myapp" ng-controller="custom">
+    <table class="table table-bordered">
+        <tr>
+            <th>index</th>
+            <th ng-repeat="(x,y) in data[0]">{{x}}</th>
+        </tr>
+        <tr ng-repeat="x in items">
+            <td>{{$index+1}}</td>
+            <td>{{x.Name}}</td>
+            <td>{{x.City}}</td>
+            <td>{{x.Country}}</td>
+        </tr>
+    </table>
+    <nav>
+        <ul class="pagination">
+            <li>
+                <a ng-click="previous()">
+                    <span>上一页</span>
+                </a>
+            </li>
+            <li ng-repeat="xx in pagelist" ng-class="{active: isActivePage(xx)}">
+                <a ng-click="selectpage(xx)">{{ xx }}</a>
+            </li>
+            <li>
+                <a ng-click="next()">
+                    <span>下一页</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <p>{{pagesize}}</p>
+    <p>{{length}}</p>
+    <p>{{pages}}</p>
+    <p>{{items}}</p>
+    <p>{{pagelist}}</p>
+    <p>{{setData}}</p>
+  <!--  <div class="fine">
+        <ul>
+            <li><a>hohhoho</a></li>
+            <li><a>hohho</a></li>
+            <li><a>hohohoho</a></li>
+        </ul>
+    </div>
+    <div class="fine">
+        <ul>
+            <li><a>hoho</a></li>
+            <li><a>hohho</a></li>
+            <li><a>hohohohhohohho</a></li>
+        </ul>
+    </div>
+    <style>
+        *{margin:0;padding:0;}
+        .fine{width:auto; display:inline-block;margin:20px;}
+        .fine ul{display:block;border:1px solid #9d9d9d;}
+        .fine ul li{list-style:none;line-height:40px; padding:0 35px;}
+        .fine ul li:hover{background:#CCCCCC;}
+    </style>-->
+    
+</div>
+<script>
+    var app = angular.module('myapp', []);
+    app.controller('custom', function ($scope, $http) {
+        $http.get('server.json').success(function (response) {  //.then()
+            $scope.data = response.records;
+            $scope.pagesize = 2;  //每页3行
+            $scope.length = $scope.data.length;
+            $scope.pages = Math.ceil($scope.length / $scope.pagesize);  //向上取整,页数
+            $scope.newPage = $scope.pages>4?4:$scope.pages;
+            $scope.pagelist = []; //每页内容
+            $scope.selpage = 1;   //默认选择页
+            $scope.setData = function() {  //表格内容（分页）
+                $scope.items = $scope.data.slice(($scope.pagesize * ($scope.selpage - 1)), ($scope.selpage * $scope.pagesize)); //连续一段分割，当前页筛选出当前数据
+            };
+            $scope.items = $scope.data.slice(0,$scope.pagesize);
+
+            for(var i = 0;i<$scope.newPage;i++){  //分页要repeat的数组
+                $scope.pagelist.push(i+1);
+            }
+            $scope.selectpage = function(page){ //翻页，当前页的索引内容
+                if(page<1||page>$scope.pages) return;
+                if(page>2){
+                    var  newpagelist = [];
+                    for(var i=(page-3);i<((page+2)>$scope.pages?$scope.pages:(page+2));i++){
+                        newpagelist.push(i+1);
+                    } //***
+                    newpagelist = [];
+                    $scope.pagelist = newpagelist;
+                }
+                $scope.selpage =page;
+                $scope.setData();
+                $scope.isActivePage(page);
+                console.log("选"+page+"页");
+            }
+            $scope.isActivePage = function(page){
+                return $scope.selpage == page;
+            };
+            $scope.previous = function(){
+                $scope.selectpage($scope.selpage -1);
+            }
+            $scope.next = function () {
+                $scope.selectpage($scope.selpage + 1);
+            }
+        });
+    });
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

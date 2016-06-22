@@ -1,0 +1,298 @@
+<style>
+    .modal-header{
+        background:#23A57f;
+        padding:5px;
+        color:#fff;
+    }
+    .modal-header h4{
+        font-size:14px
+    }
+    .modal-body{
+        background:#f2f2f2
+    }
+    .modal-footer{
+        background:#23A57f;
+    }
+    .nav-tabs li a{
+        background:#dedede
+    }
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover{
+        color:#fff;
+        background:#23a57f
+    }
+    .allselect select{
+        border-radius:3px;
+        border:1px solid #CCC;
+        font-size:12px;
+        padding:3px;
+    }
+    .input-border{
+        border-radius:3px;
+        border:1px solid #CCC;
+        font-size:12px;
+        padding:3px;
+    }
+
+</style>
+<div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">客户信息编辑</h4>
+            </div>
+    <div class="modal-body clearfix">
+        <div class="pull-left dialogl">
+            <div class="help-block">基本信息</div>
+            <input type="hidden" value="2" name="cid">
+            <div class="clearfix">
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                            姓名
+                                          </span>
+                        <input type="text" name="name" class="form-control input-sm" aria-label="..." id="name"
+                               value="崔哈哈">
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                            电话
+                                          </span>
+                        <input type="text" class="form-control input-sm" name="phone" aria-label="..." id="tel"
+                               value="13632415503" readonly="readonly">
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                           来源渠道
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." id="from" value="其他来源"
+                               readonly="">
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                           团队资源
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." id="" value="是"
+                               readonly="">
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                           省份
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." id="" value="广东省"
+                               readonly="">
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                           城市
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." id="" value="广州市"
+                               readonly="">
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="fixedwidth5 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                           公司名称
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." id="address" name="address"
+                               value="地址asd" placeholder="请补充完整">
+                    </div>
+                </div>
+                <div class="fixedwidth4 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                           推广渠道
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." id="" value="其他来源"
+                               readonly="">
+                    </div>
+                </div>
+
+            </div>
+            <div class="clearfix">
+                <div class="fixedwidth2 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                            成立时间
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." readonly=""
+                               value="2016-05-24 09:36:58">
+                    </div>
+                </div>
+                <div class="fixedwidth2 pull-left marright10 marbot10">
+                    <div class="input-group">
+                                          <span class="input-group-addon">
+                                            申请时间
+                                          </span>
+                        <input type="text" class="form-control input-sm" aria-label="..." readonly=""
+                               value="2016-05-24 09:36:58">
+                    </div>
+                </div>
+
+            </div>
+            <div class="martop20">
+                <ul id="myTab" class="nav nav-tabs nav-tabsmall">
+                    <li class="active"><a href="#t1" data-toggle="tab">跟进记录</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane in active" id="t1">
+                        <div class="resettext">
+                            <ul class="">
+                                <li class="">
+                                    <h5 class="list-group-item-heading">
+                                        <small class="text-warning">2016-04-20 00:00:00</small>
+                                    </h5>
+                                    哈哈哈哈哈哈哈
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading">
+                                        <small class="text-warning">2016-04-20 17:50:16</small>
+                                    </h5>
+                                    asdasd
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading">
+                                        <small class="text-warning">2016-04-20 18:12:52</small>
+                                    </h5>
+                                    哈哈
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading">
+                                        <small class="text-warning">2016-04-20 18:20:41</small>
+                                    </h5>
+                                    111
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading">
+                                        <small class="text-warning">2016-04-20 18:20:58</small>
+                                    </h5>
+                                    234
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading"><span class="badge bg-z">A-有效预约</span>
+                                        <small class="text-warning">2016-04-21 11:18:47</small>
+                                    </h5>
+                                    444
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading"><span class="badge bg-z">A-有效预约</span>
+                                        <small class="text-warning">2016-04-21 14:55:39</small>
+                                    </h5>
+                                    测试下咯
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading"><span class="badge bg-z">A-有效预约</span>
+                                        <small class="text-warning">2016-04-21 16:03:06</small>
+                                    </h5>
+                                    啊啊啊
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading"><span class="badge bg-z">B-意向跟进</span>
+                                        <small class="text-warning">2016-04-22 15:05:38</small>
+                                    </h5>
+                                    这里是i
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading"><span class="badge bg-z">D-上门</span>
+                                        <small class="text-warning">2016-04-22 15:24:12</small>
+                                    </h5>
+                                    好开会开会开
+                                </li>
+                                <li class="">
+                                    <h5 class="list-group-item-heading"><span class="badge bg-z">D-上门</span>
+                                        <small class="text-warning">2016-05-24 09:36:58</small>
+                                    </h5>
+                                    555
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pull-right dialogr">
+            <div class="help-block stuts-tips">状态编辑</div>
+
+            <div class="fixedwidth marright10 marbot10">
+                <div class="input-group padtopbot10">
+                    当前状态：
+                    <label class="radio-inline text-success">
+                        <input type="radio" name="status" id="inlineRadio1" value="2" required> 跟进中
+                    </label>
+                    <label class="radio-inline text-danger">
+                        <input type="radio" name="status" id="inlineRadio2" value="3" required> 挂单
+                    </label>
+                </div>
+            </div>
+
+            <div class="help-block martop20">新增跟进记录</div>
+            <div class="fixedwidth marright10 marbot10">
+                <textarea class="form-control" name="content" rows="15"></textarea>
+            </div>
+            <p class="tip">*请认真记录客户状况及需求，以便后续查阅及跟进</p>
+        </div>
+    </div>
+            <div class="modal-footer">
+                <button type="button" id="edit-submit" class="btn btn-primary btn-sm" data-loading-text="保存中···" data-complete-text="完成" aria-hidden="true" autocomplete="off">保存更改</button>
+            </div>
+        </div>
+<script>
+    $('.form_date').datetimepicker({
+        language: 'zh-CN',
+        weekStart: 1,
+        todayBtn: 1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $("input[name='inlineRadioOptions'][value='挂单']").attr("checked","checked");
+
+    var obj1 = document.getElementById("name");
+    immediately(obj1);
+    var obj2 = document.getElementById("intend");
+    immediately(obj2);
+    var obj3 = document.getElementById("state");
+    immediately(obj3);
+
+    function immediately(element){
+        if("\v"=="v") {
+            element.onpropertychange = webChange;
+        }else{
+            element.addEventListener("input",webChange,false);
+        }
+        function webChange(){
+            if(element.value){document.getElementById("example1").disabled=false;};
+        }
+    }
+
+    var btn =  $("#example1");
+    btn.click(function(){
+        btn.button('loading');
+        setTimeout(function(){
+            btn.button("complete");
+            $('.bs-example-modal-lg').modal('hide');
+            $('.bs-example-modal-sm').modal('show');
+            setTimeout(function(){
+                $('.bs-example-modal-sm').modal('hide');
+            },1200);
+        },1200);
+    });
+</script>
