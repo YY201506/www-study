@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件作用域</title>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app="myapp">
+
+<div ng-controller="outerctrl">
+    <span>{{data.a}}</span>
+    <div ng-controller="innerctrl">
+        <span>{{data.a}}</span>
+        <button ng-click="data.a=data.a+1">a++</button>
+    </div>
+</div>
+<!--data是同一个引用，对这个对象上面的属性修改，是可以反映到两级对象上的。-->
+
+<script>
+    var app = angular.module('myapp',[]);
+    app.controller("outerctrl" , function($scope){
+        $scope.data={
+            a : 1
+        };
+    });
+    app.controller("innerctrl", function ($scope) {
+
+    });
+
+
+    function Outer() {
+        this.data={
+            a:1
+        };
+    }
+    function Inner() {
+    }
+    var outer = new Outer();  //实例对象
+    Inner.prototype = outer;  //inner的原型对象属性prototype是继承outer
+    var inner = new Inner();  //创建inner的实例对象Inner
+
+    console.log(outer.data.a);
+    console.log(inner.data.a);
+
+    // 注意，这个时候会怎样？
+    inner.data.a += 1;
+
+    console.log(outer.data.a);
+    console.log(inner.data.a);
+
+
+</script>
+</body>
+</html>

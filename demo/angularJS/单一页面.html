@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>single</title>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+</head>
+<body ng-app="myapp">
+<!--<div ng-app="myapp" ng-controller="single">
+    <div ng-switch="condition">
+        <div ng-switch-when="A">A</div>
+        <div ng-switch-when="B">B</div>
+        <div ng-switch-when="C">C</div>
+    </div>
+    <button ng-click="a()">a()</button>
+    <button ng-click="b()">b()</button>
+    <button ng-click="c()">c()</button>
+</div>
+<script>
+    var app = angular.module('myapp',[]);
+    app.controller('single',function($scope){
+        $scope.condition="";
+        $scope.a = function(){
+            $scope.condition = "A";
+        }
+        $scope.b = function () {
+            $scope.condition = "B";
+        }
+        $scope.c = function () {
+            $scope.condition = "C";
+        }
+    });
+</script>
+//switch-->
+<!--
+<div ng-controller="regionctrl">
+    <ul class="provicestyle list-group">
+        <li ng-repeat="province in provinceArr"
+            ng-class="{true:'list-group-item active', false: 'list-group-item'}[province==selectedProvince]" ng-click="selectProvince(province)">{{province}}</li>
+    </ul>
+    <ul class="citystyle list-group">
+        <li ng-repeat="city in cityArr" ng-click="selectCity(city)">{{city}}</li>
+    </ul>
+
+    <select class="form-control col-md-6" ng-model="selectedProvince"
+            ng-options="province for province in provinceArr"></select>
+    <select class="form-control col-md-6" ng-model="selectedCity" ng-options="city for city in cityArr"></select> &lt;!&ndash;?? ng-options&ndash;&gt;
+</div>
+<script>
+    var app = angular.module('myapp', []);
+    app.controller('regionctrl',function($scope){
+        $scope.provinceArr = ["江苏","云南"];
+        $scope.cityArr= [];
+        $scope.$watch("selectedProvince",function(province){
+            console.log("要执行联动！"+province);
+            switch (province){
+                case "江苏":$scope.cityArr=["南京","泗州"];break;
+                case "云南":$scope.cityArr = ["昆明", "丽江","西双版纳"];break;
+            }
+        });
+        $scope.selectProvince = function(province){
+            $scope.selectedProvince = province;
+        };
+        $scope.selectCity = function (city) {
+            $scope.selectedCity = city;
+            alert(city);
+        };
+    });
+</script>-->
+
+
+<div class="panel panel-default ng-scope" ng-controller="EmployeeCtrl">
+    <div class="panel-heading">员工列表</div>
+    <div class="panel-body">
+        <table class="table table-bordered table-hover">
+            <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+                <th>出生地</th>
+                <th>民族</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="employee in employees" ng-click="selectEmployee(employee)"
+                ng-class="{true:'info', false: ''}[employee==selectedEmployee]">
+                <td>{{employee.name}}</td>
+                <td>{{employee.age}}</td>
+                <td>{{(employee.gender == "1") ? "男" : "女"}}</td>
+                <td>{{employee.province}}省{{employee.city}}市</td>
+                <td>{{(employee.minority == "yes") ? employee.nation : "汉族"}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="panel panel-default ng-scope">
+            <div class="panel-heading">员工详细信息</div>
+            <div class="panel-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">姓名</label>
+
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" placeholder="姓名" ng-model="editingEmployee.name"
+                                   ng-readonly="!editing"/> <!--editingEmployee 的各个属性名-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">年龄</label>
+
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" placeholder="年龄" ng-model="editingEmployee.age"
+                                   ng-readonly="!editing"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">性别</label>
+
+                        <div class="col-sm-8">
+                            <label class="radio-inline">
+                                <input type="radio" name="genderRadioGroup" value="1" ng-disabled="!editing"
+                                       ng-model="editingEmployee.gender"/>男
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="genderRadioGroup" value="0" ng-disabled="!editing"
+                                       ng-model="editingEmployee.gender"/>女
+                            </label>
+                        </div><!--默认选女0-->
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">出生地</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" ng-model="editingEmployee.province"
+                                    ng-disabled="!editing" ng-options="province for province in provinceArr"></select>
+                        </div>
+                        <div class="col-sm-4">
+                            <select class="form-control" ng-model="editingEmployee.city"
+                                    ng-disabled="!editing" ng-options="city for city in cityArr"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">民族</label>
+
+                        <div class="col-sm-8">
+                            <label class="radio-inline">
+                                <input type="radio" name="nationRadioGroup" value="no" ng-disabled="!editing"
+                                       ng-model="editingEmployee.minority"/>汉族
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="nationRadioGroup" value="yes" ng-disabled="!editing"
+                                       ng-model="editingEmployee.minority"/>少数民族
+                            </label>
+                            <input type="text" class="form-control" ng-show="editingEmployee.minority=='yes'"
+                                   placeholder="请填写民族" ng-readonly="!editing"
+                                   ng-model="editingEmployee.nation"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-8" ng-hide="editing">
+                            <button type="button" class="btn btn-default" ng-click="create()">新增</button>
+                            <button type="button" class="btn btn-default" ng-click="modify()"
+                                    ng-disabled="!selectedEmployee">修改
+                            </button>
+                            <button type="button" class="btn btn-default" ng-click="remove()"
+                                    ng-disabled="!selectedEmployee">删除
+                            </button>
+                        </div>
+                        <div class="col-sm-offset-2 col-sm-8" ng-show="editing">
+                            <button type="submit" class="btn btn-default" ng-click="ok()"
+                                    ng-disabled="okDisabled()">确定
+                            </button>
+                            <button type="button" class="btn btn-default" ng-click="cancel()">取消</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var app = angular.module('myapp', []);
+    app.controller("EmployeeCtrl", ["$scope", function ($scope) {  //数组？
+        $scope.editing = false;
+
+        $scope.employees = [];  //员工信息数组
+        $scope.selectedEmployee = null;  //未选择员工
+        $scope.editingEmployee = {};  //编辑的员工信息对象
+
+        $scope.provinceArr = ["江苏", "云南"]; //省份列表
+        $scope.cityArr = []; //城市列表
+        $scope.countyArr = [];//国家列表
+
+        $scope.formatGender = function (gender) {  //内容输出替换
+            if (gender == 0)
+                return "女";
+
+            if (gender == 1)
+                return "男";
+        };
+
+        $scope.$watch("selectedEmployee", function (employee) {//监听变化，选择了A员工后，编辑员工信息的对象变成A员工的信息数组
+            $scope.editingEmployee = employee || {};  //防止为空
+        });
+
+        $scope.$watch("editingEmployee.province", function (province) {  //监听变化，联动城市信息
+            // 真正有用的代码在这里，实际场景中这里可以是调用后端服务查询的关联数据
+            switch (province) {
+                case "江苏":
+                {
+                    $scope.cityArr = ["南京", "苏州"];
+                    break;
+                }
+                case "云南":
+                {
+                    $scope.cityArr = ["昆明", "丽江"];
+                    break;
+                }
+            }
+        });
+
+        $scope.selectEmployee = function (employee) {   // 选择员工
+            $scope.selectedEmployee = employee;
+        };
+
+        $scope.create = function () { //创建新员工
+            $scope.state = "New";  //状态是new
+            $scope.editing = true;  //编辑权限是true
+
+            $scope.editingEmployee = {}; //创建一个编辑的员工信息对象，空
+        };
+
+        $scope.modify = function () { //编辑员工
+            $scope.state = "Modify";//状态是modify
+            $scope.editing = true;//编辑权限是true
+
+            $scope.editingEmployee = angular.extend({}, $scope.selectedEmployee); //编辑的员工信息对象 = 复制的选择了的员工信息（如果你不想改变一个对象，你可以把dst设为空对象{}）
+        };
+
+        $scope.remove = function () {
+            if (confirm("确认删除此员工吗？")) {
+                for (var i = 0; i < $scope.employees.length; i++) {
+                    if ($scope.employees[i] == $scope.selectedEmployee) {
+                        $scope.employees.splice(i, 1); //删除数组
+                        $scope.selectedEmployee = null;  //选择的员工为空
+                        break;
+                    }//当确认删除员工B后，找到选择的员工数组序号，删除，中断
+                }
+            }
+        };
+
+        $scope.ok = function () {  //如果是新增，则原员工数组push进新的数组，如果是修改，则是把编辑的数组  复制到  选择的数组
+            if ($scope.state === "New") {
+                $scope.employees.push($scope.editingEmployee);
+                $scope.selectedEmployee = $scope.editingEmployee;
+            }
+            else if ($scope.state === "Modify") {
+                $scope.selectedEmployee = angular.extend($scope.selectedEmployee, $scope.editingEmployee);
+            }
+            $scope.state = "View"; //状态变成view
+            $scope.editing = false;  //编辑权限是false
+        };
+
+        $scope.cancel = function () {  //取消
+            $scope.state = "View";  //状态变成view
+            $scope.editing = false;  //编辑权限是false
+
+            $scope.editingEmployee = $scope.selectedEmployee;  //编辑的数组变成选择的数组，内容返回到选择的数组内容
+        };
+
+        $scope.okDisabled = function () {   //确定button能否点击
+            if ($scope.editing && ($scope.editingEmployee.name) && ($scope.editingEmployee.name.length >= 2)) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        };
+    }]);
+</script>
+</body>
+</html>

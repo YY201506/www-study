@@ -5,72 +5,86 @@
     {
       "Name": "Alfreds Futterkiste",
       "City": "Berlin",
-      "Country": "Germany"
+      "Country": "Germany",
+      "gender":1
     },
     {
       "Name": "Ana Trujillo Emparedados y helados",
       "City": "México D.F.",
-      "Country": "Mexico"
+      "Country": "Mexico",
+      "gender": 0
     },
     {
       "Name": "Antonio Moreno Taquería",
       "City": "México D.F.",
-      "Country": "Mexico"
+      "Country": "Mexico",
+      "gender": 1
     },
     {
       "Name": "Around the Horn",
       "City": "London",
-      "Country": "UK"
+      "Country": "UK",
+      "gender": 1
     },
     {
       "Name": "B's Beverages",
       "City": "London",
-      "Country": "UK"
+      "Country": "UK",
+      "gender": 1
     },
     {
       "Name": "Berglunds snabbköp",
       "City": "Luleå",
-      "Country": "Sweden"
+      "Country": "Sweden",
+      "gender": 1
     },
     {
       "Name": "Blauer See Delikatessen",
       "City": "Mannheim",
-      "Country": "Germany"
+      "Country": "Germany",
+      "gender": 1
     },
     {
       "Name": "Blondel père et fils",
       "City": "Strasbourg",
-      "Country": "France"
+      "Country": "France",
+      "gender": 0
     },
     {
       "Name": "Bólido Comidas preparadas",
       "City": "Madrid",
-      "Country": "Spain"
+      "Country": "Spain",
+      "gender": 1
     },
     {
       "Name": "Bon app'",
       "City": "Marseille",
-      "Country": "France"
+      "Country": "France",
+      "gender": 1
     },
     {
       "Name": "Bottom-Dollar Marketse",
       "City": "Tsawassen",
-      "Country": "Canada"
+      "Country": "Canada",
+      "gender": 1
     },
     {
       "Name": "Cactus Comidas para llevar",
       "City": "Buenos Aires",
-      "Country": "Argentina"
+      "Country": "Argentina",
+      "gender": 1
     },
     {
       "Name": "Centro comercial Moctezuma",
       "City": "México D.F.",
-      "Country": "Mexico"
+      "Country": "Mexico",
+      "gender": 1
     },
     {
       "Name": "Chop-suey Chinese",
       "City": "Bern",
-      "Country": "Switzerland"
+      "Country": "Switzerland",
+      "gender": 1
     }
   ]
 }
