@@ -42,7 +42,52 @@
         <div class="pull-left float_three text-center g9">昨日花费（元）<span class="f24 db g0">252</span></div>
         <div class="pull-left float_three text-center g9">昨日预约量
             <a tabindex="0" role="button" data-toggle="popover" data-trigger="hover" data-content="线上产生的预约总数"><span class="glyphicon glyphicon-question-sign ml5 gc poi" aria-hidden="true"></span></a>
-            <span class="f24 db g0"><u>30</u></span>
+            <span class="f24 db"><a href="#" class="g0"><u>30</u></a></span>
+        </div>
+    </div>
+    <div class="clearfix row totallook padtopbot10 none">
+        <div class="pull-left float_three text-center g9">当前账户余额
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="hover"
+               data-content="单月帐号余额由当月基础额度+订单返还额度构成，可点击下方余额详情了解"><span
+                    class="glyphicon glyphicon-question-sign ml5 gc poi" aria-hidden="true"></span></a>
+            <span class="text-danger f28 db mb5">￥1252</span><a class="btn btn-default btn-sm new-btnsuccess "
+                                                                href="#" role="button">余额详情</a>
+        </div>
+        <div class="pull-left float_three text-center g9">昨日花费（元）<span class="f24 db g0">252</span></div>
+        <div class="pull-left float_three text-center g9">昨日预约量
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="hover" data-content="线上产生的预约总数"><span
+                    class="glyphicon glyphicon-question-sign ml5 gc poi" aria-hidden="true"></span></a>
+            <span class="f24 db"><a href="#" class="g0"><u>3</u></a></span>
+        </div>
+    </div>
+    <div class="clearfix row totallook padtopbot10 none">
+        <div class="pull-left float_three text-center g9">当前账户余额
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="hover"
+               data-content="单月帐号余额由当月基础额度+订单返还额度构成，可点击下方余额详情了解"><span
+                    class="glyphicon glyphicon-question-sign ml5 gc poi" aria-hidden="true"></span></a>
+            <span class="text-danger f28 db mb5">￥145</span><a class="btn btn-default btn-sm new-btnsuccess "
+                                                               href="#" role="button">余额详情</a>
+        </div>
+        <div class="pull-left float_three text-center g9">昨日花费（元）<span class="f24 db g0">252</span></div>
+        <div class="pull-left float_three text-center g9">昨日预约量
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="hover" data-content="线上产生的预约总数"><span
+                    class="glyphicon glyphicon-question-sign ml5 gc poi" aria-hidden="true"></span></a>
+            <span class="f24 db"><a href="#" class="g0"><u>50</u></a></span>
+        </div>
+    </div>
+    <div class="clearfix row totallook padtopbot10 none">
+        <div class="pull-left float_three text-center g9">当前账户余额
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="hover"
+               data-content="单月帐号余额由当月基础额度+订单返还额度构成，可点击下方余额详情了解"><span
+                    class="glyphicon glyphicon-question-sign ml5 gc poi" aria-hidden="true"></span></a>
+            <span class="text-danger f28 db mb5">￥182</span><a class="btn btn-default btn-sm new-btnsuccess "
+                                                               href="#" role="button">余额详情</a>
+        </div>
+        <div class="pull-left float_three text-center g9">昨日花费（元）<span class="f24 db g0">282</span></div>
+        <div class="pull-left float_three text-center g9">昨日预约量
+            <a tabindex="0" role="button" data-toggle="popover" data-trigger="hover" data-content="线上产生的预约总数"><span
+                    class="glyphicon glyphicon-question-sign ml5 gc poi" aria-hidden="true"></span></a>
+            <span class="f24 db"><a href="#" class="g0"><u>30</u></a></span>
         </div>
     </div>
 
@@ -52,30 +97,29 @@
     <table class="table table-striped table-bordered table-responsive table-condensed table-sm text-center">
         <tr class="success">
             <td style="min-width: 63px;">周期</td>
-            <td style="min-width:116px;">计划花费<a tabindex="0" role="button" data-toggle="popover" data-trigger="hover" data-content="当周投放金额数"><span class="glyphicon glyphicon-question-sign ml5 gc poi" aria-hidden="true"></span></a></td>
+            <td style="min-width:116px;">计划花费<a tabindex="0" role="button" data-toggle="popover" data-trigger="hover" data-content="当周投放金额数,默认平均投放，可根据实际需要修改投放比例"><span class="glyphicon glyphicon-question-sign ml5 gc poi" aria-hidden="true"></span></a></td>
             <td style="min-width: 63px;">状态</td>
             <td style="min-width: 63px;">实际花费</td>
             <td style="min-width: 63px;">累计预约</td>
 
         </tr>
+
         <tr>
             <td>第一周</td>
             <td>￥<input class="form-control input-sm width100 dib " type="text" placeholder="请输入" value="222"></td>
-            <td>已结束</td>
+            <td class="text-danger">已结束</td>
             <td>￥100.00</td>
             <td>200</td>
         </tr>
-        tr>
+        <tr>
         <td>第一周</td>
         <td>￥<input class="form-control input-sm width100 dib " type="text" placeholder="请输入" value="222" readonly></td>
-        <td>已结束</td>
+        <td class="text-success">已结束</td>
         <td>￥100.00</td>
         <td>200</td>
         </tr>
     </table>
-    <div class="oa-page">
-        {$page}
-    </div>
+
     <button type="button" class="btn btn-success" id="distribute_btn">保存调整</button>
     <span class="ml10 text-danger">保存失败，计划花费总额为￥8805,超出当前帐号余额，您可申请提额或重新调整</span>
 
@@ -83,7 +127,20 @@
 <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script>
+
     $('[data-toggle="popover"]').popover();
+
+
+    $(".total_area").each(function (i) {
+        $(".total_area").eq(i).click(function(){
+            $(".total_area").removeClass('area-active');
+            $(this).addClass('area-active');
+            $(".totallook").hide().eq(i).fadeIn(200);
+        });
+    });
+
+
+
 </script>
 </body>
 </html>

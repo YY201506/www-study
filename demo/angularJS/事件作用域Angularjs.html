@@ -13,9 +13,24 @@
     <div ng-controller="innerctrl">
         <span>{{data.a}}</span>
         <button ng-click="data.a=data.a+1">a++</button>
-    </div>
+    </div><!--data是同一个引用，对这个对象上面的属性修改，是可以反映到两级对象上的。-->
 </div>
-<!--data是同一个引用，对这个对象上面的属性修改，是可以反映到两级对象上的。-->
+
+<div ng-controller="bctrl as instanceB"><!--**引入控制器时，加了一个as语法，给ctrlB的实例取一个别名叫instanceB***-->
+    <div>{{instanceB.a}}</div>
+    <button ng-click="instanceB.foo()">click me</button>
+</div>
+<div ng-controller="p_sco">
+    <p>outer:{{sum1}}</p>
+    <li ng-repeat="item in arr track by $index">{{item}}
+        <button ng-click="$parent.sum1 = sum1+item;">+</button>
+        <p>inner:{{sum1}}</p>
+    </li>
+    <p>value:{{$parents.a}}为空</p>
+    <button ng-click="change()">+</button>
+
+</div>
+
 
 <script>
     var app = angular.module('myapp',[]);
@@ -24,11 +39,30 @@
             a : 1
         };
     });
-    app.controller("innerctrl", function ($scope) {
+    app.controller("innerctrl", function () {});
+    /*可去掉scope*/
+    app.controller('bctrl', function () {
+        this.a =1;
+        this.foo = function () {
+            this.a = this.a+1;
+            console.log(this.a);
+        };
+    });
+    app.controller("p_sco",function($scope){
+        $scope.arr=[1,2,3,4];
 
+        var child =$scope.$new();
+        child.a = 1;    //悬空作用域
+        child.$watch('a', function (newvalue) {
+            console.log(newvalue);
+        });
+        $scope.change = function(){
+            child.a= child.a+6;
+        };
     });
 
 
+    /*function ====*/
     function Outer() {
         this.data={
             a:1
@@ -40,14 +74,17 @@
     Inner.prototype = outer;  //inner的原型对象属性prototype是继承outer
     var inner = new Inner();  //创建inner的实例对象Inner
 
-    console.log(outer.data.a);
-    console.log(inner.data.a);
+    console.log(outer.data.a);   //1 //outer.__proto__ = Outer.__proto__
+    console.log(inner.data.a);   //1
+    //inner.__proto__ = Inner.prototype;
+    // Inner.prototype = outer;
+    // Inner.prototype.__proto__ = Outer.__proto__
 
     // 注意，这个时候会怎样？
-    inner.data.a += 1;
+    outer.data.a += 1;
 
-    console.log(outer.data.a);
-    console.log(inner.data.a);
+    console.log(outer.data.a);  //2
+    console.log(inner.data.a);  //2
 
 
 </script>
